@@ -82,7 +82,7 @@ def load_image(image_file, input_size=448, max_num=12):
 
 # If you have an 80G A100 GPU, you can put the entire model on a single GPU.
 # Otherwise, you need to load a model using multiple GPUs, please refer to the `Multiple GPUs` section.
-path = 'OpenGVLab/InternVL2-8B'
+path = 'OpenGVLab/InternVL2-2B'
 model = AutoModel.from_pretrained(
     path,
     torch_dtype=torch.bfloat16,
@@ -90,82 +90,8 @@ model = AutoModel.from_pretrained(
     use_flash_attn=True,
     trust_remote_code=True).eval().cuda()
 tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True, use_fast=False)
-
-# set the max number of tiles in `max_num`
-pixel_values = load_image('./examples/image1.jpg', max_num=12).to(torch.bfloat16).cuda()
 generation_config = dict(max_new_tokens=1024, do_sample=False)
 
-# pure-text conversation (纯文本对话)
-question = 'Hello, who are you?'
-response, history = model.chat(tokenizer, None, question, generation_config, history=None, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-question = 'Can you tell me a story?'
-response, history = model.chat(tokenizer, None, question, generation_config, history=history, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-# single-image single-round conversation (单图单轮对话)
-question = '<image>\nPlease describe the image shortly.'
-response = model.chat(tokenizer, pixel_values, question, generation_config)
-print(f'User: {question}\nAssistant: {response}')
-
-# single-image multi-round conversation (单图多轮对话)
-question = '<image>\nPlease describe the image in detail.'
-response, history = model.chat(tokenizer, pixel_values, question, generation_config, history=None, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-question = 'Please write a poem according to the image.'
-response, history = model.chat(tokenizer, pixel_values, question, generation_config, history=history, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-# multi-image multi-round conversation, combined images (多图多轮对话，拼接图像)
-pixel_values1 = load_image('./examples/image1.jpg', max_num=12).to(torch.bfloat16).cuda()
-pixel_values2 = load_image('./examples/image2.jpg', max_num=12).to(torch.bfloat16).cuda()
-pixel_values = torch.cat((pixel_values1, pixel_values2), dim=0)
-
-question = '<image>\nDescribe the two images in detail.'
-response, history = model.chat(tokenizer, pixel_values, question, generation_config,
-                               history=None, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-question = 'What are the similarities and differences between these two images.'
-response, history = model.chat(tokenizer, pixel_values, question, generation_config,
-                               history=history, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-# multi-image multi-round conversation, separate images (多图多轮对话，独立图像)
-pixel_values1 = load_image('./examples/image1.jpg', max_num=12).to(torch.bfloat16).cuda()
-pixel_values2 = load_image('./examples/image2.jpg', max_num=12).to(torch.bfloat16).cuda()
-pixel_values = torch.cat((pixel_values1, pixel_values2), dim=0)
-num_patches_list = [pixel_values1.size(0), pixel_values2.size(0)]
-
-question = 'Image-1: <image>\nImage-2: <image>\nDescribe the two images in detail.'
-response, history = model.chat(tokenizer, pixel_values, question, generation_config,
-                               num_patches_list=num_patches_list,
-                               history=None, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-question = 'What are the similarities and differences between these two images.'
-response, history = model.chat(tokenizer, pixel_values, question, generation_config,
-                               num_patches_list=num_patches_list,
-                               history=history, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-# batch inference, single image per sample (单图批处理)
-pixel_values1 = load_image('./examples/image1.jpg', max_num=12).to(torch.bfloat16).cuda()
-pixel_values2 = load_image('./examples/image2.jpg', max_num=12).to(torch.bfloat16).cuda()
-num_patches_list = [pixel_values1.size(0), pixel_values2.size(0)]
-pixel_values = torch.cat((pixel_values1, pixel_values2), dim=0)
-
-questions = ['<image>\nDescribe the image in detail.'] * len(num_patches_list)
-responses = model.batch_chat(tokenizer, pixel_values,
-                             num_patches_list=num_patches_list,
-                             questions=questions,
-                             generation_config=generation_config)
-for question, response in zip(questions, responses):
-    print(f'User: {question}\nAssistant: {response}')
-
-# video multi-round conversation (视频多轮对话)
 def get_index(bound, fps, max_frame, first_idx=0, num_segments=32):
     if bound:
         start, end = bound[0], bound[1]
@@ -201,14 +127,10 @@ def load_video(video_path, bound=None, input_size=448, max_num=1, num_segments=3
 video_path = './examples/red-panda.mp4'
 pixel_values, num_patches_list = load_video(video_path, num_segments=8, max_num=1)
 pixel_values = pixel_values.to(torch.bfloat16).cuda()
+print(pixel_values.shape)
 video_prefix = ''.join([f'Frame{i+1}: <image>\n' for i in range(len(num_patches_list))])
 question = video_prefix + 'What is the red panda doing?'
 # Frame1: <image>\nFrame2: <image>\n...\nFrame8: <image>\n{question}
 response, history = model.chat(tokenizer, pixel_values, question, generation_config,
                                num_patches_list=num_patches_list, history=None, return_history=True)
-print(f'User: {question}\nAssistant: {response}')
-
-question = 'Describe this video in detail. Don\'t repeat.'
-response, history = model.chat(tokenizer, pixel_values, question, generation_config,
-                               num_patches_list=num_patches_list, history=history, return_history=True)
 print(f'User: {question}\nAssistant: {response}')

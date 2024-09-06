@@ -15,7 +15,7 @@ IMAGENET_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_STD = (0.229, 0.224, 0.225)
 VIDEO_PATH_PREFIX = "/remote_shome/snl/feilong/xiapeng/haibo/videoRM/dataset/SafeSora"
 IMAGE_SIZE = 448
-NUM_IMAGE_TOKEN = 512
+NUM_IMAGE_TOKEN = 256
 QUESTION_PROMPT = "Do you think the video generated as this prompt is of good quality (Yes/No)?"
 
 
@@ -156,7 +156,7 @@ def pad_labels(labels, max_length):
     """Pads the labels list to max_length with -100."""
     return [label + [-100] * (max_length - len(label)) for label in labels]
     
-def preprocess_function(examples, tokenizer, max_length=32768, num_image_token=NUM_IMAGE_TOKEN):
+def preprocess_function(examples, tokenizer, max_length=4096, num_image_token=NUM_IMAGE_TOKEN, num_segments=8):
     """Preprocess video examples with text and image tokens, ensuring label consistency after padding."""
     
     # Prepare video paths for both videos
@@ -164,8 +164,8 @@ def preprocess_function(examples, tokenizer, max_length=32768, num_image_token=N
     video_paths_1 = [os.path.join(VIDEO_PATH_PREFIX, info['video_path']) for info in examples['video_1']]
 
     # Load video frames and extract pixel values for both video sets
-    pixel_values_0, num_patches_list_0 = zip(*[load_video(path, num_segments=8, max_num=1) for path in video_paths_0])
-    pixel_values_1, num_patches_list_1 = zip(*[load_video(path, num_segments=8, max_num=1) for path in video_paths_1])
+    pixel_values_0, num_patches_list_0 = zip(*[load_video(path, num_segments=num_segments, max_num=1) for path in video_paths_0])
+    pixel_values_1, num_patches_list_1 = zip(*[load_video(path, num_segments=num_segments, max_num=1) for path in video_paths_1])
 
     # Create frame-based prefixes for both videos
     video_pre_prefix_list_0 = [''.join([f'Frame{i+1}: <image>\n' for i in range(len(num_patches))]) for num_patches in num_patches_list_0]

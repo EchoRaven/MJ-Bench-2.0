@@ -16,10 +16,14 @@ class CustomTrainer(Trainer):
         attention_mask_0 = inputs['attention_mask_0']
         pixel_values_0 = inputs['pixel_values_0']
         labels_0 = inputs['labels_0']
+        b, f, c, h, w = pixel_values_0.shape
+        pixel_values_0 = pixel_values_0.view(b * f, c, h, w)
 
         input_ids_1 = inputs['input_ids_1']
         attention_mask_1 = inputs['attention_mask_1']
         pixel_values_1 = inputs['pixel_values_1']
+        b, f, c, h, w = pixel_values_1.shape
+        pixel_values_1 = pixel_values_1.view(b * f, c, h, w)
         labels_1 = inputs['labels_1']
 
         # 如果 image_flags_0 不存在，生成全1的 image_flags
@@ -81,7 +85,7 @@ def parse_args():
     parser.add_argument('--output_dir', type=str, default="./results", help="Directory to save the results")
     parser.add_argument('--logging_dir', type=str, default="./logs", help="Directory to save logs")
     parser.add_argument('--epochs', type=int, default=3, help="Number of epochs to train")
-    parser.add_argument('--batch_size', type=int, default=8, help="Batch size for training and evaluation")
+    parser.add_argument('--batch_size', type=int, default=16, help="Batch size for training and evaluation")
     parser.add_argument('--lr', type=float, default=5e-5, help="Learning rate")
     parser.add_argument('--warmup_steps', type=int, default=500, help="Number of warmup steps")
     parser.add_argument('--logging_steps', type=int, default=10, help="Logging steps during training")
