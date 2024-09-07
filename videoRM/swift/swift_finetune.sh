@@ -21,7 +21,7 @@ swift sft \
     --save_steps 200 \
     --save_total_limit 1 \
     --learning_rate 4e-5 \
-    --deepspeed "zero_stage3_config.json" \
+    --deepspeed "/remote_shome/snl/feilong/xiapeng/haibo/videoRM/deepspeed_config/zero_stage3_config.json" \
     --num_train_epochs 1 \
     --save_steps 200 \
     --train_dataset_sample -1 \
