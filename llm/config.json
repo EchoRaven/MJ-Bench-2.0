@@ -1,0 +1,6 @@
+{
+    "prompt": "A cat playing with the fluffy ball",
+    "model_name": "OpenGVLab/InternVL2-26B",
+    "task_type": "text-generation",
+    "output_path": "generated_video.mp4"
+}
