@@ -1,9 +1,0 @@
-{
-  "safesora": {
-    "root": "/remote_shome/snl/feilong/xiapeng/haibo/videoRM/dataset/SafeSora/videos",
-    "annotation": "/remote_shome/snl/feilong/xiapeng/haibo/videoRM/dataset/SafeSora_json/train.jsonl",
-    "data_augment": false,
-    "repeat_time": 1,
-    "length": 92926
-  }
-}

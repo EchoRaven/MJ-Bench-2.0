@@ -1,4 +1,0 @@
--r requirements/internvl_chat.txt
--r requirements/streamlit_demo.txt
--r requirements/classification.txt
--r requirements/segmentation.txt
