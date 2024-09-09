@@ -1,16 +1,16 @@
-# 文件结构
-··· 
+# directory 
 project_directory/
 │
-├── evaluate_videos.py          # 你的 Python 代码文件
-├── data.json                   # 存放输入数据的 JSON 文件
-└── videos/                     # 存放视频文件的目录
+├── evaluate_videos.py          
+├── data.json                   
+└── videos/                     
     ├── cat_playing_ball_park_0.mp4
     ├── cat_playing_ball_park_1.mp4
     ├── dog_running_field_0.mp4
     └── dog_running_field_1.mp4
     
-# json格式
+# json example
+···
 {
     "examples": [
         {
@@ -25,8 +25,10 @@ project_directory/
         }
     ]
 }
+···
 
-# 数据处理
+# deal with files
+···
 import json
 
 def load_data(json_file):
@@ -47,4 +49,4 @@ if __name__ == "__main__":
         # 调用你的评估函数
         scores = evaluate_videos(caption, video0, video1)
         print(scores)
-
+···
