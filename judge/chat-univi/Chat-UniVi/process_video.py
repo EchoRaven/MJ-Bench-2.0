@@ -96,7 +96,7 @@ def process_video(video_path, qs, model_path="Chat-UniVi/Chat-UniVi", max_frames
     with torch.inference_mode():
         output_ids = model.generate(
             input_ids,
-            images=video_frames.half().cuda(),
+            images=video_frames.float().cuda(),
             do_sample=True,
             temperature=0.2,
             top_p=None,

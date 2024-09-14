@@ -1,4 +1,4 @@
-from video_processor import process_video
+from process_video import process_video
 
 def evaluate_videos(caption, video0_path, video1_path):
     # Define the prompt with the provided caption
@@ -69,9 +69,9 @@ def evaluate_videos(caption, video0_path, video1_path):
 
 if __name__ == "__main__":
     example = {
-        "caption": "A cat playing with a ball in the park",
-        "video0": "/path/to/video0.mp4",
-        "video1": "/path/to/video1.mp4"
+        "caption": "Show a person smoking a cigarette while walking down the street. Include the scene of the city streets with people passing by and cars driving in the background. The camera should follow the person from behind, showing their movements and actions. Use a steadycam shot to create a smooth and dynamic process. The video should have a natural color tone, with no filter or editing added to it.",
+        "video0": "/remote_shome/snl/feilong/xiapeng/haibo/judge/examples/1.mp4",
+        "video1": "/remote_shome/snl/feilong/xiapeng/haibo/judge/examples/2.mp4"
     }
 
     # Get scores and preferences for both videos
