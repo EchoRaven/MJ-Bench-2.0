@@ -31,6 +31,7 @@
 - **配置文件**：YAML 格式的配置文件，其中包含你的 OpenAI API Key。确保 API Key 字段名称正确。
 
 ##### 5.2 设置文件可执行权限
+
 在首次运行之前，需要给 Shell 脚本赋予可执行权限：
 ```bash
 chmod +x run_api_requests.sh

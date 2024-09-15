@@ -5,6 +5,8 @@ INPUT_JSON="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/inpu
 OUTPUT_JSON="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/output_files/examples.json"
 VIDEO_OUTPUT_DIR="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/videos"
 CACHE_DIR="/remote_shome/snl/feilong/xiapeng/haibo/videoRM/Stable_Video_Diffusion"
+PROCESS_DATASET_SCRIPT="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/process_dataset/mj_bench_process.py"
+SAMPLE_SIZE=10
 
 # 定义超参数
 FRAME_COUNT=16
@@ -18,12 +20,13 @@ echo "Using CUDA devices: $CUDA_VISIBLE_DEVICES"
 
 # 执行 Python 脚本
 python generate.py \
-    --input_path $INPUT_JSON \
+    --dataset_loader $PROCESS_DATASET_SCRIPT \
     --output_path $OUTPUT_JSON \
     --video_path $VIDEO_OUTPUT_DIR \
     --frame $FRAME_COUNT \
     --duration $FRAME_DURATION \
     --cache_dir $CACHE_DIR \
-    --debug
+    --debug \
+    --sample_size $SAMPLE_SIZE
 
 echo "Script completed, output generated at $OUTPUT_JSON"

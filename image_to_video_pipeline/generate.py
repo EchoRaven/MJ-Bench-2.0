@@ -8,138 +8,179 @@ from torch.multiprocessing import Pool, set_start_method
 from tqdm import tqdm
 import cv2
 import numpy as np
+import logging
+import importlib.util
+import subprocess
+import time
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+
+def get_gpu_memory_usage():
+    """Returns a list of GPU memory usage as a percentage."""
+    result = subprocess.run(
+        ['nvidia-smi', '--query-gpu=memory.used,memory.total', '--format=csv,nounits,noheader'],
+        stdout=subprocess.PIPE,
+        encoding='utf-8'
+    )
+    lines = result.stdout.strip().split('\n')
+    memory_usage = []
+    for line in lines:
+        used, total = map(int, line.split(','))
+        memory_usage.append(used / total * 100)  # Calculate percentage usage
+    return memory_usage
+
+
+def get_available_gpu(threshold=30):
+    """Returns the ID of the first available GPU with memory usage below the threshold."""
+    memory_usage = get_gpu_memory_usage()
+    for i, usage in enumerate(memory_usage):
+        if usage < threshold:
+            return i
+    return None
 
 
 def process_video(entry, pipeline, video_path, frame_count, frame_duration, format):
     """Process each entry to generate video and save it."""
-    image_path = entry["image_path"]
+    if "image_path" in entry:
+        image = Image.open(entry["image_path"]).convert("RGB")
+    elif "image" in entry:
+        image = entry["image"].convert("RGB")
+    else:
+        raise ValueError("Entry must contain either 'image_path' or 'image'.")
+
     img_id = entry["id"]
-    
-    # Load image
-    input_image = Image.open(image_path).convert("RGB")
-    input_image_size = input_image.size
-    
-    # Generate video frames
+    input_image_size = image.size
+
     with torch.no_grad():
-        video_frames = pipeline(input_image, num_frames=frame_count).frames[0]
-    
-    # Resize frames to match input image size
+        video_frames = pipeline(image, num_frames=frame_count).frames[0]
+
     resized_frames = [frame.resize(input_image_size) for frame in video_frames]
+    
+    video_output_path = os.path.join(video_path, f"{img_id}.{format}")
+
     if format == "gif":
-        # Create video output path
-        video_output_path = os.path.join(video_path, f"{img_id}.gif")
-        
-        # Save as GIF
         resized_frames[0].save(
-            video_output_path, format='GIF', save_all=True, append_images=resized_frames[1:], 
+            video_output_path, format='GIF', save_all=True, append_images=resized_frames[1:],
             duration=frame_duration, loop=0
         )
     elif format == "mp4":
-        video_output_path = os.path.join(video_path, f"{img_id}.mp4")
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-        fps = 1000 / frame_duration if frame_duration > 0 else 30  # 如果frame_duration是0，将导致除以0的错误
+        fps = 1000 / frame_duration if frame_duration > 0 else 30
         videoWriter = cv2.VideoWriter(video_output_path, fourcc, fps, input_image_size)
         for frame in resized_frames:
-            # Convert the frame (PIL Image) to a numpy array with uint8 type
             frame_np = np.array(frame, dtype=np.uint8)
-
-            # Convert RGB (used by PIL) to BGR (used by OpenCV)
             frame_np = cv2.cvtColor(frame_np, cv2.COLOR_RGB2BGR)
-
-            # Check if the frame is a valid numpy array of uint8 type
-            if isinstance(frame_np, np.ndarray) and frame_np.dtype == np.uint8:
-                try:
-                    videoWriter.write(frame_np)  # Write the frame to the video file
-                except Exception as e:
-                    print(f"Error writing frame: {e}")
-            else:
-                print("Frame is not a valid numpy uint8 array")
+            videoWriter.write(frame_np)
+        videoWriter.release()
     
-    # Add video path to entry
     entry["video_path"] = video_output_path
+    
+    if "image" in entry:
+        del entry["image"]
     
     return entry
 
 
-def worker(entry, gpu_id, video_path, frame_count, frame_duration, cache_dir, format):
-    """Function that each worker will run in parallel, loading the pipeline on a specific GPU."""
-    # Set device to the given GPU
-    device = torch.device(f"cuda:{gpu_id}")
-    
-    # Load pipeline for this worker
-    try:
-        pipeline = DiffusionPipeline.from_pretrained(
-            "stabilityai/stable-video-diffusion-img2vid-xt", cache_dir=cache_dir
-        )
-        pipeline = pipeline.to(device)
-        
-        # Monitor GPU memory usage
-        torch.cuda.set_per_process_memory_fraction(0.9, device=gpu_id)  # Limit each process to 90% of the GPU memory
-        
-        return process_video(entry, pipeline, video_path, frame_count, frame_duration, format)
-    except RuntimeError as e:
-        if "out of memory" in str(e):
-            torch.cuda.empty_cache()
-            print(f"GPU {gpu_id} is out of memory, retrying...")
-            return worker(entry, gpu_id, video_path, frame_count, frame_duration, cache_dir, format)
+def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, max_retries=5):
+    retries = 0
+    while retries < max_retries:
+        gpu_id = get_available_gpu(threshold=30)  # Check for an available GPU
+        if gpu_id is not None:
+            device = torch.device(f"cuda:{gpu_id}")
+            try:
+                logging.info(f"分配任务给 GPU {gpu_id}")
+                pipeline = DiffusionPipeline.from_pretrained(
+                    "stabilityai/stable-video-diffusion-img2vid-xt", cache_dir=cache_dir
+                )
+                pipeline = pipeline.to(device)
+                torch.cuda.set_per_process_memory_fraction(0.9, device=gpu_id)
+
+                return process_video(entry, pipeline, video_path, frame_count, frame_duration, format)
+            except RuntimeError as e:
+                if "out of memory" in str(e):
+                    torch.cuda.empty_cache()
+                    logging.warning(f"GPU {gpu_id} 内存不足，清理后重试...")
+                    retries += 1
+                    time.sleep(5)  # Wait and retry after clearing memory
+                else:
+                    logging.error(f"GPU {gpu_id} 出现错误: {e}")
+                    return None
         else:
-            raise e
+            logging.info("所有GPU繁忙，等待中...")
+            time.sleep(5)  # Wait and retry after 5 seconds
+    
+    logging.error(f"任务 {entry['id']} 在 {max_retries} 次重试后失败")
+    return None  # Return None if all retries fail
+
+
+def load_data_from_json(json_path):
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    return data
+
+
+def load_data_from_script(dataset_loader, args):
+    spec = importlib.util.spec_from_file_location("dataset_loader", dataset_loader)
+    dataset_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(dataset_module)
+    
+    if hasattr(dataset_module, 'process_dataset'):
+        return dataset_module.process_dataset(args)
+    else:
+        raise ImportError("指定的数据加载脚本中不包含 'process_dataset' 函数。")
 
 
 def main(args):
-    # Load input data from JSON
-    with open(args.input_path, 'r') as f:
-        data = json.load(f)
-    
-    # If in debug mode, sample 2 entries
-    if args.debug:
-        data = data[:2]
-    
-    # Create video output directory if it doesn't exist
-    os.makedirs(args.video_path, exist_ok=True)
-    
-    # Multi-GPU processing
-    num_gpus = torch.cuda.device_count()
-    print(f"Detected {num_gpus} GPUs. Starting parallel processing...")
+    if args.dataset_loader:
+        logging.info(f"使用数据加载器加载数据: {args.dataset_loader}")
+        data = load_data_from_script(args.dataset_loader, args)
+    else:
+        logging.info(f"从 JSON 文件加载数据: {args.input_path}")
+        data = load_data_from_json(args.input_path)
 
-    # Create a pool of workers
-    pool = Pool(processes=num_gpus)
-    
+    if args.debug:
+        logging.info(f"Debug模式启用，处理前 {args.sample_size} 条数据")
+        data = data[:args.sample_size]
+
+    os.makedirs(args.video_path, exist_ok=True)
+
+    logging.info(f"开始并行处理视频生成任务...")
+
+    pool = Pool(processes=torch.cuda.device_count())
+
     tasks = []
-    
-    # Distribute tasks across GPUs without using Queue
-    for i, entry in enumerate(data):
-        gpu_id = i % num_gpus
-        tasks.append(pool.apply_async(worker, (entry, gpu_id, args.video_path, args.frame, args.duration, args.cache_dir, args.format)))
-    
-    # Collect results
+    for entry in data:
+        tasks.append(pool.apply_async(worker, (entry, args.video_path, args.frame, args.duration, args.cache_dir, args.format)))
+
     results = [task.get() for task in tqdm(tasks, desc="Processing videos")]
-    
-    # Save the results to the output JSON file
+
+    # Remove None results (failed tasks)
+    results = [result for result in results if result is not None]
+
     with open(args.output_path, 'w') as f:
         json.dump(results, f, indent=4)
-    
-    print(f"Results saved to {args.output_path}")
+
+    logging.info(f"结果已保存到 {args.output_path}")
 
 
 if __name__ == "__main__":
-    # Setup multiprocessing
     try:
         set_start_method('spawn')
     except RuntimeError:
         pass
-    
-    # Argument parsing
+
     parser = argparse.ArgumentParser(description="Batch video generation from images using Stable Diffusion.")
-    parser.add_argument("--input_path", type=str, required=True, help="Path to the input JSON file.")
+    parser.add_argument("--input_path", type=str, help="Path to the input JSON file.")
     parser.add_argument("--output_path", type=str, required=True, help="Path to the output JSON file.")
     parser.add_argument("--video_path", type=str, required=True, help="Directory to save generated videos.")
     parser.add_argument("--frame", type=int, default=16, help="Number of frames to generate for each video.")
     parser.add_argument("--duration", type=int, default=100, help="Duration for each frame in the generated GIF.")
-    parser.add_argument("--debug", action="store_true", help="Process only two entries for testing.")
+    parser.add_argument("--debug", action="store_true", help="Process only a subset of entries for testing.")
+    parser.add_argument("--sample_size", type=int, default=2, help="Number of entries to process in debug mode.")
     parser.add_argument("--cache_dir", type=str, default="./cache", help="Directory to store cached models.")
     parser.add_argument("--format", type=str, choices=['gif', 'mp4'], default='mp4', help="Output video format (gif or mp4).")
+    parser.add_argument("--dataset_loader", type=str, help="Path to the dataset loader script for loading data from Hugging Face.")
 
     args = parser.parse_args()
-
     main(args)
