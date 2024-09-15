@@ -12,6 +12,8 @@ import logging
 import importlib.util
 import subprocess
 import time
+import gc
+
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 gpu_manager = Manager()
@@ -93,7 +95,7 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
         if gpu_id is not None:
             device = torch.device(f"cuda:{gpu_id}")
             try:
-                logging.info(f"分配任务给 GPU {gpu_id}")
+                logging.info(f"分配任务给 GPU {gpu_id}，处理任务 {entry['id']}")
                 pipeline = DiffusionPipeline.from_pretrained(
                     "stabilityai/stable-video-diffusion-img2vid-xt", cache_dir=cache_dir
                 )
@@ -102,7 +104,16 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
 
                 result = process_video(entry, pipeline, video_path, frame_count, frame_duration, format)
                 
+                # 任务完成后，释放 GPU 占用资源
+                del pipeline  # 删除 pipeline 对象
+                torch.cuda.empty_cache()  # 释放 GPU 缓存
+                gc.collect()  # 强制运行垃圾回收
+
                 gpu_usage_status[gpu_id] = 0  # 任务完成后释放 GPU
+
+                # 输出任务完成信息
+                logging.info(f"任务 {entry['id']} 已完成，使用 GPU {gpu_id}")
+
                 return result
             except RuntimeError as e:
                 if "out of memory" in str(e):
@@ -120,7 +131,6 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
     
     logging.error(f"任务 {entry['id']} 在 {max_retries} 次重试后失败")
     return None  # Return None if all retries fail
-
 
 
 def load_data_from_json(json_path):
