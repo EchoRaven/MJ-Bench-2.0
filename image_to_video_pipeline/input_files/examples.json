@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "image_path": "/remote_shome/snl/feilong/xiapeng/haibo/videoRM/examples/image1.jpg",
+        "other_key": "value1"
+    },
+    {
+        "id": 2,
+        "image_path": "/remote_shome/snl/feilong/xiapeng/haibo/videoRM/examples/image2.jpg",
+        "other_key": "value2"
+    }
+]
