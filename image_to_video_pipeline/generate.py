@@ -4,7 +4,7 @@ import argparse
 from diffusers import DiffusionPipeline
 from PIL import Image
 import torch
-from torch.multiprocessing import Pool, set_start_method
+from torch.multiprocessing import Pool, set_start_method, Manager
 from tqdm import tqdm
 import cv2
 import numpy as np
@@ -14,7 +14,8 @@ import subprocess
 import time
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-
+gpu_manager = Manager()
+gpu_usage_status = gpu_manager.dict({i: 0 for i in range(torch.cuda.device_count())})
 
 def get_gpu_memory_usage():
     """Returns a list of GPU memory usage as a percentage."""
@@ -35,7 +36,8 @@ def get_available_gpu(threshold=30):
     """Returns the ID of the first available GPU with memory usage below the threshold."""
     memory_usage = get_gpu_memory_usage()
     for i, usage in enumerate(memory_usage):
-        if usage < threshold:
+        if usage < threshold and gpu_usage_status[i] == 0:  # 检查是否已经有任务分配
+            gpu_usage_status[i] = 1  # 标记该 GPU 正在使用
             return i
     return None
 
@@ -84,8 +86,10 @@ def process_video(entry, pipeline, video_path, frame_count, frame_duration, form
 
 def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, max_retries=5):
     retries = 0
+    gpu_id = None
     while retries < max_retries:
-        gpu_id = get_available_gpu(threshold=30)  # Check for an available GPU
+        if gpu_id is None:
+            gpu_id = get_available_gpu(threshold=30)  # Check for an available GPU
         if gpu_id is not None:
             device = torch.device(f"cuda:{gpu_id}")
             try:
@@ -96,7 +100,10 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
                 pipeline = pipeline.to(device)
                 torch.cuda.set_per_process_memory_fraction(0.9, device=gpu_id)
 
-                return process_video(entry, pipeline, video_path, frame_count, frame_duration, format)
+                result = process_video(entry, pipeline, video_path, frame_count, frame_duration, format)
+                
+                gpu_usage_status[gpu_id] = 0  # 任务完成后释放 GPU
+                return result
             except RuntimeError as e:
                 if "out of memory" in str(e):
                     torch.cuda.empty_cache()
@@ -105,6 +112,7 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
                     time.sleep(5)  # Wait and retry after clearing memory
                 else:
                     logging.error(f"GPU {gpu_id} 出现错误: {e}")
+                    gpu_usage_status[gpu_id] = 0  # 任务失败后释放 GPU
                     return None
         else:
             logging.info("所有GPU繁忙，等待中...")
@@ -112,6 +120,7 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
     
     logging.error(f"任务 {entry['id']} 在 {max_retries} 次重试后失败")
     return None  # Return None if all retries fail
+
 
 
 def load_data_from_json(json_path):
