@@ -14,10 +14,18 @@ import subprocess
 import time
 import gc
 
-
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 gpu_manager = Manager()
-gpu_usage_status = gpu_manager.dict({i: 0 for i in range(torch.cuda.device_count())})
+
+# Ensure the GPU usage status dictionary is correctly initialized based on the number of available GPUs
+gpu_count = torch.cuda.device_count()
+if gpu_count == 0:
+    logging.error("No GPUs found. Exiting.")
+    exit(1)  # Exit if no GPUs are found
+else:
+    logging.info(f"{gpu_count} GPUs available.")
+
+gpu_usage_status = gpu_manager.dict({i: 0 for i in range(gpu_count)})
 
 def get_gpu_memory_usage():
     """Returns a list of GPU memory usage as a percentage."""
@@ -33,16 +41,17 @@ def get_gpu_memory_usage():
         memory_usage.append(used / total * 100)  # Calculate percentage usage
     return memory_usage
 
-
 def get_available_gpu(threshold=30):
     """Returns the ID of the first available GPU with memory usage below the threshold."""
     memory_usage = get_gpu_memory_usage()
     for i, usage in enumerate(memory_usage):
+        if i >= gpu_count:
+            logging.warning(f"GPU index {i} exceeds available GPU count.")
+            continue
         if usage < threshold and gpu_usage_status[i] == 0:  # 检查是否已经有任务分配
             gpu_usage_status[i] = 1  # 标记该 GPU 正在使用
             return i
     return None
-
 
 def process_video(entry, pipeline, video_path, frame_count, frame_duration, format):
     """Process each entry to generate video and save it."""
@@ -84,7 +93,6 @@ def process_video(entry, pipeline, video_path, frame_count, frame_duration, form
         del entry["image"]
     
     return entry
-
 
 def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, max_retries=5):
     retries = 0
@@ -132,6 +140,9 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
     logging.error(f"任务 {entry['id']} 在 {max_retries} 次重试后失败")
     return None  # Return None if all retries fail
 
+# Rest of the code remains the same
+
+
 
 def load_data_from_json(json_path):
     with open(json_path, 'r') as f:
@@ -151,6 +162,15 @@ def load_data_from_script(dataset_loader, args):
 
 
 def main(args):
+    # Check if output file exists to resume from progress
+    processed_entries = []
+    if os.path.exists(args.output_path):
+        logging.info(f"加载现有输出文件 {args.output_path}")
+        with open(args.output_path, 'r') as f:
+            processed_entries = json.load(f)
+
+    processed_ids = {entry['id'] for entry in processed_entries}
+
     if args.dataset_loader:
         logging.info(f"使用数据加载器加载数据: {args.dataset_loader}")
         data = load_data_from_script(args.dataset_loader, args)
@@ -158,9 +178,12 @@ def main(args):
         logging.info(f"从 JSON 文件加载数据: {args.input_path}")
         data = load_data_from_json(args.input_path)
 
+    # Skip entries that are already processed
+    data_to_process = [entry for entry in data if entry['id'] not in processed_ids]
+
     if args.debug:
         logging.info(f"Debug模式启用，处理前 {args.sample_size} 条数据")
-        data = data[:args.sample_size]
+        data_to_process = data_to_process[:args.sample_size]
 
     os.makedirs(args.video_path, exist_ok=True)
 
@@ -169,16 +192,16 @@ def main(args):
     pool = Pool(processes=torch.cuda.device_count())
 
     tasks = []
-    for entry in data:
+    for entry in data_to_process:
         tasks.append(pool.apply_async(worker, (entry, args.video_path, args.frame, args.duration, args.cache_dir, args.format)))
 
-    results = [task.get() for task in tqdm(tasks, desc="Processing videos")]
-
-    # Remove None results (failed tasks)
-    results = [result for result in results if result is not None]
-
-    with open(args.output_path, 'w') as f:
-        json.dump(results, f, indent=4)
+    for task in tqdm(tasks, desc="Processing videos"):
+        result = task.get()
+        if result:
+            processed_entries.append(result)
+            # Save progress after each entry
+            with open(args.output_path, 'w') as f:
+                json.dump(processed_entries, f, indent=4)
 
     logging.info(f"结果已保存到 {args.output_path}")
 

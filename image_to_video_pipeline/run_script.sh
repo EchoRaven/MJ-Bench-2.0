@@ -13,20 +13,18 @@ FRAME_COUNT=16
 FRAME_DURATION=100
 
 # 设置 CUDA 设备
-export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export CUDA_VISIBLE_DEVICES=2,3,4,5,6,7
 
 # 打印 CUDA 设备信息，供调试使用
 echo "Using CUDA devices: $CUDA_VISIBLE_DEVICES"
 
-# 执行 Python 脚本
-python generate.py \
+# 使用 nohup 执行 Python 脚本并将输出重定向到 nohup.out
+nohup python generate.py \
     --dataset_loader $PROCESS_DATASET_SCRIPT \
     --output_path $OUTPUT_JSON \
     --video_path $VIDEO_OUTPUT_DIR \
     --frame $FRAME_COUNT \
     --duration $FRAME_DURATION \
-    --cache_dir $CACHE_DIR \
-    --debug \
-    --sample_size $SAMPLE_SIZE
+    --cache_dir $CACHE_DIR > nohup.out 2>&1 &
 
-echo "Script completed, output generated at $OUTPUT_JSON"
+echo "Script running in the background, output logged in nohup.out"
