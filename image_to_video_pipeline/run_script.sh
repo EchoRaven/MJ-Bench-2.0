@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # 定义各个路径
-INPUT_JSON="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/input_files/examples.json"
-OUTPUT_JSON="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/output_files/examples.json"
-VIDEO_OUTPUT_DIR="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/videos"
-CACHE_DIR="/remote_shome/snl/feilong/xiapeng/haibo/videoRM/Stable_Video_Diffusion"
-PROCESS_DATASET_SCRIPT="/remote_shome/snl/feilong/xiapeng/haibo/image_to_video_pipeline/process_dataset/mj_bench_process.py"
+OUTPUT_JSON="output_files/HDPv2.json"
+VIDEO_OUTPUT_DIR="videos"
+CACHE_DIR="stable_video_diffusion"
+PROCESS_DATASET_SCRIPT="process_dataset/hdpv2_process.py"
 SAMPLE_SIZE=10
 
 # 定义超参数
@@ -13,7 +12,7 @@ FRAME_COUNT=16
 FRAME_DURATION=100
 
 # 设置 CUDA 设备
-export CUDA_VISIBLE_DEVICES=2,3,4,5,6,7
+export CUDA_VISIBLE_DEVICES=0,1,2,3
 
 # 打印 CUDA 设备信息，供调试使用
 echo "Using CUDA devices: $CUDA_VISIBLE_DEVICES"
