@@ -1,45 +1,56 @@
 import json
 
-# Load the JSON data from the uploaded file
-file_path = 'MJ-Bench-Trans-Info.json'
 
-# Open and read the file
-with open(file_path, 'r') as f:
-    data = json.load(f)
+def convert_format(data, request_id):
+    return {
+        "id": f"request-{request_id}",
+        "source": "safesora/test",
+        "caption": data["caption"],
+        "subset": data["subset"],
+        "video0_body": {
+            "video_path": data["video_0_uid"],
+            "chosen": data["video_0_issues"]["chosen"],
+            "label": data["video_0_issues"]["label"]  # 保持原来的label结构
+        },
+        "video1_body": {
+            "video_path": data["video_1_uid"],
+            "chosen": data["video_1_issues"]["chosen"],
+            "label": data["video_1_issues"]["label"]  # 保持原来的label结构
+        }
+    }
 
-# Process the data to match the required format
-results = []
 
-# Group the data by the numeric part of the id (ignoring the source part)
-grouped_data = {}
-for item in data:
-    # Extract the group id, e.g., from alignment_image0_0 to 0_0
-    group_id = item["id"].split('_')[2]
-    if group_id not in grouped_data:
-        grouped_data[group_id] = []
-    grouped_data[group_id].append(item)
+def process_multiline_jsonl(input_file, output_file):
+    results = []
+    buffer = ""
 
-# For each group, assign the positive and negative video paths
-for group_id, items in grouped_data.items():
-    if len(items) == 2:
-        # Based on the label, determine which is positive and which is negative
-        if items[0]['label'] == 1:
-            positive_video = items[1]['video_path']
-            negative_video = items[0]['video_path']
-        else:
-            positive_video = items[0]['video_path']
-            negative_video = items[1]['video_path']
+    with open(input_file, 'r', encoding='utf-8') as infile:
+        for idx, line in enumerate(infile):
+            line = line.strip()
+            if line:  # 跳过空行
+                buffer += line  # 将所有行加入缓冲区
 
-        # Create the transformed entry
-        results.append({
-            "id": f"request-{group_id.replace('_', '-')}",
-            "source": f"MJ-Bench/{items[0]['source'].split('/')[0]}",  # Assume source is the same, take from the first item
-            "positive_video_path": positive_video,
-            "negative_video_path": negative_video
-        })
+                # 尝试解析 JSON
+                try:
+                    data = json.loads(buffer)
+                    # 如果解析成功，转换格式
+                    converted_data = convert_format(data, len(results))
+                    results.append(converted_data)
+                    buffer = ""  # 重置缓冲区
+                except json.JSONDecodeError:
+                    # 如果解析失败，说明 JSON 尚不完整，继续读取下一行
+                    continue
 
-# Save the transformed data back to a JSON file
-output_file_path = 'transformed_MJ_Bench_Info.json'
-with open(output_file_path, 'w') as f:
-    json.dump(results, f, indent=4, ensure_ascii=False)
+    # 将结果列表写入JSON文件
+    with open(output_file, 'w', encoding='utf-8') as outfile:
+        json.dump(results, outfile, indent=4, ensure_ascii=False)
 
+
+# 指定输入和输出文件路径
+input_jsonl = 'results1.jsonl'  # 输入的jsonl文件路径
+output_json = 'safesora_test.json'  # 输出的json文件路径
+
+# 处理多行JSONL文件并生成JSON文件
+process_multiline_jsonl(input_jsonl, output_json)
+
+print(f"转换完成！结果已保存到 {output_json}")
