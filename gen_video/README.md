@@ -5,7 +5,7 @@
 * Open-Sora x
 * VADER o
 * Text-videoDiffusion o
-* nstructVideo x
+* InstructVideo x
 
 **Execution scripts:**
 
