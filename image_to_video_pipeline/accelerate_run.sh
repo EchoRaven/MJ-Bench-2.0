@@ -12,7 +12,7 @@ FRAME_COUNT=16
 FRAME_DURATION=100
 
 # 使用 nohup 执行 Python 脚本并将输出重定向到 nohup.out
-nohup accelerate launch generate.py \
+nohup accelerate launch accelerate_parallel_generate.py \
     --dataset_loader $PROCESS_DATASET_SCRIPT \
     --output_path $OUTPUT_JSON \
     --video_path $VIDEO_OUTPUT_DIR \
