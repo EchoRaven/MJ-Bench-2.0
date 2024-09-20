@@ -128,7 +128,7 @@ def load_video(video_path, bound=None, input_size=448, num_segments=32):
 
 def process_video(video_path, prompt, model, tokenizer):
     pixel_values, num_patches_list = load_video(video_path, num_segments=8)
-    pixel_values = pixel_values.to(torch.float32).cuda()
+    pixel_values = pixel_values.to(torch.bfloat16).cuda()
     video_prefix = ''.join([f'Frame{i+1}: <image>\n' for i in range(len(num_patches_list))])
     question = video_prefix + prompt
     response, history = model.chat(
@@ -226,7 +226,7 @@ def main(args):
     model = AutoModel.from_pretrained(
         args.model_path,
         cache_dir=args.cache_dir,
-        torch_dtype=torch.float32,
+        torch_dtype=torch.bfloat16,
         low_cpu_mem_usage=True,
         use_flash_attn=True,
         trust_remote_code=True
@@ -273,6 +273,17 @@ def main(args):
                 quality_results.append(result[3])
                 cc_results.append(result[4])
 
+                with open(args.alignemnt_results_file, 'w') as outfile:
+                    json.dump(alignemnt_results, outfile, indent=4, ensure_ascii=False)
+                with open(args.safety_results_file, 'w') as outfile:
+                    json.dump(safety_results, outfile, indent=4, ensure_ascii=False)
+                with open(args.bias_results_file, 'w') as outfile:
+                    json.dump(bias_results, outfile, indent=4, ensure_ascii=False)
+                with open(args.quality_results_file, 'w') as outfile:
+                    json.dump(quality_results, outfile, indent=4, ensure_ascii=False)
+                with open(args.cc_results_file, 'w') as outfile:
+                    json.dump(cc_results, outfile, indent=4, ensure_ascii=False)
+
             except KeyError as e:
                 print(f"Error processing item with ID {item['pair_id']}: Missing key {e}.")
             except Exception as e:
@@ -282,19 +293,14 @@ def main(args):
     print(f"Total processing time: {end_time - start_time:.2f} seconds")
     with open(args.alignemnt_results_file, 'w') as outfile:
         json.dump(alignemnt_results, outfile, indent=4, ensure_ascii=False)
-        outfile.write('\n')
     with open(args.safety_results_file, 'w') as outfile:
         json.dump(safety_results, outfile, indent=4, ensure_ascii=False)
-        outfile.write('\n')
     with open(args.bias_results_file, 'w') as outfile:
         json.dump(bias_results, outfile, indent=4, ensure_ascii=False)
-        outfile.write('\n')
     with open(args.quality_results_file, 'w') as outfile:
         json.dump(quality_results, outfile, indent=4, ensure_ascii=False)
-        outfile.write('\n')
     with open(args.cc_results_file, 'w') as outfile:
         json.dump(cc_results, outfile, indent=4, ensure_ascii=False)
-        outfile.write('\n')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate text-to-video models based on multiple criteria.")
