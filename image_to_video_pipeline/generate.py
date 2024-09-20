@@ -105,7 +105,7 @@ def worker(entry, video_path, frame_count, frame_duration, cache_dir, format, ma
             try:
                 logging.info(f"分配任务给 GPU {gpu_id}，处理任务 {entry['id']}")
                 pipeline = DiffusionPipeline.from_pretrained(
-                    "stabilityai/stable-video-diffusion-img2vid-xt", cache_dir=cache_dir
+                    "stabilityai/stable-video-diffusion-img2vid-xt", cache_dir=cache_dir, torch_dtype=torch.float16
                 )
                 pipeline = pipeline.to(device)
                 torch.cuda.set_per_process_memory_fraction(0.9, device=gpu_id)
