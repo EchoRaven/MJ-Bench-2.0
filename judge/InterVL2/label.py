@@ -273,7 +273,7 @@ def main(args):
                 quality_results.append(result[3])
                 cc_results.append(result[4])
 
-                with open(args.alignemnt_results_file, 'w') as outfile:
+                with open(args.alignment_results_file, 'w') as outfile:
                     json.dump(alignemnt_results, outfile, indent=4, ensure_ascii=False)
                 with open(args.safety_results_file, 'w') as outfile:
                     json.dump(safety_results, outfile, indent=4, ensure_ascii=False)
