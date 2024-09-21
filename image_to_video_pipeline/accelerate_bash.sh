@@ -8,7 +8,7 @@
 #SBATCH --nodes 1
 #SBATCH --gres=gpu:1
 #SBATCH --gpus-per-node=1                       # 分配的GPU数量
-#SBATCH --mem=90G                        # 分配的内存大小                 # 使用的分区，假设你有gpu分区
+#SBATCH --mem=90G                        # 分配的内存大小                 
 #SBATCH --time=24:00:00                  # 最大运行时间，格式为 hh:mm:ss
 
 module load gcc cuda/12.4.1
@@ -26,7 +26,7 @@ FRAME_COUNT=16
 FRAME_DURATION=100
 
 # 执行 Python 脚本
-python accelerate launch accelerate_parallel_generate.py \
+accelerate launch accelerate_parallel_generate.py \
     --dataset_loader $PROCESS_DATASET_SCRIPT \
     --output_path $OUTPUT_JSON \
     --video_path $VIDEO_OUTPUT_DIR \

@@ -9,6 +9,8 @@ import logging
 from tqdm import tqdm
 import cv2
 import numpy as np
+import logging
+import importlib.util
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -18,6 +20,16 @@ def load_data_from_json(json_path):
         data = json.load(f)
     return data
 
+def load_data_from_script(dataset_loader, args):
+    spec = importlib.util.spec_from_file_location("dataset_loader", dataset_loader)
+    dataset_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(dataset_module)
+    
+    if hasattr(dataset_module, 'process_dataset'):
+        return dataset_module.process_dataset(args)
+    else:
+        raise ImportError("指定的数据加载脚本中不包含 'process_dataset' 函数。")
+    
 def process_video(entry, pipeline, video_path, frame_count, frame_duration, format):
     """Process each entry to generate video and save it."""
     if "image_path" in entry:
@@ -60,15 +72,33 @@ def process_video(entry, pipeline, video_path, frame_count, frame_duration, form
     return entry
 
 def main(args):
-    # 加载数据
-    if args.input_path:
+    # Check if output file exists to resume from progress
+    processed_entries = []
+    if os.path.exists(args.output_path):
+        logging.info(f"加载现有输出文件 {args.output_path}")
+        with open(args.output_path, 'r') as f:
+            processed_entries = json.load(f)
+
+    processed_ids = {entry['id'] for entry in processed_entries}
+
+    if args.dataset_loader:
+        logging.info(f"使用数据加载器加载数据: {args.dataset_loader}")
+        data = load_data_from_script(args.dataset_loader, args)
+    else:
         logging.info(f"从 JSON 文件加载数据: {args.input_path}")
         data = load_data_from_json(args.input_path)
-    else:
-        logging.error("必须提供输入路径.")
-        return
-    
-    # 加载模型，并使用 accelerate 处理多进程并发推理
+
+    # Skip entries that are already processed
+    data_to_process = [entry for entry in data if entry['id'] not in processed_ids]
+
+    if args.debug:
+        logging.info(f"Debug模式启用，处理前 {args.sample_size} 条数据")
+        data_to_process = data_to_process[:args.sample_size]
+
+    os.makedirs(args.video_path, exist_ok=True)
+
+    logging.info(f"开始并行处理视频生成任务...")
+
     distributed_state = PartialState()
     pipeline = DiffusionPipeline.from_pretrained(
         "stabilityai/stable-video-diffusion-img2vid-xt", 
@@ -101,7 +131,9 @@ if __name__ == "__main__":
     parser.add_argument("--debug", action="store_true", help="Process only a subset of entries for testing.")
     parser.add_argument("--sample_size", type=int, default=2, help="Number of entries to process in debug mode.")
     parser.add_argument("--use_bfloat16", action="store_true", help="Use bfloat16 precision for model inference.")
+    parser.add_argument("--cache_dir", type=str, default="./cache", help="Directory to store cached models.")
     parser.add_argument("--format", type=str, choices=['gif', 'mp4'], default='mp4', help="Output video format (gif or mp4).")
+    parser.add_argument("--dataset_loader", type=str, help="Path to the dataset loader script for loading data from Hugging Face.")
     args = parser.parse_args()
 
     main(args)

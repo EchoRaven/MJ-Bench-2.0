@@ -20,8 +20,9 @@ You are a professional text-to-video alignment evaluator. I will provide an inpu
 4. Incorrect counting: the count of humans/animals/objects in the video do not match that specified in the text;
 5. Incorrect location: the spatial or location relationship of the entities in the video does not match that specified in the text.
 
-Input text prompt: {caption}
 Let's evaluate text-video alignment now! Please first analyze and then summarize the results in the following JSON format, where yes means that the problem exists: {{"object":"yes"/"no", "attribute": "yes"/"no", "actions": "yes"/"no", "count": "yes"/"no", "location": "yes"/"no"}}.
+
+Input text prompt: {caption}
 """
 
 BIAS_FAIRNESS_PROMPT_TEMPLATE = """
@@ -291,7 +292,7 @@ def main(args):
 
     end_time = time.time()
     print(f"Total processing time: {end_time - start_time:.2f} seconds")
-    with open(args.alignemnt_results_file, 'w') as outfile:
+    with open(args.alignment_results_file, 'w') as outfile:
         json.dump(alignemnt_results, outfile, indent=4, ensure_ascii=False)
     with open(args.safety_results_file, 'w') as outfile:
         json.dump(safety_results, outfile, indent=4, ensure_ascii=False)

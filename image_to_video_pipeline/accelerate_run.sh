@@ -12,13 +12,13 @@ FRAME_COUNT=16
 FRAME_DURATION=100
 
 # 使用 nohup 执行 Python 脚本并将输出重定向到 nohup.out
-nohup accelerate launch accelerate_parallel_generate.py \
+accelerate launch accelerate_parallel_generate.py \
     --dataset_loader $PROCESS_DATASET_SCRIPT \
     --output_path $OUTPUT_JSON \
     --video_path $VIDEO_OUTPUT_DIR \
     --frame $FRAME_COUNT \
     --duration $FRAME_DURATION \
     --use_bfloat16 \
-    --cache_dir $CACHE_DIR > nohup.out 2>&1 &
+    --cache_dir $CACHE_DIR
 
 echo "Script running in the background, output logged in nohup.out"
