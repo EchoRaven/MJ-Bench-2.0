@@ -8,9 +8,7 @@
 #SBATCH --error=slurm_error_%j.err
 #SBATCH --exclusive
 
-conda activate internvl
-
-accelerate accelerate launch label.py \
+accelerate launch label.py \
     --num_processes=8 \
     --json_file_path "../../videoRM/dataset/SafeSora/config-train.json" \
     --videos_dir "../../videoRM/dataset/SafeSora" \
