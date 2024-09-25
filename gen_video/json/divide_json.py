@@ -23,12 +23,12 @@ def main(input_file, output_base_path):
     if not isinstance(data, list):
         raise ValueError("Input JSON must contain a list")
 
-    data_splits = split_list(data, 5)
+    data_splits = split_list(data, 10)
     save_json_files(data_splits, output_base_path)
 
 if __name__ == "__main__":
-    input_file = "/home/wenhao/Project/greatxue/MJ-Bench-2.0/gen_video/input.json"  
-    output_base_path = "/home/wenhao/Project/greatxue/MJ-Bench-2.0/gen_video/json/json_backup"  
+    input_file = "/home/wenhao/Project/greatxue/MJ-Bench-2.0/gen_video/json/json_backup/input.json"  
+    output_base_path = "/home/wenhao/Project/greatxue/MJ-Bench-2.0/gen_video/json/json_backup/new"  
     
     if not os.path.exists(output_base_path):
         os.makedirs(output_base_path)

@@ -1,17 +1,25 @@
-# README
+# videoREADME
 
 **Deployment:**
 
-* Open-Sora x
-* VADER o
-* Text-videoDiffusion o
-* nstructVideo x
+* x Open-Sora: `https://github.com:hpcaitech/Open-Sora.git`
+* o VADER: `https://github.com/mihirp1998/VADER`
+* o Text-videoDiffusion: `https://modelscope.cn/models/iic/text-tovideo-synthesis`
+* x instructVideo: `https://github.com/ali-vilab/VGen/blob/main/doc/InstructVideo.md`
 
 **Execution scripts:**
 
 ```python
 python3 /home/wenhao/Project/greatxue/MJ-Bench-2.0/gen_video/scripts/gen_videos.py --input_file_path /home/wenhao/Project/greatxue/MJ-Bench-2.0/gen_video/input.json --output_file_path /home/wenhao/Project/greatxue/MJ-Bench-2.0/gen_video/output.json --model_list text_video_diffusion
 ```
+
+**Video Saving:**
+
++ input part 1 -- output 5_ -- video 5 -- CUDA 0 -- v1
++ input part 5 -- output -- video -- CUDA 4 -- v2
++ input part 2 -- output 2 -- video 2 -- CUDA 0 --v3
++ input part 3 -- output 3 --video3 -- CUDA 4 -- v4
++ input part 4 -- output 4 - video 4 -- CUDA 3 -- v5
 
 **File Structure:**
 

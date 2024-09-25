@@ -3,8 +3,6 @@ import os
 from modelscope.pipelines import pipeline
 from modelscope.outputs import OutputKeys
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
-
 def generate_video(prompt, output_path):
     print(f"Generating video for prompt: {prompt} using text-to-video-synthesis...")
     p = pipeline('text-to-video-synthesis', 'damo/text-to-video-synthesis')
