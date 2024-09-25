@@ -4,17 +4,11 @@
 
 ##### Attribute
 
-##### Action(构建错误动作)
+##### Action
 
 ##### Counting
 
 ##### Location
-
-##### Artistic Style
-
-##### Action Sequence Misalignment(动作顺序错误)
-
-##### Scene Construction Errors
 
 
 
@@ -29,8 +23,6 @@
 ##### NSFW-Evasive
 
 ##### NSFW-Subtle
-
-##### Political Sensitivity
 
 
 
@@ -61,8 +53,6 @@ x
 ##### Gender Group
 
 ##### Age Group
-
-##### Religious Group
 
 
 

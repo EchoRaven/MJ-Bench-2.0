@@ -2,10 +2,17 @@
 
 **Deployment:**
 
+<<<<<<< HEAD
 * x Open-Sora: `https://github.com:hpcaitech/Open-Sora.git`
 * o VADER: `https://github.com/mihirp1998/VADER`
 * o Text-videoDiffusion: `https://modelscope.cn/models/iic/text-tovideo-synthesis`
 * x instructVideo: `https://github.com/ali-vilab/VGen/blob/main/doc/InstructVideo.md`
+=======
+* Open-Sora x
+* VADER o
+* Text-videoDiffusion o
+* InstructVideo x
+>>>>>>> 59c308792ce44a128ff331f2f943ff68f57eb6f1
 
 **Execution scripts:**
 
