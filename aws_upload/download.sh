@@ -1,0 +1,1 @@
+nohup python aws_download_pipeline.py > download_output.log 2>&1 &

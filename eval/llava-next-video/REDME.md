@@ -7,8 +7,8 @@ conda activate llava
 pip install --upgrade pip  # Enable PEP 660 support.
 pip install boto3
 cd aws_upload
-python aws_download_pipeline.py
-
+bash download.sh
+# 下载数据集
 cd ../eval/llava-next-video
 git clone https://github.com/LLaVA-VL/LLaVA-NeXT
 cd LLaVA-NeXT
@@ -18,5 +18,6 @@ cd ../
 # run this code
 
 ```
-python evaluate.py
+sbatch bash_7B.sh
+sbatch bash_34B.sh
 ```
