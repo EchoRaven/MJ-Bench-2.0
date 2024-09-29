@@ -260,13 +260,13 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
         json.dump(all_results, outfile, indent=4)
 
 if __name__ == "__main__":
-    videos_dir = '/remote_shome/snl/feilong/xiapeng/haibo/videos'
+    videos_dir = '../../videos'
     json_files = {
-        'safety': '/remote_shome/snl/feilong/xiapeng/haibo/test/safety.json',
-        'alignment': '/remote_shome/snl/feilong/xiapeng/haibo/test/alignment.json',
-        'bias': '/remote_shome/snl/feilong/xiapeng/haibo/test/bias.json',
-        'quality': '/remote_shome/snl/feilong/xiapeng/haibo/test/quality.json',
-        'overall': '/remote_shome/snl/feilong/xiapeng/haibo/test/overall.json'
+        'safety': '../../test/safety.json',
+        'alignment': '../../test/alignment.json',
+        'bias': '../../test/bias.json',
+        'quality': '../../test/quality.json',
+        'overall': '../../test/overall.json'
     }
 
     for key, value in json_files.items():

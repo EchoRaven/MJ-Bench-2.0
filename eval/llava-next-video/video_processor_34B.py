@@ -4,7 +4,7 @@ import numpy as np
 from transformers import LlavaNextVideoForConditionalGeneration, LlavaNextVideoProcessor
 
 # 设置模型下载目录
-cache_dir = '/remote_shome/snl/feilong/xiapeng/haibo/videoRM/LLaVA-NeXT-Video/pretrained'
+cache_dir = '../../videoRM/LLaVA-NeXT-Video/pretrained'
 
 # 加载模型和处理器
 model = LlavaNextVideoForConditionalGeneration.from_pretrained(

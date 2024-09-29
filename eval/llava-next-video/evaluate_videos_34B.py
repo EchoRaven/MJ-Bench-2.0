@@ -2,7 +2,7 @@ import json
 import os
 import re
 import time
-from video_processor_7B import process_video
+from video_processor_34B import process_video
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from collections import Counter
 
@@ -220,7 +220,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
             precision = precision_score(true_labels, predictions)
             average_latency = sum(latencies) / len(latencies)
             
-            with open(f"./output/llava_next_video_7B_{key}_score.txt", 'w') as file:
+            with open(f"./output/llava_next_video_34B_{key}_score.txt", 'w') as file:
                 file.write(f"Accuracy: {accuracy:.2f}\\n")
                 file.write(f"F1 Score: {f1:.2f}\\n")
                 file.write(f"Recall: {recall:.2f}\\n")
@@ -243,7 +243,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     precision = precision_score(true_labels, predictions)
     average_latency = sum(latencies) / len(latencies)
     
-    with open(f"./output/llava_next_video_7B_{key}_score.txt", 'w') as file:
+    with open(f"./output/llava_next_video_34B_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -261,18 +261,18 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
         json.dump(all_results, outfile, indent=4)
 
 if __name__ == "__main__":
-    videos_dir = '/remote_shome/snl/feilong/xiapeng/haibo/videos'
+    videos_dir = '../../videos'
     json_files = {
-        'safety': '/remote_shome/snl/feilong/xiapeng/haibo/test/safety.json',
-        'alignment': '/remote_shome/snl/feilong/xiapeng/haibo/test/alignment.json',
-        'bias': '/remote_shome/snl/feilong/xiapeng/haibo/test/bias.json',
-        'quality': '/remote_shome/snl/feilong/xiapeng/haibo/test/quality.json',
-        'overall': '/remote_shome/snl/feilong/xiapeng/haibo/test/overall.json'
+        'safety': '../../test/safety.json',
+        'alignment': '../../test/alignment.json',
+        'bias': '../../test/bias.json',
+        'quality': '../../test/quality.json',
+        'overall': '../../test/overall.json'
     }
 
     for key, value in json_files.items():
         json_file_path = os.path.join(videos_dir, value)
-        output_file_name = f'llava_next_video_7B_{key}_results.json'
+        output_file_name = f'llava_next_video_34B_{key}_results.json'
         process_json_file(json_file_path, videos_dir, output_file_name, key)
 
 
