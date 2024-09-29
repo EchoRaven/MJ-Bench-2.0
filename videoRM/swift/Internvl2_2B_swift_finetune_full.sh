@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set the CUDA devices
-export CUDA_VISIBLE_DEVICES=1,2
+export CUDA_VISIBLE_DEVICES=6,7
 
 # Run the swift sft command with nohup and output logs to a file
-nohup swift sft \
+swift sft \
     --model_type internvl2-2b \
     --model_revision master \
     --dtype bf16 \
@@ -16,13 +16,13 @@ nohup swift sft \
     --output_dir /remote_shome/snl/feilong/xiapeng/haibo/videoRM/finetune_result/Internvl2_2B_base_model_full \
     --max_length 4096 \
     --evaluation_strategy "steps" \
-    --eval_steps 200 \
+    --eval_steps 400 \
     --save_strategy "steps" \
     --save_steps 200 \
     --eval_batch_size 1 \
     --save_total_limit 1 \
     --learning_rate 4e-5 \
-    --num_train_epochs 3 \
+    --num_train_epochs 1 \
     --save_steps 200 \
     --train_dataset_sample -1 \
     --logging_steps 1 \
@@ -34,4 +34,4 @@ nohup swift sft \
     --lr_scheduler_type "cosine" \
     --lazy_tokenize true \
     --preprocess_num_proc 4 \
-    --use_flash_attn true > swift_Internvl2_2B_full_sft_output.log 2>&1 &
+    --use_flash_attn true

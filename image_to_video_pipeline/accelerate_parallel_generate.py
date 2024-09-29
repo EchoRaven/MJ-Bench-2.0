@@ -26,7 +26,7 @@ def load_data_from_script(dataset_loader, args):
     spec.loader.exec_module(dataset_module)
     
     if hasattr(dataset_module, 'process_dataset'):
-        return dataset_module.process_dataset(args)
+        return dataset_module.process_dataset(args.split, args.start_index, args.percentage)
     else:
         raise ImportError("指定的数据加载脚本中不包含 'process_dataset' 函数。")
     
@@ -111,7 +111,6 @@ def main(args):
     
     # 分配任务到各个进程
     processed_entries = []
-    data_to_process = data[:args.sample_size] if args.debug else data
 
     with distributed_state.split_between_processes(data_to_process) as entries_per_process:
         for entry in tqdm(entries_per_process, desc="Processing videos"):
@@ -134,6 +133,10 @@ if __name__ == "__main__":
     parser.add_argument("--cache_dir", type=str, default="./cache", help="Directory to store cached models.")
     parser.add_argument("--format", type=str, choices=['gif', 'mp4'], default='mp4', help="Output video format (gif or mp4).")
     parser.add_argument("--dataset_loader", type=str, help="Path to the dataset loader script for loading data from Hugging Face.")
+    parser.add_argument("--split", type=str, default="test", help="Dataset split to process ('train', 'test', etc.).")
+    parser.add_argument("--start_index", type=int, help="Starting index for processing the dataset.")
+    parser.add_argument("--percentage", type=float, help="Percentage of the dataset to process starting from start_index.")
+    
     args = parser.parse_args()
 
     main(args)

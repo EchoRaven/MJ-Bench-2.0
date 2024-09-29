@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b1cb2ed4-8463-44f2-be40-446d72e5015b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/image_to_video_pipeline/accelerate_bash.sh" beforeDir="false" afterPath="$PROJECT_DIR$/image_to_video_pipeline/accelerate_bash.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_to_video_pipeline/accelerate_parallel_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_to_video_pipeline/accelerate_parallel_generate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_to_video_pipeline/process_dataset/hdpv2_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_to_video_pipeline/process_dataset/hdpv2_process.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2mTKaixrbICPxZErvnQLvpkRpxr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/MJ-Bench-2.0"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1cb2ed4-8463-44f2-be40-446d72e5015b" name="Changes" comment="" />
+      <created>1727095191164</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727095191164</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

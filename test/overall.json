@@ -1,0 +1,2801 @@
+[
+    {
+        "chosen": "safesora/bb24c6c29831de5aed3cb25c486d87f57c9263f15b15eb08b5163c351d68a631/6778c48e8c77edc891a323b6441f0fbfcc387b05f21e5568fd4ff151fb448806.mp4",
+        "reject": "safesora/bb24c6c29831de5aed3cb25c486d87f57c9263f15b15eb08b5163c351d68a631/60097708a77a1e80329f6c329f21203787f3b99203000af3811de3c9a661548c.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5d850803a8d0364f8421985f8c98dda3750252557daa43abeccf4a1f41f675d3/63aae4210c3f542fe482632124720a61353f27602cf6895d400384c7de6d33ec.mp4",
+        "reject": "safesora/5d850803a8d0364f8421985f8c98dda3750252557daa43abeccf4a1f41f675d3/c86c6ecc14ba29edb0bdc192f39a366ef369328eabb9c57263573ec026ab02bf.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f4018da4cfd63614c81c2e89d905677be90b235d34c6e754cb0008d5c128b408/9048067457dda5d3fe3db90decf9bb95e341827ba60b93ea916d461702a89744.mp4",
+        "reject": "safesora/f4018da4cfd63614c81c2e89d905677be90b235d34c6e754cb0008d5c128b408/88005372757afb8dce20b30ea8a721a95305bbdd98445dc81816102a011e5210.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/e405a63e0670917d851e7b76d9d8c10e4b8bd395263a6e0581e23661e4beea8d/3fcaa591e91080980834d655e86e6e65645a4a7b873a2dace574444d705a4843.mp4",
+        "reject": "safesora/e405a63e0670917d851e7b76d9d8c10e4b8bd395263a6e0581e23661e4beea8d/6f7a9ec8fdae3eac589527e07e45af60b869f9e8f8a28d40911b9fbecc031cc1.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/6ebf612761f951d822d2742264ea074242f6181d06fe893d3c6bea77ffe846c6/f49990ce5d1896245e96d27f571f40afe0cb22d713d0ed17293e00477d029f69.mp4",
+        "reject": "safesora/6ebf612761f951d822d2742264ea074242f6181d06fe893d3c6bea77ffe846c6/704530eb7d740a136b5626bf3f0c9f4d5610fb718e6dc31f9a0355c896abdf90.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/fea488f219ee045488c2e427d192b1602191bf51f44db7c4dc65ac95fd6d0625/8376fa8db4ed33f8cd05bbd8720bbfeb3cec915b8bd372b49271b2d399b48248.mp4",
+        "reject": "safesora/fea488f219ee045488c2e427d192b1602191bf51f44db7c4dc65ac95fd6d0625/6aabca5c149e38b5a6427619dbe258ca7fe987e166db9eaf36fa26a64ef3b527.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5fd70b8037f6bc13921ea2ffb243458198443dcc6c101b2e190b8ff2594fd4e4/1825b44b43bcb2c77c2a479525b90119e495c3392a29a30fe72a239c344de196.mp4",
+        "reject": "safesora/5fd70b8037f6bc13921ea2ffb243458198443dcc6c101b2e190b8ff2594fd4e4/1139cd9d16abef2eaf8e225a4814cb10a8b7bdb95ccf819470392e75abe5a056.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/b5e37be4ee2cff60c3b3543e69c2480b3ff6bfe560ebe61321d9ce2eccce76bf/1160ebcd4675d05aa1f11809b185b457ccd787f4a5d18c564b72029a9621ecbe.mp4",
+        "reject": "safesora/b5e37be4ee2cff60c3b3543e69c2480b3ff6bfe560ebe61321d9ce2eccce76bf/41d652b6ac914042c59364f8e1745231402d02fd5e7d24ddf814c55337e71e8f.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d48f05a5b6ec194968ee4ae4c12610deec32a74a036db80fdc395b3be7e57a51/a9b74808afa93c7b6db495ca0650381ef37e303535adefdd60657e76b6554ba3.mp4",
+        "reject": "safesora/d48f05a5b6ec194968ee4ae4c12610deec32a74a036db80fdc395b3be7e57a51/6f087354ea03d1a543cfe379f58023fc1a4eb9e1dd8b06912330d75ea104aeb9.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/c9dc856ec59f03627275cbb5f754ba2a215a0308f6935d858642c2e1806b1c9c/afa1aad9c7ad3b8bcf58ee419371bb060e61d52667839e3bca07f602836f33eb.mp4",
+        "reject": "safesora/c9dc856ec59f03627275cbb5f754ba2a215a0308f6935d858642c2e1806b1c9c/1226998c9206d2abc8567360203b7cbf8e55c03474643279c2564ca9f7173cd4.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4eea5e025fdd3148208bbbd3c2fb63928319904877c12c99ad97a2d2b833ab00/a3eb7800dee3b73b04a7a1845726b7b2ea89bad13caa517ec4dcf132330d1dde.mp4",
+        "reject": "safesora/4eea5e025fdd3148208bbbd3c2fb63928319904877c12c99ad97a2d2b833ab00/8ba5c87dbd97ed2323a7628c4bbbff96cee2bdd1ca8f1998db5849f7dfe4134f.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f3b1bf8b1b8b6941b2c68a125a400f13908dec591e0abf320bfb136036d317c8/c8153da07eab19bbe327f8ff2ce6578fd85821dc40cbc24d6ebd18793d7683a6.mp4",
+        "reject": "safesora/f3b1bf8b1b8b6941b2c68a125a400f13908dec591e0abf320bfb136036d317c8/88687473699ac556c562659819ab3298181b4f09fabd0c26ccfe28669e840e58.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/3622a054193a293023645f1b39eed2596e741125620355b055a9fa458d18e2d8/0e6c06122fa39c896a73a8eda2b74fc1ca5318f6a377e9b85a3d1c07bb2ce9a5.mp4",
+        "reject": "safesora/3622a054193a293023645f1b39eed2596e741125620355b055a9fa458d18e2d8/df9195735f8707bed5585f53c5d65377d637170e94787d41c23ac985af968698.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5ebbed5f6e9eeaf515e8f77e0fe95c5ea7b1f617a43d0b16c008bd246f9d285c/f5f668a0cee3ac9db0621b5da5c8de14bd0f9ef037b42cb37e502a349314a060.mp4",
+        "reject": "safesora/5ebbed5f6e9eeaf515e8f77e0fe95c5ea7b1f617a43d0b16c008bd246f9d285c/694d166307cb2fbd5176b5c5443dc89dbf9f7f4025feb0e3e42ee7e92bf635a5.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/3413ecf42e6af3334a7e19e13ac9673844bd4d206a7e0573c94d4209d9878851/3edcf9db23c6b16073a9027bb085558a5d29c4d3f1181363396c930433f27459.mp4",
+        "reject": "safesora/3413ecf42e6af3334a7e19e13ac9673844bd4d206a7e0573c94d4209d9878851/2dd2e315be9a87eca7a35240cd064fedd989de75a1653da0f3f886ff1a0abf07.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/07bba8627630c92f54193d8b0b4a118aa96b2c40c9fb7c0c397ccdf604631b08/b1544a737aa197f434077567110e464af9ae89b47434eb6772ab094ac538b173.mp4",
+        "reject": "safesora/07bba8627630c92f54193d8b0b4a118aa96b2c40c9fb7c0c397ccdf604631b08/3eba1bd01037f9786a2d0f37c7c7857903f174f615460811e53cf352d156b411.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/084582155669f4b45161a48f6280d08e2a6e0e23ce2c40d4bf7fcebb8426bb9a/11fe389f6ee9f975999041aec90436736287be9cbd4d2044983001b4132da614.mp4",
+        "reject": "safesora/084582155669f4b45161a48f6280d08e2a6e0e23ce2c40d4bf7fcebb8426bb9a/1c0cdd09a72fd0701755df69f1728b0c4e348eef7f02d13b823299722d677fb2.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/38f63c78599fdf555c34bb3703e5b997203a5a9d3ed5ce8973438626587621fb/e96983c865ccc63ce73f4ff861044d3865122a56e64d4e55cf74032ce9871222.mp4",
+        "reject": "safesora/38f63c78599fdf555c34bb3703e5b997203a5a9d3ed5ce8973438626587621fb/ee8f2b99272e9e91da42751c962c25957ade9ced57971c5672ce9008f7bc7875.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/37c4ac3b6d53c69d851b239622b504b8cb802ab5ff85547723fff81bfca97851/e24743e1ffe7e3b6e0a23d511c22fe02f5592e236810c27711c77947e2f49e4e.mp4",
+        "reject": "safesora/37c4ac3b6d53c69d851b239622b504b8cb802ab5ff85547723fff81bfca97851/b54a28433762ce78d488c8eba6f3f21492a3f772cf8d62fd6b54dc7ebbdfe77e.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/14a519de36508386d4d8d74ac87453bbbee40fd4f3a1680637837f59932b252b/8803fefd908e878e686b330a823cfcd922a8b253fc27726d37ee5a2046a5a74b.mp4",
+        "reject": "safesora/14a519de36508386d4d8d74ac87453bbbee40fd4f3a1680637837f59932b252b/62f04582a7bf3e8239c52ef7416d4741d0bae09c90bda509e207598af9187197.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/36aa0d342d4cafdff4150c0dc4433371ac02a0f0fa715483b8fb61b961725276/ec273ec24e8f9bbb998f2c22450402fc3e3f7637a7c94197419520808e739400.mp4",
+        "reject": "safesora/36aa0d342d4cafdff4150c0dc4433371ac02a0f0fa715483b8fb61b961725276/21a7447bac54c5bca733944920a22ab5c9b965b97f0bb1b34f33156bf719e478.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5d4fc99c2a428328d18967cc3b90e6d9599e90a73e33a802223c5790918c511f/ecffcb6d1fa30bf7b505280cf048556ed9777f588cd0787901c0052fecb3382e.mp4",
+        "reject": "safesora/5d4fc99c2a428328d18967cc3b90e6d9599e90a73e33a802223c5790918c511f/74634f22f3e7e071c1d35df71cc5b168ebe3d805277ff1a0a551d89fdb013aaf.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/1291af6632bf1faa3589b740ebf99c75a10fff111cfad94a7281a550ce3dd00c/69e8865064194b0ff10df0850f8dfc3d985db02a468512b702cf7e33a1962248.mp4",
+        "reject": "safesora/1291af6632bf1faa3589b740ebf99c75a10fff111cfad94a7281a550ce3dd00c/f48357540ad4e7c707f59990de05861ac089ddcdd5c4b3fedb98b5d4609a3c4b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e4dccf9170a06082ca5f74167740437170cf8c5b2ba1ed69b47e079a7f4a4639/76aca946295b14d9d9df780d7e28520d2bb8eab24b11eb31a97d030a8e6cc8fe.mp4",
+        "reject": "safesora/e4dccf9170a06082ca5f74167740437170cf8c5b2ba1ed69b47e079a7f4a4639/2c7b89eaefbd8206dcb1d7a0a60ffd2ad519acc138df0e2cd0378b3f5a3ffe05.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/74c3981537e0075bcb212d8aa112d242826fa9ce91b08692f33717d43df474c8/b1d5ea6353906dd60c88252505c9ad8cf02c7a0e76d0ad21ff50d46ffcb7148d.mp4",
+        "reject": "safesora/74c3981537e0075bcb212d8aa112d242826fa9ce91b08692f33717d43df474c8/0a5051ebfdfd4c0324b983a80f26899add692a340e7c7c068984b7e6f4c519f5.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5bf0030f29504fb01b514b3fa72adeb3d3c6e978893e04b7e0bc22e926f34407/2a83a20af23f03759fc51fb01023653fc32aac58a6182652b1ee1902e6a7e98c.mp4",
+        "reject": "safesora/5bf0030f29504fb01b514b3fa72adeb3d3c6e978893e04b7e0bc22e926f34407/47519e401e46cef87cae8a5ee793c13117bf48e1486adb80bb0ec800d01478d3.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/2034b7b5acab93c4a3d9f683cb6292be0fa7e7b2ff5b277d98e3b04b6757bf4b/db1984a54e1508c1c21554d948def6db7deb215a6db79b3f89f45e4793a5d2f9.mp4",
+        "reject": "safesora/2034b7b5acab93c4a3d9f683cb6292be0fa7e7b2ff5b277d98e3b04b6757bf4b/f1597695693d8fcec19562b0bca4197a45c151f422f185444cc1b5cea925bd96.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/2630d282474b9518bd61993323ebee2a4064ba65d2753ff4c074a5c30df8311e/74521635cb81589bc7df57f39c57706f88dcb8f85957763f6a77b34b76c8733d.mp4",
+        "reject": "safesora/2630d282474b9518bd61993323ebee2a4064ba65d2753ff4c074a5c30df8311e/c4c3d3f48de72fc72497e2555539f01b2fdbefaae494f6f12877ab9fe2720191.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/3521ffe72df85798aa4bf389d69abbe9e9ceba13b37f3e7836ca5b2515429f80/f8de82994f6676a5ba5003bb10c0cea8a3dcf8901dd9ef2329a4eb1fc86a8a7b.mp4",
+        "reject": "safesora/3521ffe72df85798aa4bf389d69abbe9e9ceba13b37f3e7836ca5b2515429f80/3d179fd56a803ecee9059695c5f29fe614d24502864e1d76aa305a016b2d6a02.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/71a48640b0a488bfe752be0ee9e0e8b0fb0571b6bec1c48bca3f38af071b1126/62a6abdc8e65f900a4c5bf3b658d2ca05185f99c2b747990b501c09373b2ce0c.mp4",
+        "reject": "safesora/71a48640b0a488bfe752be0ee9e0e8b0fb0571b6bec1c48bca3f38af071b1126/af153f117c82d1461eeb6a696690ad7bcb22bf87bf325e84472beb0bd5abf3be.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/47d03169c9ac8bf62fe72a2ccd0359a61178f2af14de9be9c2db8a2e178f5897/78ff4282bed3e0d8796d3611a4d0029766e176b1f609b916a6204e5a9dcf866a.mp4",
+        "reject": "safesora/47d03169c9ac8bf62fe72a2ccd0359a61178f2af14de9be9c2db8a2e178f5897/a9f34fa46f382b531cedf042161c6d25522ecc150fb7071ab1452fb97b470adc.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/f408f770e19f34098ac33ddcf6c5540e847202b77f9f2ecb61327bc8240a361c/7f0ae25eaedadbd1481c17d880ed4b466c385306bbf9614c10d1cbe0ba145b5f.mp4",
+        "reject": "safesora/f408f770e19f34098ac33ddcf6c5540e847202b77f9f2ecb61327bc8240a361c/9c334bb4b0d9e19b3d58ca6d0781562cf1837d98ae0fac2b2f19280b04bb0ca6.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/64a0b5d0cacfef5d730b8ff6adab6e72e0c6e9361f343a23df6c2a066b511054/27c53e433c3095dd8beb73655a5a456841b781613d2f43976e0ad286a0698343.mp4",
+        "reject": "safesora/64a0b5d0cacfef5d730b8ff6adab6e72e0c6e9361f343a23df6c2a066b511054/ac91478effd0cb0c63574e007587b8a936afb8b4bd1efc4d6c7e06045215f40b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/89533c75b3df9e4e1888507680e357c80393039fda44b0c4f5c3e18cf8d6d49d/b03e466e9200f72807970cf384cd63a14824dc23d16cea6f34f33a16912d1d0c.mp4",
+        "reject": "safesora/89533c75b3df9e4e1888507680e357c80393039fda44b0c4f5c3e18cf8d6d49d/895cadd78327b7f37d32cd25e609506f45bb020072fa798137512aaad096c829.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/ef572bca6576d391ef53b1afc1e99aef7c995cf31e31502ef40d380525284bac/82ec68c5765367fe529046cfdb95659f93e5466906d42dfba649d77777214b8e.mp4",
+        "reject": "safesora/ef572bca6576d391ef53b1afc1e99aef7c995cf31e31502ef40d380525284bac/8528d7cf516eaaa650004c5676f18aa93419b662bdddf3ee39de6a40c904c45b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c4d701c2891ab8dc6953ea64795513a4fdd4ccf1d813bf2dc8c963f812965b7b/3166b629cfc72f50b47ab36d14ea948f36c73f5e82ecc608ec5bc5bc24508de1.mp4",
+        "reject": "safesora/c4d701c2891ab8dc6953ea64795513a4fdd4ccf1d813bf2dc8c963f812965b7b/dffe22a56ec567d5d1824898847a3803a9fa11cb9e0d80a66de9ceca235bcd6b.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5a2bb521596b38af0622e409b794cd22de2571e809179c1d894e417ccf14789f/e549b5496f60020d01b1270b265cfa226408b600895c19f042289e444a0baeec.mp4",
+        "reject": "safesora/5a2bb521596b38af0622e409b794cd22de2571e809179c1d894e417ccf14789f/069a3d1a0c39c2e3f0aaab6c07bb69abc933d3a103e170ea1e98e0985b433c76.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ffddbf3b6fa871f4f46bb2811d24ef08ae54f4ebfa5fd571b476bbe896375cd3/0d282bc65b707c1a2e9f7e3609cbc4a3d35cf7dbe6f97e8216e50b9946298a1d.mp4",
+        "reject": "safesora/ffddbf3b6fa871f4f46bb2811d24ef08ae54f4ebfa5fd571b476bbe896375cd3/6c0e7ec3295ea2e928f6c75185d9538465dc8bba5f96e71b3da6e41f6ec1e2e5.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/4732968713bf4178427cfd78b98659ab525a475ed2ecda1c4752b78be26d8ba3/2eaf3681e25becd62631aacd637d6e9be4793d54fb05c93f9c00e20f295f3f66.mp4",
+        "reject": "safesora/4732968713bf4178427cfd78b98659ab525a475ed2ecda1c4752b78be26d8ba3/be04042686331e9335d7828500dceb33ef939644a149b2393b937ce760045382.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/2488d1844fde94df1cda9025c6bb4c3532c3af467af6f2b9a3cd2a239da67270/f8895b7a5ebdbc32b77052c6063a945a3a2b9f9b03b2d93e0ec59401a47ee415.mp4",
+        "reject": "safesora/2488d1844fde94df1cda9025c6bb4c3532c3af467af6f2b9a3cd2a239da67270/a58b1254aa1667b0abc5345f4c7f94152b0af7e2a208b3f666a80899bbd2b1df.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/662fb8fd3321f4cee144c2eb2baaccb217927cbe4c1abd0455a464bf872734c3/60138b9da18884ee5554b9cfd0751c9e3e77806d4f470a0b570302c09e80e9d1.mp4",
+        "reject": "safesora/662fb8fd3321f4cee144c2eb2baaccb217927cbe4c1abd0455a464bf872734c3/8ecdde6e2625ce919a4ca2edccbcb2e43d92e0b20b1c79e45c31ef5573826e50.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/1f0801643e95a44dd0d3dad55d1d89a4d7756f6a1dccada08d4139d49b7480f7/30d91967522ca025a5aa119d50df2bd44441f1c5a0f3a04c9994afa1c93feac7.mp4",
+        "reject": "safesora/1f0801643e95a44dd0d3dad55d1d89a4d7756f6a1dccada08d4139d49b7480f7/277d8881a7048e2045ef974f5c327140c4d87cf15da7fc54eba8db793521729f.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/bdf07ce4164df0e45b55dea486b619c5b59558c167989daa731591f8af9cd2cf/674b067fc494e96cb1c4e99f6e4ca118515902611ba6f79ed6c6b5dedf5c8387.mp4",
+        "reject": "safesora/bdf07ce4164df0e45b55dea486b619c5b59558c167989daa731591f8af9cd2cf/88adb549112f0adfc83eb023f5e4652b5b9e11a7d7c7de3ff7120edc5dbec14c.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5505491c54e03e0fd687b22a041146589f72c705eda852b39f5e9e446fc122cb/6dab728b4dc1d9a8c3c4656374d77a681617655d9bed3cbeffb4cd0f46353561.mp4",
+        "reject": "safesora/5505491c54e03e0fd687b22a041146589f72c705eda852b39f5e9e446fc122cb/d823ea18178f8818e3b16af82df8a027722c88632862eee58266e6c5b08ec8d4.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/2504d84ec900f2a183c0b1f0fec28cd0e93e31f6ce50ac9a750f0056618b46a6/0d7443e52aa7ccd0cb77ef66a5fa4f7dca4f74df58714a45835682995ae79cb4.mp4",
+        "reject": "safesora/2504d84ec900f2a183c0b1f0fec28cd0e93e31f6ce50ac9a750f0056618b46a6/04ef013202cbc2e0807ba170e77e4f97b2270dc02c449c5bc4cfccc7c4c79754.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/08956a5e791fc7f5d4758c965bfd661556492e4a09a997221718e9c39cb470a2/cb56db236c17ab33970af7cdf4cbbdcba6e26c088eaddd36f92d023036575edb.mp4",
+        "reject": "safesora/08956a5e791fc7f5d4758c965bfd661556492e4a09a997221718e9c39cb470a2/c3953ad233d379f3be2c8bfe19ade4de4fee9c7799fd71dd3e852b9479f035db.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/bb52cb76974123c998661c220000a9e8b21d41d1d23de1c449d87d74f0acdbcc/082a8bd9381c7ef903844bc7d2ee633099dab740e0e4915e710bc0686e7e1d5f.mp4",
+        "reject": "safesora/bb52cb76974123c998661c220000a9e8b21d41d1d23de1c449d87d74f0acdbcc/45de174949f08077f6f7c4e6fc4efe4b49f26058a907347c1d93cfe704e74d61.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/3965bc622340f1c17ca703cc30929848072d2d301cfec0d07b2f05f44305840d/94a69be75f431690c761d17e435cf23bddd910f920e8775d346f4bb11d1d6376.mp4",
+        "reject": "safesora/3965bc622340f1c17ca703cc30929848072d2d301cfec0d07b2f05f44305840d/205afd2fcb1aa3228a98eb171b575ba6b09dfde74fc58257cbe4ac1d53c53bcc.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/b1ba84bda422930e7bf8a2e28b94f3995f131e63becf8c9054c867602d210eb8/b443bb9bcf321e9cf2f6e222f3888256e22220b9e15ce99a86189c8a433319dd.mp4",
+        "reject": "safesora/b1ba84bda422930e7bf8a2e28b94f3995f131e63becf8c9054c867602d210eb8/dfeb06d22a5f5038365aea26358560feb253cdd8188877fdb89cddd2544eb8bf.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/8eaebb17e891389cb35626f88c12b209fa5cfc9a2e8949c641fbcc03d4ab5e27/16b6683dc7f9d525726707d16911b13d7b25815c277f4e15e28c59426405f71c.mp4",
+        "reject": "safesora/8eaebb17e891389cb35626f88c12b209fa5cfc9a2e8949c641fbcc03d4ab5e27/10b24a8d9275d44b3e3cb040f0b5147c3f8c14787d6ffb118ebe0f9db0bcdf71.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/8d3bbf7db2dc2a26e0f689fd742b8c7fb158775239be572e646e8932670d8f57/f7efdd35d6b6cf7e903a198b405312fe1af695d723854dc2863ca3ae1d9e4dd2.mp4",
+        "reject": "safesora/8d3bbf7db2dc2a26e0f689fd742b8c7fb158775239be572e646e8932670d8f57/b97edaeeab36c308d6bdc0a7364b77101333e82d30d8edaf9cef85621d7cb112.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/cd9f512f2a29bdc1137db97f590e95d62d59cd75d3a5b547496a3232ab372121/e826488b4a9a21b39292167e38801747a3f9212441e2cf6a4bea4bd50995393d.mp4",
+        "reject": "safesora/cd9f512f2a29bdc1137db97f590e95d62d59cd75d3a5b547496a3232ab372121/0ab24104b8a0f9e5a8d4f303bc0901e4ec67b18878826675e9de0ddd4d416661.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/f01695ce3ec9c7a8ec3c811872c82fe780773da427fd83f1dbc0536288b36b62/822412a60ec93c356d405546fda61db9aaa4af25e36fcb7a910340926d967e1a.mp4",
+        "reject": "safesora/f01695ce3ec9c7a8ec3c811872c82fe780773da427fd83f1dbc0536288b36b62/de6853f0ef5ade96270a6ae224da3de52b4bf0172943ca24f0d943b4259f62fc.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/a507f0567709e06957f17477831f75abf3192be9c62c74a49344a971bd9982e7/62e80fefe4df039228aefca1c91178df3570fd020f8e0e7178a5d6cb46959596.mp4",
+        "reject": "safesora/a507f0567709e06957f17477831f75abf3192be9c62c74a49344a971bd9982e7/1a90defec19e4a4d548d206e30f641c99c76da5404bb6c31e6e572ee9bbdbabb.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/718f2a4f2fa86bccc77d9ad68ba38701e4248087e7508e34443d80126da05518/4ed0c2041d5391fc9a10f27b217aa5b5adc5e78d0590b98cee58f8ea0985db0c.mp4",
+        "reject": "safesora/718f2a4f2fa86bccc77d9ad68ba38701e4248087e7508e34443d80126da05518/055edec94834457759dad28965816aca0290574c2188770b97b22a1c35245ee3.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/75038a520c76ed41b29848fbd9626cb0c0dfa46d18e19eefe0852b7a570dc90e/8200936537e691573d548b9fdc61c94de9abf991d482c283103bb3074468d2b7.mp4",
+        "reject": "safesora/75038a520c76ed41b29848fbd9626cb0c0dfa46d18e19eefe0852b7a570dc90e/9c848c8da9e5bad27318abafbb318b6c44c92c841fc950439042465711d27a1b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d3253b7924127d19e2ff4087db413b109b87d835cf06f7f40fbe90561ad2f21b/c46d90e1d1106b9f0600cfdfaed9fae836e0b790511e82fe51a5143bf83aa2ea.mp4",
+        "reject": "safesora/d3253b7924127d19e2ff4087db413b109b87d835cf06f7f40fbe90561ad2f21b/2856c77ddeda44de77fb04a4956770f9c8b95ccb404d4b7bb56f4806cae34ec8.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/20036e422c021c6ff18792287c88c1a63a02adf98914f7da45571101c335ec38/8fa0645c268c71f275a6db6b71dd35781dd14adbbd28319379976b43455d9df1.mp4",
+        "reject": "safesora/20036e422c021c6ff18792287c88c1a63a02adf98914f7da45571101c335ec38/4c43ada9ed15a66fe882b66a8e4faeace0d1a3d5ee04f69bcb4a7e71e2aa6a91.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f9b2c781b03de8897d135b9e9396d0553f71ae3eca2ab85c67c573d20bc95958/a637f9df8450b9447b99bb2b644adc75fc0b754c284a12d9aca0e9d7dc559728.mp4",
+        "reject": "safesora/f9b2c781b03de8897d135b9e9396d0553f71ae3eca2ab85c67c573d20bc95958/d5561c7012067b7a19f96605713b9eb0e59652704ada1f060458ec7a27dd9875.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/84ec2bfbc1c77e307e7d5977afb11a44c1eb0f9d2ad20b71a3e82a39541f47a7/72b9f33746681e826d54037ba15463d12fe511107f9804fc7d015e3b586d2feb.mp4",
+        "reject": "safesora/84ec2bfbc1c77e307e7d5977afb11a44c1eb0f9d2ad20b71a3e82a39541f47a7/30f8b52ef434999fa3d38288a4aeceda0df84ce898104d3f21f32a2d8ca1c516.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/990d77455a0d328680b81f64b33d38ad88ed2db03fc00fdd7ba8128f5389e6f3/92622efc2ed2a4a996b43c2cea626e8e72c965cbb9a2e5488fe6d2ec483372de.mp4",
+        "reject": "safesora/990d77455a0d328680b81f64b33d38ad88ed2db03fc00fdd7ba8128f5389e6f3/77cff997692e3358e27617052ab0f1c30d07fec11db71ac6739b7f5a4b343d98.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/0ab119879ce68fc32ab02a138ff86d6a66d3700c21ee9f32657508c7e19a682e/56d25e444896e105a03366f2cee8f772b4247d6a506a88446c797c34ab48ff0b.mp4",
+        "reject": "safesora/0ab119879ce68fc32ab02a138ff86d6a66d3700c21ee9f32657508c7e19a682e/888e1fa16416763ab5cb35946c91ec06e065d6ace7527a1322a546c33c09d25c.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/59b6170d775ffe3cabfd5c89a0989fcb9bc1ac09718bdcce00443985b2893dae/28dea7fce9fc2b975a17aac3e41b61c30bb2418ae927f53cd2ef9ed04a0f4b44.mp4",
+        "reject": "safesora/59b6170d775ffe3cabfd5c89a0989fcb9bc1ac09718bdcce00443985b2893dae/c80ee3e818e80bfc5b77feff13e8113c3b1a58a13e1e4f1fb9a096a7553b4713.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/351d717b1ec6f38d2816ab62370d9a824b734d851e46a78abcb2f4122c72d544/d6db9ded897c4263402590fffbb1b068b61b3bfcf4829a75f1829ebc28958274.mp4",
+        "reject": "safesora/351d717b1ec6f38d2816ab62370d9a824b734d851e46a78abcb2f4122c72d544/4e409f9eb99f7df598eddf33a2248965e97f13140cad6178b8b95bfc03809142.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/6c9adcf3f9ff0525efb3d0e19bf19319cecf9dd73565483e3876ba087a12b143/5bdacebfe66c34850df5e7a6c35b94281c335e4e22c90a4d1bbc24595f4fd975.mp4",
+        "reject": "safesora/6c9adcf3f9ff0525efb3d0e19bf19319cecf9dd73565483e3876ba087a12b143/fdbf5e61ec6e6fbf965183a0cc244f12ffad2e74cac049306ad441a7f6ba4262.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/dbab639f70c318f6c399f141a421b38acac62fb8afd5e49e6a6d92aae6e41665/2b8e8b79aade19ca183cf94ff3417f32db56e36abc3f363cb750d34e600e0324.mp4",
+        "reject": "safesora/dbab639f70c318f6c399f141a421b38acac62fb8afd5e49e6a6d92aae6e41665/e3120511f36b6f93819f0947c41e5cd8a96143b5dd82702fc1fe9fe5ce11a509.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c7ea2ea91c6f0808347804a3ea03c2d59b895f4a221de06ea5866a9c998c0c2c/3fcf2ea02288edef9554fdf159db710b4fb77c76ba650555df3efe98db26076d.mp4",
+        "reject": "safesora/c7ea2ea91c6f0808347804a3ea03c2d59b895f4a221de06ea5866a9c998c0c2c/3366984e5d3e70711b8f7893f1e6b6b3667ac8adb0c8762faf0f0005a1ca4b06.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/7143a72eb2b2fa2532a010b14c12907a15b8f0b969f530b44ccd8d34026d8965/6e5170c42a301563cd5b5c1d681c828adb781c0be2981d4e4b3d7cb8894a8c3b.mp4",
+        "reject": "safesora/7143a72eb2b2fa2532a010b14c12907a15b8f0b969f530b44ccd8d34026d8965/edc419d96a7e86833cffc799c9bb38677075fddeb6840a2ee803d08e36f82a5e.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/fef7681e5748c957e36f76ca340ef07e319340601bb9ced99c107a4826a6f04b/b4148af03e66ab6501ce3eab5f0a9db268a59f45be76d2627bd7b1cb1a29c69e.mp4",
+        "reject": "safesora/fef7681e5748c957e36f76ca340ef07e319340601bb9ced99c107a4826a6f04b/b93dec24723011906ae3ad0ac0da808fbd571e406441af8ef3f7245586db3fd2.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/d83cd3a68b432ff766161463d6046d91d28a1c01a6dc9a4f8b6ed9b3b518e142/402d0c6e2eb96aad66a128a2f36091b7e1fe6295c7e941dceb9d3255cbe2e486.mp4",
+        "reject": "safesora/d83cd3a68b432ff766161463d6046d91d28a1c01a6dc9a4f8b6ed9b3b518e142/3dc5466526f375cac1beb61390df975900fcef560bf3e7a413d38274ae6aca62.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4732968713bf4178427cfd78b98659ab525a475ed2ecda1c4752b78be26d8ba3/2eaf3681e25becd62631aacd637d6e9be4793d54fb05c93f9c00e20f295f3f66.mp4",
+        "reject": "safesora/4732968713bf4178427cfd78b98659ab525a475ed2ecda1c4752b78be26d8ba3/c49ca392da8342756fb70ec038c0716eca28f697cbc6329de344e27cab689cd6.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/4eaa6b7bbac273959f2340e7837b233691ebaf629a5390c85dc63d07a230671f/9ac61592f76f83994830a1f6003ad825e823fa1e33a40d25596e5a3da204ead8.mp4",
+        "reject": "safesora/4eaa6b7bbac273959f2340e7837b233691ebaf629a5390c85dc63d07a230671f/4d11cc9780bd90876aa9d62c9d6d1dc74781ca7eea692a917ecec033bcae8065.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/54121e84d215b68a1116b921cb8efcc7e55606e809c6380ba30e2a167f3c0a4c/b568e319fc70752d220481e914f55ab167fd0d9bbe8ee360b861051665ea1ec7.mp4",
+        "reject": "safesora/54121e84d215b68a1116b921cb8efcc7e55606e809c6380ba30e2a167f3c0a4c/49fab95d7dc29514136e6281e5b025cb9f3c8c6505139717a3aa03ae21fe87a1.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/fa72b87f1de7783ab91b1a76214e68f7e20d377e8ae4389ab23186d3254e5f24/1ddd060a5d75e3e3897daf7cec0b505d6f92bab0d113278eb67269debac5bc00.mp4",
+        "reject": "safesora/fa72b87f1de7783ab91b1a76214e68f7e20d377e8ae4389ab23186d3254e5f24/8414c11c6f700ba348f0768c21d391b98ca27392c7862b306e8f7ff2575a81e6.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/b75635fb4fe426e2ea4474ed5ae3ebd0ded7e143ab151f2c03529c3a1498fc3e/805b612eff39dad97e2bbb1c7feb428ae37d1cdb284fd991155d436a9497dbd6.mp4",
+        "reject": "safesora/b75635fb4fe426e2ea4474ed5ae3ebd0ded7e143ab151f2c03529c3a1498fc3e/91290afa67344b133070ddd6a4d1226c6a8ded213b5de77861742ebe36574c6e.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/8407b4f5504a38ef115ea8e34dbe281dcb04e9264c2f20884d00cf67043ce130/17a7ffa78b30da48f2476030bcf33a4ed87e0b2a158db09e7057c64ab7ccd314.mp4",
+        "reject": "safesora/8407b4f5504a38ef115ea8e34dbe281dcb04e9264c2f20884d00cf67043ce130/3e1642b69dc5af7162f281ad36662f0b8dc7711680686f744a7593da7f6d50fe.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/2a520911ffd8212aa169c99e77f06131877fed55b10cb2bf75470c8c6595c47e/f921879365ce5154ea4c77773ae7f9831b0f1810ed200e1f5a57a78c342eb1d5.mp4",
+        "reject": "safesora/2a520911ffd8212aa169c99e77f06131877fed55b10cb2bf75470c8c6595c47e/56ae79e9fcd892e664bd0a6532db1e79fc7333a6f867fea18a1c6bd1f9e00341.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/cf53f2d4785acc215dcc7507c037f06f94447452d625f31416f6fbc591da047d/041560dd4deb9fad9cd3cb5ab0e8a11f198313a0a78db5339020a1c87d59b01a.mp4",
+        "reject": "safesora/cf53f2d4785acc215dcc7507c037f06f94447452d625f31416f6fbc591da047d/c89b43fa17271a0bad0679c1e7318c877852b61ae2eb7bab2472e21a604f3e43.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5e7e4e72114156059d8efcd26606988e9e7f5a7941f7e283d18b606ef80fb36b/19fe41d683aad9645a0fd6bc5040216d025d09a1accfde56483dd1e3914639a2.mp4",
+        "reject": "safesora/5e7e4e72114156059d8efcd26606988e9e7f5a7941f7e283d18b606ef80fb36b/fab210aca3b6186b5cdca09ca6d712b8275ea09edef1f2556a733c0de4897960.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/4466df5df876c909ef9e59e3c08e63339c24a6a93918c6559da528e17b33b253/7da1b7cbc7fb2f709dc4a81b32df5cf4b7f1298174fca63fecee53f7d92a3b51.mp4",
+        "reject": "safesora/4466df5df876c909ef9e59e3c08e63339c24a6a93918c6559da528e17b33b253/0149c87cdfa3d4f2096d333aa506de5f2b68cc9af3bfc720f1b3cc570a5be05c.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/b830c8ad159c83dab14e576385a20565532f6b869ae57749161528ba9ca26594/dfa6a8e7bc10ed7857365bcdb88bcae748c0a8aeecd5c947bb37a7f5c173cf27.mp4",
+        "reject": "safesora/b830c8ad159c83dab14e576385a20565532f6b869ae57749161528ba9ca26594/fbde24c1ca8a34a2b25a5235be32704b3b44ef1dd92dab1a043037d0d7a3a2e8.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/770a1651c1892762e32fcaf46566e67a87f0d34365a388ebf8653c002a57f8e1/5ae08d8fa72516385df44bdb984dbbdd7387061bab5adf8443c6756de5d505ca.mp4",
+        "reject": "safesora/770a1651c1892762e32fcaf46566e67a87f0d34365a388ebf8653c002a57f8e1/ddc6d1a35335698ae7d28d3091850d9d49c1bd16d6a09bac42358f41b6854f2c.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/9cf71aa8c65d8b0d0d5b20740dd56f3a8bde7a751cb595801aa2f703fcb3f63f/bb5422611269af94b0fae39d334a2a0e2b36858edfa72a2a2b97cb20aacb3881.mp4",
+        "reject": "safesora/9cf71aa8c65d8b0d0d5b20740dd56f3a8bde7a751cb595801aa2f703fcb3f63f/452c4d69475ca61e48960332bfe0a370020e8e2f24d38bef95b57000265cc0f0.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/ad0a755d978dedc4ffc8cb0015800be59fa84e7f1f8ef2ab693b5758b0b7ee19/78fc4b269afa89d8556a81e0fdd2cacb7252aca4cb5be3fbb01068bc844f5994.mp4",
+        "reject": "safesora/ad0a755d978dedc4ffc8cb0015800be59fa84e7f1f8ef2ab693b5758b0b7ee19/69863f6714d8cda7076b103a75519acd131c68c1dabc02dec720d8171e5b8055.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/72abf60807e10f2cf6308b853b534bf4e9ed930d744b7f795a6351fb25b8254c/9663b64c4e7ea1e327e55255da02fd69f13a407080df5269bdb3a7d8c58a7ceb.mp4",
+        "reject": "safesora/72abf60807e10f2cf6308b853b534bf4e9ed930d744b7f795a6351fb25b8254c/1bbada8954b5af1e881d6740bf03b13a5affcbee0dcef7697db919354ceb2c4b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/080623aa48ec5535ef75bb0793f2c53677126cff01c6559e47c78d33e1134764/dbc4b80d97781363a6a8fc19aae636c7e45a67ede8ca44c905bb4be125f14640.mp4",
+        "reject": "safesora/080623aa48ec5535ef75bb0793f2c53677126cff01c6559e47c78d33e1134764/b220ce1eadff540535829ccae19ead59950cb8d5da3151887b59fe8926c256f6.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/596b3bde922bb2270ab8d76bf645ba0b5acb6239dca7e624564dec27837b0963/c087e0013ce6be8446ab605d24ab3965317408a7bd7a772ed23bd992f85847b7.mp4",
+        "reject": "safesora/596b3bde922bb2270ab8d76bf645ba0b5acb6239dca7e624564dec27837b0963/75147c911bc0d4474c881c21c10635de37a5fe5e1b86f9cc545b57c75495e7e0.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/dbe82c93685b2830796efaafa1fe2b402b477a94659ce111e89e66abebf4a5ca/9e784aaa84ecefa0522a7a08a5d230b8f89945c570c528d0691a59035029dd15.mp4",
+        "reject": "safesora/dbe82c93685b2830796efaafa1fe2b402b477a94659ce111e89e66abebf4a5ca/7421dad118795b9eb0860664fe521cc03edd6387ae6122c3759d2d18c36d9a44.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/42df38449ff65116767c9564df546cdac934c0c210face6eedbf14176d2bad87/60f93aaca960aa4fb8a43b1f827a6b35bdbb3824a061dee8af0af119a2144cb1.mp4",
+        "reject": "safesora/42df38449ff65116767c9564df546cdac934c0c210face6eedbf14176d2bad87/a11771c56643d1a8f3992f5399a0e33033a3f316f3ce60b8ff8c1403ae6f6ef6.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/2e2e1f1279ba02235682c9480b44f328099ae8f96e1d2108d6de6eabc8991a89/85cb60b4ee98bb42db46333717c81d45519d1477994f2370780fbdf9779b595b.mp4",
+        "reject": "safesora/2e2e1f1279ba02235682c9480b44f328099ae8f96e1d2108d6de6eabc8991a89/04afd20794c02d4540f97385dd840c7dd9bd5a122a43dbaeb97090c3527b3383.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/18e6302d168ca6f007969016498cb15eb6274d3dc3b17ff7954b9f6e110309e2/425f56f7c2463087743cb2efc8aa8ac992f1363b5b53d6bd20cb1c01d3323a2a.mp4",
+        "reject": "safesora/18e6302d168ca6f007969016498cb15eb6274d3dc3b17ff7954b9f6e110309e2/a16752f99a7ddb992cb76de436fe6823a85070b095b4feeb4ca45194100c97ab.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ecc12c79d1f1c275e4a1b04198903edcac51d879327a1d15b0d98a923b071cf1/a4c543083e2da1df9a616ec89d68b4cac389a1579e638620c14bff63f3f00dab.mp4",
+        "reject": "safesora/ecc12c79d1f1c275e4a1b04198903edcac51d879327a1d15b0d98a923b071cf1/9a96bfd30f3a461dc16060c8d0aa4701e0eedd64adc3f2cbd27363f6a9ba6372.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5c9c5d1713cd871390edfbbcd829f3711d9f7837d1ba7837df732ef5bf18ddd2/2af8934e95a4ba22c272dac2436be0c8cd4f28f8c6f2c7f1a8961e0901eb3bc0.mp4",
+        "reject": "safesora/5c9c5d1713cd871390edfbbcd829f3711d9f7837d1ba7837df732ef5bf18ddd2/7e946fb9a1ba0c58a7aaca9b0b45c6165196203808259437490aa924838df91a.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/be18e264e0b251e45da8f5c5853e2913034b2795c6d93224707e0db06c632c88/b09b51f556211612d8f79a4335bf6f510c85cb200bdb662205443e6a80e3057a.mp4",
+        "reject": "safesora/be18e264e0b251e45da8f5c5853e2913034b2795c6d93224707e0db06c632c88/b152d704cf4ee8c81882543f44722347a4c8521b1ed6fc04ac137090a1c5ba94.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/f3da80e8174638506c3a07f0f80c94b6b881ca77996b850d7875b2e73be12e02/cacdc25b5a046d78799dfb04ad164d877fe89adeaee08a0e895f92c46019e285.mp4",
+        "reject": "safesora/f3da80e8174638506c3a07f0f80c94b6b881ca77996b850d7875b2e73be12e02/3b76625d44968b317c4a62feaf422fe891210e6c6e6734acfedaafd8330c674f.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/cf915d4cb775c293c3c9e956b15ab9f901966225193dfb71258ed3a921242d68/ffd834ed50ba1766ae4c1acae0afc96bc947872122145567649aa7c2f6dc7af2.mp4",
+        "reject": "safesora/cf915d4cb775c293c3c9e956b15ab9f901966225193dfb71258ed3a921242d68/2b5dfa2cf61bbe1adac1c9428ed0c00e486cba035dd9f7c405ba15ccad686081.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/247ab472b8341e9d5e5201ed0bc419476e911d5bdb6f7ddc81645a7acb496c5e/8dbe137fd3ae7c92fc030e835d37f241d7ba85f28887c051312409679d1edbf5.mp4",
+        "reject": "safesora/247ab472b8341e9d5e5201ed0bc419476e911d5bdb6f7ddc81645a7acb496c5e/ac172ec88809742ac0e16bacfd7df5a61f177c2432c16159ccc6b6abbbef71c4.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/474a31a4518a5cd8a4746a33a27ac1f9955eec539ebf9866779639a8becb7960/406f5c22a94a5a143627323b88ad1b01f8155d92bd59721c002b39464702a00e.mp4",
+        "reject": "safesora/474a31a4518a5cd8a4746a33a27ac1f9955eec539ebf9866779639a8becb7960/e24e8ba6df1ecd4884a035852e9df5545db39abd9f7a33cd7533d2261507712e.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ccc6142ca4fe410e2b6e4d70a7a37d6d4dafc8106e8e7170145cbf94480a1610/3d1f8d295f4b6553acb751a1efc447be7b98a713133491fe05daee91fa264abf.mp4",
+        "reject": "safesora/ccc6142ca4fe410e2b6e4d70a7a37d6d4dafc8106e8e7170145cbf94480a1610/5a41380dda1a3200633d5650adf4f1f937cd559adc20fa786338fd8ad93b3959.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/428c6cc2da355605ca47e9a4a2731bc66ddc8fcd2dc4645ab0d06f956369c373/6608005902780229645a92207555c1f6bb5e3e473ffbcea80cbbfbb6397e85bb.mp4",
+        "reject": "safesora/428c6cc2da355605ca47e9a4a2731bc66ddc8fcd2dc4645ab0d06f956369c373/787cddfbe33834955144288c62df9e2385866edb29507f25ce887069beacc23b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5e6dfc8cee5398ea222e08b10879b8bc3aca7effc29c3332080fdd1bde11b9f2/8a4abae396a11006bd2cae3a5e2920d192ac3a30995a4f46508d68d4a3f3730f.mp4",
+        "reject": "safesora/5e6dfc8cee5398ea222e08b10879b8bc3aca7effc29c3332080fdd1bde11b9f2/16a6dcdade0005f886e2ea203f409d846df8a898e2d15780f040ad5286f54cbe.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/a52a3a26c3d653f7984cbc3110450155d0e5bbab575c512c9f717baafb5df3d5/1985e8b79f0780e8152f4a4533e36ff384849a9c4d9b58394f728b2317d159d3.mp4",
+        "reject": "safesora/a52a3a26c3d653f7984cbc3110450155d0e5bbab575c512c9f717baafb5df3d5/996b7caebb1a97f0d6d0abd873d12a85fb3cd688934477d215c9b671070de67f.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/94431017f86852d3ae0b64a5d11d8a327d66934238724716752c12b3ca7c2bf9/97f746f533126e78ac6b670f7f5a4ec5fe1797e62b170ebeedfca81a11a240ef.mp4",
+        "reject": "safesora/94431017f86852d3ae0b64a5d11d8a327d66934238724716752c12b3ca7c2bf9/412685cf2a16c67317a14a13d856e2b26187f56f8520f60f7c2891aa393873a4.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/cef2f831fcc84df14272131b51f5b07ba18a9c54c5c994dde87a489fce7e33ef/927f4f28bfe812e424df2f9c726dd75e44cfc420375f12687b8bbab513535bc8.mp4",
+        "reject": "safesora/cef2f831fcc84df14272131b51f5b07ba18a9c54c5c994dde87a489fce7e33ef/821600cdbcd30cff5296b2065c38c980534830687bac7d8f8ac8425fcb361a09.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/2c76e34a0b1d2c6205fb41f8fc7e15211ea1c622f67dc42da09b47013d9ba1c5/2f874a208c0faf1f01bac61f82ec96757506f1dc5da0277e0866765c0e09af61.mp4",
+        "reject": "safesora/2c76e34a0b1d2c6205fb41f8fc7e15211ea1c622f67dc42da09b47013d9ba1c5/eedd086fc18e10a9ff2f85e759dcc0364f1ae55d2f84c7f2a60fd7943bad691c.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/8075718fbfae48ea2f6c690961e8c10782827f921d861d804997db24e88ba815/20c54b8949f9ef0fcf43680dd7ce7177d8814aab7b5da97323c9ab48737f0c83.mp4",
+        "reject": "safesora/8075718fbfae48ea2f6c690961e8c10782827f921d861d804997db24e88ba815/e72f3cf5f447172bbe91a4f99c7247825c4fe66878f71a65f0738d6694c67d98.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/39b507e18bf5fd671e264648db85581db2d14cc5d79931aaefaeba2ebce853a5/ef06a8fe22f828b244bb886c465725459e0bb536e9df2c54d0dbc2cdd74b5659.mp4",
+        "reject": "safesora/39b507e18bf5fd671e264648db85581db2d14cc5d79931aaefaeba2ebce853a5/7cfe5105354757fe61eb303344126dae3790f9dc3304303593274bfe4542d07e.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/cac401c9eb3c49fe1cc68090addc96ed0c45a884d16200558f413c23b9fbfffd/24d97753afe3b241f0b17946bf9b776389da7b4aeddc3aa66a71892de319e272.mp4",
+        "reject": "safesora/cac401c9eb3c49fe1cc68090addc96ed0c45a884d16200558f413c23b9fbfffd/e2f66bb7c90288091e4486668a817169d185bb261b0a9825a639980d382f7da3.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/0c90149737dca101f8b71d8dd1149302398c453674b20eafc996383fcb685d4e/215c89ed4429740dd792756d5a34ebb727a6649afae2d92d1b8c96fca97fbf37.mp4",
+        "reject": "safesora/0c90149737dca101f8b71d8dd1149302398c453674b20eafc996383fcb685d4e/5287fc8ca1c2357c7f4b9c97a961b463daae80aa6c076b479df82f498a4d0b3f.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/dd38465f66532a4b71682d54e3aa269945aba49f607d114366333a5200f08da9/f23840aab842f30645e833b4739a1c3976baec7c9522b78c313ed3680a265319.mp4",
+        "reject": "safesora/dd38465f66532a4b71682d54e3aa269945aba49f607d114366333a5200f08da9/77d1a4c2967576cfaf9aca6b4922b4e059d24fd38ae936b9b67620f6123b927a.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5adc6aed1c66958dd121626dd33e58d25f003c0bdb92a5189c6b307953edcd08/3fe475493b964939595806aa17c518b87518f19e2b4b9cce18ff5053a4e0048b.mp4",
+        "reject": "safesora/5adc6aed1c66958dd121626dd33e58d25f003c0bdb92a5189c6b307953edcd08/404f79f1e059befd6640dc2fd481981fae587a7ffa6f292f60de6cdb4d697053.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/b5737a2350fdc6484330cdfeb52e6522d9344864a527875780ef9b4efeb9308f/bae0055a3881d7b54e12b090e8bc0ce207b71326ede44583de161afa534fa468.mp4",
+        "reject": "safesora/b5737a2350fdc6484330cdfeb52e6522d9344864a527875780ef9b4efeb9308f/2eaf30bb3e96f809d2648472741626366bd50fe510ab80362cc4a481438b2ba2.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/994a53b1f0971998cdeb623d8c8385c6cca8d9e78f9409e5e276f272921b7962/392a3b54a126ea60c92a4d8ef5c1ee1945c384aada97c5717967c868a3074b2e.mp4",
+        "reject": "safesora/994a53b1f0971998cdeb623d8c8385c6cca8d9e78f9409e5e276f272921b7962/2518c5ffcb100578a969372f10b12c4c60d3de57d43da6a6d2c7447c8f3efe35.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/a60b2b02faf867c08e4b3ddd9d5ed09c4e401914dacb37a731e4dbab31c859b5/723f873a3a767f30abe5beedc896a355582ec7fdfcae63ea81e7455c7f5ac2e1.mp4",
+        "reject": "safesora/a60b2b02faf867c08e4b3ddd9d5ed09c4e401914dacb37a731e4dbab31c859b5/b8aa963150636c09232ebc6e871b197498468111ff88b8204dfb942ce821dd7a.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/81b423ec8c57442d3fa583a61d4b474c06168a6691dca5e41879d8691dab18a1/7c5d55ef5aeb41185d1521a078ab618f87ef0f01a95d55e47ebaf7b1f0b91e13.mp4",
+        "reject": "safesora/81b423ec8c57442d3fa583a61d4b474c06168a6691dca5e41879d8691dab18a1/eaed2041a64ecd84836720540f7516dbc09d8e02c7a87b57b90ec9c94d95cf17.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/6b48bb56347eb414d44756092197e573676d3ed5e721a5c49d5326aa38527d32/df77e4f6d409bd8a2e0bbe2a0c3e3d783eed833487ee0cb244b39a25d47e767e.mp4",
+        "reject": "safesora/6b48bb56347eb414d44756092197e573676d3ed5e721a5c49d5326aa38527d32/9765d26f0ecee0d16abd1616e28276d34b1f7d588be022887299f74b97034719.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/1adfa7741b734c4a875d10ebd724bb9a393a3ad8c8bfe25eb457632f6052bd06/11930adfa7b9ad5384b518c85c114199c676051cd8fec0a540c0a155f9bbe030.mp4",
+        "reject": "safesora/1adfa7741b734c4a875d10ebd724bb9a393a3ad8c8bfe25eb457632f6052bd06/999d6f0e90d5accfc6c58ff952995a54af7184db361eb495037f0a10ff4ef51b.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/3d705a0eeb0781ee68a92b563aea104cba403a1976f2418ca3db03983153fe10/9832b3e454ec9bcdeb94081aed370aba28084a80ad646bbe83bf8feab0da84bb.mp4",
+        "reject": "safesora/3d705a0eeb0781ee68a92b563aea104cba403a1976f2418ca3db03983153fe10/d437e6326e00b577ed31a98728bb9fd969e495ae166e24cbcd06aeec634be417.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/be8e207c8533f1634d4b32c839a8d5f56ed0f83ba7116b1ecc9375fd5c354478/d8dec7a9831c79430414e9ba9d180566bff2b1d9a814e5973f77d51b731b7ed6.mp4",
+        "reject": "safesora/be8e207c8533f1634d4b32c839a8d5f56ed0f83ba7116b1ecc9375fd5c354478/e092e9c148329f97654b67dc9c15afb742898ca2e3616da77da1bd40e1b1b9ec.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/cdd466455cd9adff2d83ccbc544fb05dae7900a1179dd288a05117b37b3b1ac8/413b875ecf716e4f1be5c3790ebbe84f6417fce236f79f9e0d281da73983cc24.mp4",
+        "reject": "safesora/cdd466455cd9adff2d83ccbc544fb05dae7900a1179dd288a05117b37b3b1ac8/7057ca64f5561f6a8ada1a1115f788627111aeb87c2c25b9d6b37672c804b8ac.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/11746f43b95d82f671412691825e0b85465bb98eb344275d426087f75ad57cfc/6cb7416c412b7b5674564969b5d02d7e6b63e99ed879aa2173b67e8c2163f504.mp4",
+        "reject": "safesora/11746f43b95d82f671412691825e0b85465bb98eb344275d426087f75ad57cfc/f6c66adecc612c8d66f64b1011fa6167afd53f4eb829c6ef9ae8df0e6f969178.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/2a520911ffd8212aa169c99e77f06131877fed55b10cb2bf75470c8c6595c47e/8ae7abcb9e92193662be9b5be3fe01b0b7dd95f52319f2386f5cc0e3a461c8b1.mp4",
+        "reject": "safesora/2a520911ffd8212aa169c99e77f06131877fed55b10cb2bf75470c8c6595c47e/56ae79e9fcd892e664bd0a6532db1e79fc7333a6f867fea18a1c6bd1f9e00341.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/f76cc16731fabb4b3efb63ec0de65ca47e83da1eda22f80b2513dd83c3812294/de9485fa90e7673a032310d1423cc361b6c7cc528be868e6df979e9509962f8f.mp4",
+        "reject": "safesora/f76cc16731fabb4b3efb63ec0de65ca47e83da1eda22f80b2513dd83c3812294/af3c8ae0450572bc8d4ad0c194d601cad7c7ecbfc1cdd88ee17c6338ed313edc.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/68a40048c36eea57cf52a8182ab914d972072357e80e85357d3f6cb9931283f3/5a72fb9f687355acc3eb01dc1165d7abea75dbdec0a41f3ef049b18d8d352551.mp4",
+        "reject": "safesora/68a40048c36eea57cf52a8182ab914d972072357e80e85357d3f6cb9931283f3/9642d0578aba6e06c13427962e3ae3be11b55c7ed3c0285e133f315bb95a0ede.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/9a1041166e0bae37da7bfb7aef361efd2356796bdf5c081392e56e1391c478a4/bed547234c30f2dfca5404304324fff79086056eb76addc26aed214ca519d330.mp4",
+        "reject": "safesora/9a1041166e0bae37da7bfb7aef361efd2356796bdf5c081392e56e1391c478a4/b7435c56b6c0852a54b2e573566b1b9e6c457b4107866a4e1b33f93e759fb0f6.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d89176707f38e90492bd73732d11cf749087f46f90e2553dbea076791b173a17/29286d63fa6c8c6aa191d7583c1ac6b9f51637437a2e920f629ee96a5bd18b5d.mp4",
+        "reject": "safesora/d89176707f38e90492bd73732d11cf749087f46f90e2553dbea076791b173a17/df3eeec6b0e7c66a939ee161a29f1aae3806fbed97884887dd09611926b12543.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/10f706052b243b4508d3ddca87f65636383b54423e0cc1ce172a770095032a38/a7d3315b85df9fb31d185edf87ce3dda023c0cee91bfb8f77f61527369e2c57d.mp4",
+        "reject": "safesora/10f706052b243b4508d3ddca87f65636383b54423e0cc1ce172a770095032a38/ed5e86aa843e4d02a6e96e74c4901334cdec1f4bfb74247364d881eb6633d987.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/e1496e120e5c0341e6c8a248d3f1dfd15d4524a234e448a6b3e6562d007ea3be/0cf427c20ed979b03b11bb5382cf7a46ccfb573e1c7efacf3b28458d75526714.mp4",
+        "reject": "safesora/e1496e120e5c0341e6c8a248d3f1dfd15d4524a234e448a6b3e6562d007ea3be/24ed43ca879a6ec13b0ab04cecc0c0e394c089022b2b1df8923cbb6a207b48f8.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/0a34d32bc8ed41776a27aa605917f5e498d45fbce69ce450f1240a3011ce44c5/9fb93774d5e988cc022f4b5d5e8c16aeb53c93ff5de50fd0d1cbe9254ed1c8b7.mp4",
+        "reject": "safesora/0a34d32bc8ed41776a27aa605917f5e498d45fbce69ce450f1240a3011ce44c5/e71459dffaa3d2a22779a9b80b7dc2986bec2625276c845e6e9a436603251bbe.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/cc15df1f1edf6134249180cbb17ff98595dd84e810c772505e53318373884585/d4d3b51e99ca217f2e933384552b35f6d91620720b4be9b4ee83a91599a3a36f.mp4",
+        "reject": "safesora/cc15df1f1edf6134249180cbb17ff98595dd84e810c772505e53318373884585/6698cecf1b2ec0115e49244f4489cd4066bf1ce711b055e1948b42e2ba245470.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/d172fc9fd8b9d19454ded6b0f8e87853fc37946a95fe4574949da15c52674452/ad84a311d9f8bb4e7bdb76bb95f32e425b70f73085ae9697ba059115360c5384.mp4",
+        "reject": "safesora/d172fc9fd8b9d19454ded6b0f8e87853fc37946a95fe4574949da15c52674452/5d2664af77833c161b4591b41824a8218b2f486e3e5672eeb6e0ac6103e786e6.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ac2f7ab765fdf39c5fb3e2156fd0a65fc5b4669656de074bbdfb923afa75b606/8fe3824931a4311d4af960faa0add95215c50a449058d2f6c8985500669c1846.mp4",
+        "reject": "safesora/ac2f7ab765fdf39c5fb3e2156fd0a65fc5b4669656de074bbdfb923afa75b606/e396239c791c3f29ec52fb8d51c4dee550681b81f87c3905c69943d88edfdd80.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/de4ab5340b950a2e9c20bdbd9daadd670dc9e86f9131bebc3d33bc49cea51b0d/6dd5278e7c8ae4d471a0446755cdd7a2a668f0202c71cdc7edda5cec03c39484.mp4",
+        "reject": "safesora/de4ab5340b950a2e9c20bdbd9daadd670dc9e86f9131bebc3d33bc49cea51b0d/b87a7f0aa474bc97f1ab801921151598d5af82250121f9db92d4055091a536eb.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/8545c33ec7eb48faea44664b0433b65c0cb30be40dbc12d27f4899ef374ebf2e/0427391c47e239e48b6b452362b0832fc92e16a79c2d9587a85547dc79fdf87f.mp4",
+        "reject": "safesora/8545c33ec7eb48faea44664b0433b65c0cb30be40dbc12d27f4899ef374ebf2e/7f6a2165756bde0042472ddd78bc7a9cc3c95d34e1f09e11faa50a3185d3e290.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/86cdcb9ab73b8ce6ee1ffbf2ceb2cc838a334d42bed35ac71419b3d40db10877/8918db7d8adc50de54401a4be95b34859574d0e084843ab7cc326ec4792a8b3c.mp4",
+        "reject": "safesora/86cdcb9ab73b8ce6ee1ffbf2ceb2cc838a334d42bed35ac71419b3d40db10877/90849c00e59b8f1872a42e36b8ad56847e47d8beef01297c9f45ef00be487842.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/74d2a076d50351a7b3423f026d22291f98b8514eb897722f72753de587bda4b9/037d04aed86c3669a7cd27375df98f5a047de8f35455231660f5bac04571d4a0.mp4",
+        "reject": "safesora/74d2a076d50351a7b3423f026d22291f98b8514eb897722f72753de587bda4b9/46d863c1885e4a88956f0134987a051f59f86e19c097ade9046a340fa99d70e7.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/5443085394f8faa4fbe985ec6dc7aaac3bb2c33ba9f2c1bf4af0c4d53902cfd6/bb5e354b577fbfd5e2f907e5a7a12fed3e1ea366ee25baf6e45072a92f06a0f4.mp4",
+        "reject": "safesora/5443085394f8faa4fbe985ec6dc7aaac3bb2c33ba9f2c1bf4af0c4d53902cfd6/c90e40657a33122570ccab8da0c475683232f089b19b9f4067b5a92ccf9ed142.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/1ef9bdee3af339a0edbedc2c17edf9282d0d76ec217021072cd5327d2f3bed3a/366cd731a935b9f0c6350013ecb74be80d32a7947e6f22bb2478273f7b995dfe.mp4",
+        "reject": "safesora/1ef9bdee3af339a0edbedc2c17edf9282d0d76ec217021072cd5327d2f3bed3a/bdfeacf1c834fc92173ba9022ef01c33cdbaae77ddb8091b377be8c505899512.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/8d3bbf7db2dc2a26e0f689fd742b8c7fb158775239be572e646e8932670d8f57/647dd8805a63310101d395b6c7b3bc89784274b60dd8499d472e4b56aa4ec837.mp4",
+        "reject": "safesora/8d3bbf7db2dc2a26e0f689fd742b8c7fb158775239be572e646e8932670d8f57/f7efdd35d6b6cf7e903a198b405312fe1af695d723854dc2863ca3ae1d9e4dd2.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f8844c0ac567c2d3ee6fb2c61f7eb9bf56814ca5fa00b040ca552cad90ad60a7/91fd0b97b34b93b9143f5c204753e9a1348d5e5b3602422b56800d6d988a97ef.mp4",
+        "reject": "safesora/f8844c0ac567c2d3ee6fb2c61f7eb9bf56814ca5fa00b040ca552cad90ad60a7/bbd0dd205f3db963511fdd8893f6fc17e3cd46b97daec1a87ea473345e142ea2.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/ef655cc93f85a68d1dbf769901e180cc834c2f91b44cc9dbff00533c9bb03ba1/22bd77e93f23f9eac3fb61db2ad0b61be1e9e2e1b53051a78681b976aa7f8ee2.mp4",
+        "reject": "safesora/ef655cc93f85a68d1dbf769901e180cc834c2f91b44cc9dbff00533c9bb03ba1/36629a57894e068cca7632f07da325b0567374847ed8aa94bcc05b1f13dee1b5.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/f1e7061e7ebb448ea3e3f368e62c45033da8dd1f51192a56d70b0d8acc2c9e98/a9bdf27c24767f29c3d59631b460572eab1d8a37f579475025431b407f1b6115.mp4",
+        "reject": "safesora/f1e7061e7ebb448ea3e3f368e62c45033da8dd1f51192a56d70b0d8acc2c9e98/f36b8f5c724cb9558d385572fe03ef3468c389002a33e01a985808dfeff23174.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5334f3a87be07eed95fb7976c70839c235e21e6ee8852bf4a084d0283b719d42/fc045b7f8664479c5d1216a30a23ef2a6cde0eee8122a95a7b413353c89fccae.mp4",
+        "reject": "safesora/5334f3a87be07eed95fb7976c70839c235e21e6ee8852bf4a084d0283b719d42/aa15b381cb45d49d730b03c2f402330fa7296112451c319f259e531df108f556.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/30b9c0356e5a066b4187fc4ffe19408f8d4a2c7c95855ab6206e75d3939dde51/d75f02633b079a43e81960bb0dc82dab5f588ee97d36eb3ac1753dce5d7d22ff.mp4",
+        "reject": "safesora/30b9c0356e5a066b4187fc4ffe19408f8d4a2c7c95855ab6206e75d3939dde51/ff615e5ab6807a4e8196a4311081c69e9c8c486ff773027cd441d51a0659c33a.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/50bc63c0cdaae05a40cd22c0e9219dff2a8e05447226b364caf653cb7b34a4eb/b521ad08a8de264c77ceda58fdc9047c1411a1f7924b8649780b9d4ca85664c2.mp4",
+        "reject": "safesora/50bc63c0cdaae05a40cd22c0e9219dff2a8e05447226b364caf653cb7b34a4eb/6d98baddc003355f7cf19df51bc626d26a7ee55b94f94f2f38abad2907633404.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/3b24c5a849a24d4d293de8b34a7bcceb72d68d245df789b3f2b8dd1b08fb3295/51fb066d1d8e9aaa3eb980d35e7bcb41b11ad82a78fe2a9d5d6282f914c5b2c8.mp4",
+        "reject": "safesora/3b24c5a849a24d4d293de8b34a7bcceb72d68d245df789b3f2b8dd1b08fb3295/c56fbd6a834a0a4bb8ec2501931c8a5a19c715d0b0cd845038ed3829320a48f3.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/8d857a3d860d22c29a656e9d7ac4af67720cd76e1b88d6f441bf83ee0fee1dea/1853d7e7b557e81805530cbe9a30a5bd3295a42bcf58278a53f976969773a27d.mp4",
+        "reject": "safesora/8d857a3d860d22c29a656e9d7ac4af67720cd76e1b88d6f441bf83ee0fee1dea/f40976758f0ff7c401f36d79fbf89708479b8a386e952fb08266603de9838696.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/50cc8a1e285cab3f8800a150e717897af2dbd2854d0ada9690465f225601661e/6a46fc1b91467a9af21689f13b1a7e1d011136f167e0cfc0472c7f892e11bf61.mp4",
+        "reject": "safesora/50cc8a1e285cab3f8800a150e717897af2dbd2854d0ada9690465f225601661e/0aa91de48a79976c2d13bc65666088282bd9b2c8114158f194be408c728de32d.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/9c84e861596f6cf7a0097b1891c2f8001286fe8c579909737d492d17aa3c276f/c3512c741595cb78ed6f723095a205d265181340ecd4c61d67dcfc0dd7fa23c1.mp4",
+        "reject": "safesora/9c84e861596f6cf7a0097b1891c2f8001286fe8c579909737d492d17aa3c276f/2de4df9e25500dabb1e5ca911aebb86dd6f4ccc7d0b33a0e2239389c6f07208b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/47b12c39e7ba2fb168207798d6406e3864b8968d9e29acc76f002fc5bea989fc/01e8e595973ad22b7ec0de1e68edcdba5c761d629c95cb7740e25f34f9fad825.mp4",
+        "reject": "safesora/47b12c39e7ba2fb168207798d6406e3864b8968d9e29acc76f002fc5bea989fc/75251aed183290eef23e318fcc9d1632a9bd45ba4c2b108909397adc3c4e5fdc.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/21f1bdf6f4fda25d406ab7af231d54fde135ba70743f8352b74bb8104733da35/66f8afdb9e3e02b023e3b048dbe99de112d97f9b2d6e71b1fd9a5adb59622aa1.mp4",
+        "reject": "safesora/21f1bdf6f4fda25d406ab7af231d54fde135ba70743f8352b74bb8104733da35/774cf8ee89e01bfe8672822a4d4d523627d7ab7859065a8d7d3735066c6f52d8.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d76c9bf6ae56e1188621c280b7a1f88740c220c07e69ad256cfe704547a35be8/6ce987e5b9aca8cc0a45b5710e46a17767bdce2cd29ab145797ca9bd83d193f0.mp4",
+        "reject": "safesora/d76c9bf6ae56e1188621c280b7a1f88740c220c07e69ad256cfe704547a35be8/b1b3085436e184612628376c399d8d3f3435caabd3eb1fdf876240ad28d076a2.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/e8f1394bef9aaee2556bf1de4c00b71d8db39cfaf68951d8c087258087b0569a/5e9677e4d8af2ed7b3dd1a9f883094e1aa311d16651b3295dc022126de0801b8.mp4",
+        "reject": "safesora/e8f1394bef9aaee2556bf1de4c00b71d8db39cfaf68951d8c087258087b0569a/864239132717dc9e026063eb2adf8fbfa33bb7109c49ebcdfd54efb3071a234d.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/fd46b48f143f9beb72e8ed950c8e0b9766386552d80c20786870723f264132a9/fb5782ec135058f36f7aca0d3aa98925aa4e826ce9069c49942e454128207b13.mp4",
+        "reject": "safesora/fd46b48f143f9beb72e8ed950c8e0b9766386552d80c20786870723f264132a9/8cb71ce9c45c70575add558cc950e44f20cda78f5644b6b7a0836a90f903609d.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/77c0b40fd1b9f1e148992046c7b4490588c57d9d3c04b98f81660fb45e131eec/f49da1e89a240ac6c959e0767bc661cbec7cf4853e59a5fc138165dbbff682fb.mp4",
+        "reject": "safesora/77c0b40fd1b9f1e148992046c7b4490588c57d9d3c04b98f81660fb45e131eec/bba86463f897627a786680867e7c3139176a2015db3a73fda87754aa25d0850b.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/aaa593aebc2244897a92ba419426f51651a5478e47e263d1468b24a220205d60/5d819380ccef0b6e31f217c0bd3078d25957088ad7221e8f6dd9c57eaf910993.mp4",
+        "reject": "safesora/aaa593aebc2244897a92ba419426f51651a5478e47e263d1468b24a220205d60/c53d745f8ea8088fafa44e025287cd1bb5f58adde834dd5f02eebebc7972e59c.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/a4117b78cf58e57b4dfec2a70a8117c677aeb14283c6a859e5f39db4766025e0/32cfbafcacfd11353482d0d60bcb8976a79700f0162d75678ef3d2b88709db00.mp4",
+        "reject": "safesora/a4117b78cf58e57b4dfec2a70a8117c677aeb14283c6a859e5f39db4766025e0/68a303cbbe9959133032c9001efb5b7496f592108d4c25f16141800fdfad8b89.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e65d2033441c516b0ee790810e7db80dfb7fa4b3f143912b24de427de8f99c30/4ecdc0dc2f154b846eb2c2510ef23fdf25b732b21efcbf6076ecabf9ebb4ce67.mp4",
+        "reject": "safesora/e65d2033441c516b0ee790810e7db80dfb7fa4b3f143912b24de427de8f99c30/f92eabea69555c23bc93836a95e1e8d5f4d8adaf0a8e92f43a76863b7de637f0.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/03d7ed868e1f3f535218639f4488226ee14db14b110e9a1a66d651e04ba35381/be1f41a5894a7a1686774a144295b1ecbda61c66ed818751cd6835add5f2f6ea.mp4",
+        "reject": "safesora/03d7ed868e1f3f535218639f4488226ee14db14b110e9a1a66d651e04ba35381/ad3cbcfe661f7195bd283d433f4acc682140a47cc5daa1d6f983d58708a64829.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/01484e79b64b61988ffc845345f2f68ee7c743894add4e047be2b24e0f928cb7/6d757f7f67a93af338124ed453653b3df63f2dbbdbcc9c9de905717822bc4ae3.mp4",
+        "reject": "safesora/01484e79b64b61988ffc845345f2f68ee7c743894add4e047be2b24e0f928cb7/a7f62159d7041a3b6b837a6ef3a752ff3e22aa9ef3685a193eeec937d7ff4ac4.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/9a1041166e0bae37da7bfb7aef361efd2356796bdf5c081392e56e1391c478a4/6320147c43aaff513247e6ce9bc8c6423449bd0c76f0a66d53b3e0bb8483ca93.mp4",
+        "reject": "safesora/9a1041166e0bae37da7bfb7aef361efd2356796bdf5c081392e56e1391c478a4/bed547234c30f2dfca5404304324fff79086056eb76addc26aed214ca519d330.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/28a8570a892055475fd0d6c0477ff828b451fd426bc464bc377237de84676d18/b8cbfd7ecb0ac7e157dcf9675de8661234d835392498e4aba37bfdb07969426a.mp4",
+        "reject": "safesora/28a8570a892055475fd0d6c0477ff828b451fd426bc464bc377237de84676d18/c723da69f95bcc4a55067dda2bc586990b7ba43f2b37172d71a23380966c1f0b.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/85ff51b9143b65472a53a4ef615887a00a42d0a4f7bc65ae231c8e781183393b/7ba67053a966150eab1a0ba0242abb88b11ba5973603e3cbdde71fdc18bf8fa9.mp4",
+        "reject": "safesora/85ff51b9143b65472a53a4ef615887a00a42d0a4f7bc65ae231c8e781183393b/2b5df31e6a77a84dfb86f686b9f7ae922dafed2309dee4faa02c014a6de3faab.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/885e84a44da4161ea6b708c32d30878caabaccd931e4c69c75508788a4b34dfc/69d48353edd5a34ee3d1b890e1c4a95006c071c9b3b06c49ba4b86b3f5ca1d4f.mp4",
+        "reject": "safesora/885e84a44da4161ea6b708c32d30878caabaccd931e4c69c75508788a4b34dfc/25420eafe6ef04f2ba593e33af3d63124d9cbceb827dbb09fe8b492c42755ab8.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/6e4398d58cd189b85d2f518fee168f6b215beef4ece4680c62c26a722761690e/bbee27d3e55ed59c025e0939d8b0f89cb6975daa57ee1944eb3a5037390ab5a9.mp4",
+        "reject": "safesora/6e4398d58cd189b85d2f518fee168f6b215beef4ece4680c62c26a722761690e/7aead24edd564a723634fc81e1d38232ef288ebd23fdcfb6e62b82d7cae113c1.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c1caecdf03b3890338f57480a88809dc56a723e4594a0112f3b3e8d240e02ef7/b10852eda3efb2eda0d755b85b53ae79fbe73e72bd8b3c113e3cf25e38340c2d.mp4",
+        "reject": "safesora/c1caecdf03b3890338f57480a88809dc56a723e4594a0112f3b3e8d240e02ef7/32f20e6b886ac17d061e98eabc0d21ed6d2e107a03ebdf989fa9a7ce6fcf2f2f.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/71a48640b0a488bfe752be0ee9e0e8b0fb0571b6bec1c48bca3f38af071b1126/af153f117c82d1461eeb6a696690ad7bcb22bf87bf325e84472beb0bd5abf3be.mp4",
+        "reject": "safesora/71a48640b0a488bfe752be0ee9e0e8b0fb0571b6bec1c48bca3f38af071b1126/a27cb07d9c1cf5b61d9bc5c9ab825856ebd37206f9376b633c48d6048c61cca3.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/9d48fe482a6b5593ffc08c89bb5313d167d7849fa7f7f4523d6a7d219e8ab7ac/3766026355a7a66b487afd28803d886a448616c42230d14b2ba89e2f35155cda.mp4",
+        "reject": "safesora/9d48fe482a6b5593ffc08c89bb5313d167d7849fa7f7f4523d6a7d219e8ab7ac/260b528c17ea1aa6cb3c40841f2ed297bf0c8659ae5329a097481bb439a13c6c.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/d3bab4dc6d9ccb79dfd1a9ae2db64deaed8af0c6922b5b338e52d3be3d5ddc4a/921bd45bfc665e69c9387e7c3ee65cba28d6b3bf915763b78f690c70151d2b99.mp4",
+        "reject": "safesora/d3bab4dc6d9ccb79dfd1a9ae2db64deaed8af0c6922b5b338e52d3be3d5ddc4a/7bbeb83a69533b3694f44b73dead49d01e0af2230598c4a44a96662e40ddc1e8.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/9a1041166e0bae37da7bfb7aef361efd2356796bdf5c081392e56e1391c478a4/bed547234c30f2dfca5404304324fff79086056eb76addc26aed214ca519d330.mp4",
+        "reject": "safesora/9a1041166e0bae37da7bfb7aef361efd2356796bdf5c081392e56e1391c478a4/8d17273d31c59d930fab6d100661ca633eddc03f6b314ed42715394b3bbbab4f.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/89565fd8a8911db4d06433691351c697ab70444b3a17c5e6b346a52e9aac3f47/fed430571261d8b98d652367b2ae95f2dbe8169ac652337af72296b7a8b7fedc.mp4",
+        "reject": "safesora/89565fd8a8911db4d06433691351c697ab70444b3a17c5e6b346a52e9aac3f47/3ef59de7b36ad23867c5c1d4e704d9177eb094c588fde0f9cb08607a8a194054.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4c08bb4e49095e2d8d8bee956ab657a9058aeda2de079ac4ed389b2f201bbf69/d8249d486c0d4cb232cbaab043b9bb0c829dbfc19d656056eb66bdfcee1c3fbd.mp4",
+        "reject": "safesora/4c08bb4e49095e2d8d8bee956ab657a9058aeda2de079ac4ed389b2f201bbf69/9f76f8c9a3228703fd0464688e8ec462b4aae18522fe11ae6635c1d167dab1b5.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/8d68135369e1016131853b6e3fa6fd580adeed76697eb09c4e4fd3fe8e2175d0/7926b09e291dea22c74c5cdac0afe8f01eb83fef97bec4a9bc2f4d8e9a0ba222.mp4",
+        "reject": "safesora/8d68135369e1016131853b6e3fa6fd580adeed76697eb09c4e4fd3fe8e2175d0/331fda996ecd2229b7c9a0ae21020d9bad452256e89abe1f001ce61056089820.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4d5f8240fb988edf6032e80bf27b732d0bb76f2d63b470a7187bec7c5450a2c1/7993977c55b73a2a418bb7ff54e15eb76766808bb6fcea8b22465347dde35258.mp4",
+        "reject": "safesora/4d5f8240fb988edf6032e80bf27b732d0bb76f2d63b470a7187bec7c5450a2c1/e7f77c2b95db2c02392443cf123d7a6363c859640fdc04f2fcdd09c70bfe02ac.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/107d98a3aa562db00ada09c28fccc0c32a7f21536f038fae796354546431ab5f/40f3bbf7fe5ebfc2b528c66ed5d6fc968f7fd0f0f02a9a860944da52f53320d6.mp4",
+        "reject": "safesora/107d98a3aa562db00ada09c28fccc0c32a7f21536f038fae796354546431ab5f/e9ec6f6973b3b761a37a995c0c1a848bb28262bdb024489fc3eb909609620fce.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/003a08e7af8777049b9aac6e70bac60ae0ad1c98abe0486d0153077405b3d299/583248ac981d9adfc5f51f3a2db6df3f297f0dec5c156763f65dd2d12c0a0786.mp4",
+        "reject": "safesora/003a08e7af8777049b9aac6e70bac60ae0ad1c98abe0486d0153077405b3d299/bb04bd712b4f46c1f4064548aa9dce6615f2e16dd077d1c848472aaf0fd17661.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ed6c1ff1cd01bc68562bc28d372db7cd36d55c90c1d6896de1a4c5d019d4516c/a90d950d70402a72c195654e8bd40c17673f5ec8056ed6b5d15026ee055a42dc.mp4",
+        "reject": "safesora/ed6c1ff1cd01bc68562bc28d372db7cd36d55c90c1d6896de1a4c5d019d4516c/474988ccb3cabf18bbed39c178a4a7c55fb31eddc2c9ff788837e804108d4817.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/90612f69f21242261dd998f914b96ea3a08c4791bf1f5a8db45d66f635e25d3d/7bec08d70d85ca0115726cb1a05b2ca201364ef15258895485f64df69858e19f.mp4",
+        "reject": "safesora/90612f69f21242261dd998f914b96ea3a08c4791bf1f5a8db45d66f635e25d3d/62212f845e20cb0a767de7287c2c66cade862643259bb1db95e6420e7de1c469.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/47a1dff4c85ae045f2f7a303a485883fd2dfa18dabe5b3dc6f86405de80b58fd/7e18fcc05004b5443afea7887afb21499f7aa79e29f1ec0860f8d51af7f9df56.mp4",
+        "reject": "safesora/47a1dff4c85ae045f2f7a303a485883fd2dfa18dabe5b3dc6f86405de80b58fd/7db6d7405136deafa4c65d3a1841007ad2d712e22ace2f4c0f5b2194c05255d2.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/cd6db385adc904139b1977b32f593a82d642375bc4e1c93b233e9a7c7567d074/51ed2d80634037498023573236571d2583186fe78b0dd3f0eb51008de04640a5.mp4",
+        "reject": "safesora/cd6db385adc904139b1977b32f593a82d642375bc4e1c93b233e9a7c7567d074/09a825cc32d1c108e5fc5689c67af7f10f396c115f175f840ea0851d2567a9fb.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/fdb7abeb01b97ef6d27eed8304b5c255f4dba338f3fe9c11cfe563961092483b/2c2d7f3990d4432df421be8f2ec31270349abf05ba506ea62eae1c717c281583.mp4",
+        "reject": "safesora/fdb7abeb01b97ef6d27eed8304b5c255f4dba338f3fe9c11cfe563961092483b/486ed8a5d427a7c2031e06f31b153dcb3519b706910d87278a4fdcc77086a434.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/a1a98e760b0ae844305d9a8fa475149f76a591dcbe91141f08d56b5bc2ebf0a6/557faed451de22240d5c02d5af1cd391424d7b1d77bc1399247a3571ab231ba4.mp4",
+        "reject": "safesora/a1a98e760b0ae844305d9a8fa475149f76a591dcbe91141f08d56b5bc2ebf0a6/0e61130cd7e07052bab0009d933ee13f844a027b52c5b980a935273730c0fc60.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/38fb5b69e6441cd8d437790d258c34569826e115fa2ec40ccf09772925271e63/6dd358d59d841f448d8ae67bd8f3f4f33ae3eebf67099779c4222dc8f09d1fd6.mp4",
+        "reject": "safesora/38fb5b69e6441cd8d437790d258c34569826e115fa2ec40ccf09772925271e63/6238563196b49e859766d925208e6e0af1a746203cba28bc49f8a6f3a2843392.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d4d6bcc539a1edc95f6e713ee39b0d1d40044b18093cc7c73bf61294b2412506/d502eb0015059bd21c88ef85a7eb0c55923249997520ba77ec71aa750bf2bb65.mp4",
+        "reject": "safesora/d4d6bcc539a1edc95f6e713ee39b0d1d40044b18093cc7c73bf61294b2412506/3d9ac02c0465aead87c18759d4e3d8338c4a3d0623f7faa81258b49b6ebdd8c7.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c7e5218b952d051b6b86ab9f5c652510c4e739480be4e2eb6fde288e5c7512e8/301565311d4aba378f74707317b33ca4df7218ec2fbfaaf52d1dd8048083fca4.mp4",
+        "reject": "safesora/c7e5218b952d051b6b86ab9f5c652510c4e739480be4e2eb6fde288e5c7512e8/254f6aee1c1b2493e49a3d39f94aaeaf16edb821a626ca02ef37ad4990c0aa9f.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/1ede7554126d9dc36586ad82c273c0e997b6b06c89ef4a3f99424fc3321cdbe5/3fa3fd0755233c7f3d995b87221d1932921526fd490456fe666dea31c99e967e.mp4",
+        "reject": "safesora/1ede7554126d9dc36586ad82c273c0e997b6b06c89ef4a3f99424fc3321cdbe5/1032d27de4c78cd9abda5c98115bd0a415d569f2622fb80848f42b63e29d6afc.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/42aa0b367ac04e9291772f3f9241eed88bf37cba6476730f169d577244e8a5e2/70334a1768fd645f3cadf0e1f0ef038781b889f4e4d4aa35066f7dd9d1838a6c.mp4",
+        "reject": "safesora/42aa0b367ac04e9291772f3f9241eed88bf37cba6476730f169d577244e8a5e2/9c38ebd7e2c27a7650b8472868cb412a4b0abf6e9137a77e3a118606d2b6f291.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/a2d396311bd58d98cec2d84e6f8e42c1c491a6e2983c6f381ad502069d4d38f5/cd80c825f6f447de2d5eb50a67288e315ff29057f174b38ce2fc395a6d9ffdb5.mp4",
+        "reject": "safesora/a2d396311bd58d98cec2d84e6f8e42c1c491a6e2983c6f381ad502069d4d38f5/7ed1b75d146a224c0b6a89175661885effbe62a05fdd4b63d237655023cdfb90.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/fa397f0b54c119269685cc056e40cc54168b979ddf7a36d2bf3d9d0886ab1c93/859574b0f2a312b3ea490bd43b98f9f6f6fa6965607ad4ab3db8573f38f17af0.mp4",
+        "reject": "safesora/fa397f0b54c119269685cc056e40cc54168b979ddf7a36d2bf3d9d0886ab1c93/a482768aaf0871454ecce5a89d964e6915391e858697f30da8a9e249f14ad519.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d0e96c26ddbbc6b7426b16fdeab3893757c0a81389c6f991d9047e1bfaffe07f/635cdb54a6f7188c4715da31748db9750160cd15080dad6f2c01c59c82cc21e1.mp4",
+        "reject": "safesora/d0e96c26ddbbc6b7426b16fdeab3893757c0a81389c6f991d9047e1bfaffe07f/cd7e25320bcd1a6c97d75e39ba7d260f0ef79dc2561fe0c2eae4138aeb6837c7.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/278cd2f3cfdbdf7bae95a7e8af664ad17b0d5d0c4220e95b60145470cdd1b701/348caab4e556c8ba828918607cf80b20d44d740f3bb71934e44df9845ca4c587.mp4",
+        "reject": "safesora/278cd2f3cfdbdf7bae95a7e8af664ad17b0d5d0c4220e95b60145470cdd1b701/ca03d13c4fa2965a84bc9484f9405f69c687aff8c56dcb9a2c81ef1dbe0a2be2.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c644345f229afd620b608e2ade3eeab61289646156e29f0ed5b9dc3b56407027/1daf670fb89b667c4abc67189b624d3a9f8b29e983e8d41e799b769ffff58b73.mp4",
+        "reject": "safesora/c644345f229afd620b608e2ade3eeab61289646156e29f0ed5b9dc3b56407027/5e24dd8a98ceb78c9d7129e392c5e3558bcc9d95e565f5fabe5822dc4fa468da.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/227cc38863d3bd7a50ba40cd0b13223e77dfc3b3613ec2592717be0642669894/2bc638b86982d2ab3aff11d7b485b34ac4bcde5f911a3bc17907421e1f6c95ee.mp4",
+        "reject": "safesora/227cc38863d3bd7a50ba40cd0b13223e77dfc3b3613ec2592717be0642669894/718b2eedf7e727402cffb8de7f97fb344a06a00a04b42bfdc5e6c6ed34c4f22b.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/0af3641b7bde68942591352298d3c2a7aa66159c842cb87986e1b0ddffc4ee5a/8b04a129686bdfefeb9c8f8a1edc47ae85ec8355e8f35e6782510f9f9e57ccd2.mp4",
+        "reject": "safesora/0af3641b7bde68942591352298d3c2a7aa66159c842cb87986e1b0ddffc4ee5a/85c4530afee97a598ccbb9de5d9a05b4c07deebd78e0fed46bbe7ea3be3af5c3.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/6f4967eb812eb2b46a7b888f25e41c877d0e6d8142bb1ff514724ff2a1e73ee0/82193550fcdb9354af3e5ff1bf8e34ee731b76d2c97c2e0cae1d099dad3a8915.mp4",
+        "reject": "safesora/6f4967eb812eb2b46a7b888f25e41c877d0e6d8142bb1ff514724ff2a1e73ee0/94251cdc520c1a5ffbf270fd28b3e99656b4f6dacae8654a93070c2dfea09e96.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/1c513529af05e95133c6b6bd80d10573528e05bcc6adeafbb84631ce46bd64b1/b406f8480723be72dd668d6acbed5f6e0c97056a62389e29370b4b8cc5ac1162.mp4",
+        "reject": "safesora/1c513529af05e95133c6b6bd80d10573528e05bcc6adeafbb84631ce46bd64b1/9a3ff5afc089f5e2c81a0e8195e62c432457f84b22873618dea7e4fb8841f2f5.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/680034172ef4d0563dd5639d166abd84f5870ffb88e0432ec65ac2f881df6d1d/2681bf5271b5a5ba083cd4ea6a41fdddf1ec60d4d477e2dbfac26b883b32f1ad.mp4",
+        "reject": "safesora/680034172ef4d0563dd5639d166abd84f5870ffb88e0432ec65ac2f881df6d1d/42be74c49198d19ba1de61d50e0ab85690df13dc39afe4d2c643b8fe01724392.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/460fd8e099eb307f3afe4eb076dee250445e3dc12c924c9e61d287b908f404bb/4aa8907bc0c7d0fd8ad11ad27b1aee444aa00abd39d7c6cea1e51c4483ce643f.mp4",
+        "reject": "safesora/460fd8e099eb307f3afe4eb076dee250445e3dc12c924c9e61d287b908f404bb/ea36ea9ba606c699d9cafbc274283912bb100b4ad57294534bdf81bbbf13a43c.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/0ed5ffad2ce4fc427e5a1dc70d1239a2710437d6a7dde620233e95195551d338/69288f2bdb9bb6b9855b923b8cb6b0746b75dd86154e7e1b2aa3c48002930746.mp4",
+        "reject": "safesora/0ed5ffad2ce4fc427e5a1dc70d1239a2710437d6a7dde620233e95195551d338/4bc12a1159ddb2451b26117db48af77a2f65bcd3d2e07a498dad596682cd4c99.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/3e1b23b8393db02913ed55074bee55b9a8576e8430110cb4650708549e95b54f/623783262d9e544b9777f6215ecde9f99578fb847f8b149c7f54087d03abe006.mp4",
+        "reject": "safesora/3e1b23b8393db02913ed55074bee55b9a8576e8430110cb4650708549e95b54f/897c26019a836df696d0024ac2a150f8093eb121f4c2fcaa6c0b31e179c8c29f.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/6adadd6c93e36669ef55887394f371f9c981e2e3bc1d1e1b77a6138e57f440dd/bac63cfb1176459bd0b552d078fdc94220c7a247610d86f7eb015af37a1f2f58.mp4",
+        "reject": "safesora/6adadd6c93e36669ef55887394f371f9c981e2e3bc1d1e1b77a6138e57f440dd/5ac9ee095a3ad3ca81dd666d10daf2417a190b681d1552aa3ab30b67776ef2db.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/bd88bec1526a5c0a82321e48459410915970ee354dd65948636a38d7c988cbe9/e064c4e723157ef8bf610643cc6ec6566dd1bb637b1f7b3d997a09292a784c07.mp4",
+        "reject": "safesora/bd88bec1526a5c0a82321e48459410915970ee354dd65948636a38d7c988cbe9/8e1589387e39a77d758eae1f06e6292c2093dfc6d61585c64c1a91dbe1fde86e.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/982d23156a3161c476b0db26c508ce0681d311d83861aa0697daf81876dd1a1d/bc2de700f668993e8220d4ca6048dccaf08c8318adbf2adbec5146dc57454479.mp4",
+        "reject": "safesora/982d23156a3161c476b0db26c508ce0681d311d83861aa0697daf81876dd1a1d/98e7e1664f9302721011626c08c1a9ecb06cf638275f0e5371e5b9276d96b06d.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/9a48a714a03643494b22d40ab47ef7b4de6cf9d63647d2a4b8d139a4a582dcc8/dbd185e53144811c33aec07bac05988fd5e146adb342e5c2ceb05e0bbde05a4a.mp4",
+        "reject": "safesora/9a48a714a03643494b22d40ab47ef7b4de6cf9d63647d2a4b8d139a4a582dcc8/f9361d15f4f371f7c45027587d356b23ed6d02cdabc81ddca784da1669d10e23.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/6d0a59392eeb8ab8570c0f592c7af77dcac8886e3892f7cc5865d3b8a1595915/a9fcd763d3a76fc7af3e25878638fd2c4123e8c2f3f7caa350c73469e70c6e19.mp4",
+        "reject": "safesora/6d0a59392eeb8ab8570c0f592c7af77dcac8886e3892f7cc5865d3b8a1595915/6d43af38bc2b0bd120573299a72be07a50b0e549a449e62924106882f7ce12c1.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/29ac96249083be83a5491e256d4a2e1e264970e1db1fb955f58bacdfe3598638/5c32c91aea5eb778ae764badb907f3c67064f73b32abc0b675c39742cf96d011.mp4",
+        "reject": "safesora/29ac96249083be83a5491e256d4a2e1e264970e1db1fb955f58bacdfe3598638/30cc67882de0516c381956236b63cee18b5c55d30b4acc540f188f6394c3fe8c.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/6a079b5f2476a61a99820b9b80f9ff76a70d0992768ae90886e39cfadd70e729/08dbeaa543f5a8058c7b9ec069f9ce51a1b689f3feb2c2ba8c59b113a8e68daa.mp4",
+        "reject": "safesora/6a079b5f2476a61a99820b9b80f9ff76a70d0992768ae90886e39cfadd70e729/324a32fa9e595ff36bcf1615e44b0b7539514d16f5d1382626d2532cf0ebfd42.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/2f5a5de74f065ef76c2424a61fa9f733b52fd74df85af0c1a3a6f3ca7af1740f/4ddb3cbcb7d2830fadd3eab3cbac5609b2e94fb6a43f48e6d532b923409a2fa6.mp4",
+        "reject": "safesora/2f5a5de74f065ef76c2424a61fa9f733b52fd74df85af0c1a3a6f3ca7af1740f/f714156509f7e5eab7b5d021c49c952dc46278a231d40a591aff18696f7c487c.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/093c70e158c51a0d1412fd6e05b82018c5f06948892dfd6bca393c1e79e6daa2/fa6671b633ca06519a480462cfb74a41855400b52e5cc56382f7166024279828.mp4",
+        "reject": "safesora/093c70e158c51a0d1412fd6e05b82018c5f06948892dfd6bca393c1e79e6daa2/d28d3f8bdad1a1b307aa836292f5fb71f0f134f75db75d6d42e795712b6a1013.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/83657bf00b72fe81b3b6d57dfe96c0fbe8aebf7493a1188d2c28f39ffa742480/5bb8d3bf8ba7bb27b7bfc9df26844cc0ceca28a2774618f13a11b155b5c392cc.mp4",
+        "reject": "safesora/83657bf00b72fe81b3b6d57dfe96c0fbe8aebf7493a1188d2c28f39ffa742480/82627fa5edbace4ad7fce43513e33a361455eec2baf80108a52c7b1acd12b545.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/246a99f529022e9f693e6247b3fc27b4345233184a70bc60f72be2bf712df9b9/a1d47680a933e88c83df0dd67c49f241124f066fd7a4f7cad82732c4ea341abe.mp4",
+        "reject": "safesora/246a99f529022e9f693e6247b3fc27b4345233184a70bc60f72be2bf712df9b9/33993ad96ee4eff5589e6075796b6d630f1ca12a11c65e18c86faf528ed3177e.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/6cd44701925cbcca9c46f82a32d6965f584134656083116d6896c02ed77d269b/61ea4540edf11f65d106a3d60c9c59d402eb5d6b33cebf89e0dfa8a52c259da5.mp4",
+        "reject": "safesora/6cd44701925cbcca9c46f82a32d6965f584134656083116d6896c02ed77d269b/099195cea8045b833d7577aa4d2c268034e6e984b1aa06b4d2c00048482734be.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/50f6978a75eb17beaa160ed90c09f941deb300b5b10d91b5107c614cd4b28f5f/959711a11fd2c982601054084eaab74ef7f25d80e2e2a1aea80c3eff527a5d5d.mp4",
+        "reject": "safesora/50f6978a75eb17beaa160ed90c09f941deb300b5b10d91b5107c614cd4b28f5f/24f4f60b400851eca153f049a08bd49fef036bdcfffba54c2584c0caec96a1fa.mp4",
+        "better": [
+            "safety",
+            "cc"
+        ]
+    },
+    {
+        "chosen": "safesora/82eda97e12f959ddace85a59ab15fd8d78ac53e3420cfc51f2ad3c2e22a40080/2656a4b0195bce589d3ff1dbdd3186e6fc98c72b583ad1febe52c7b9ce72f87b.mp4",
+        "reject": "safesora/82eda97e12f959ddace85a59ab15fd8d78ac53e3420cfc51f2ad3c2e22a40080/8bf24e99be11dda3eea3bef081eb20833cec163166da84c793feed3a3c286d0a.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4920a8c4d25dbfcfd59c73f39eb398c8e640aa3429ac16ea6e753821c1d84b2e/bc0dafc1ee61b58280bfc403de9a919f45e151597a617de109489f025ced86e2.mp4",
+        "reject": "safesora/4920a8c4d25dbfcfd59c73f39eb398c8e640aa3429ac16ea6e753821c1d84b2e/f0f6a4260b504dad474a91ff15844f3587079832c73e6aac369f79a245cf765c.mp4",
+        "better": [
+            "safety",
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e4e565df2c99b7d6da1d78e8bd7a0d1ca82f517d67234def4c3dd90cbb642d36/3872ff8d93991d4ab46163f6edd386b3c332cb01271fc83f70529b3bf23f7df6.mp4",
+        "reject": "safesora/e4e565df2c99b7d6da1d78e8bd7a0d1ca82f517d67234def4c3dd90cbb642d36/2cdcd7ea943f8edb2ad821e2c530fdd0f60715616b8ea39298c8799466779f9c.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/42c03f37f7c99145f90c4e8499d6303165b89a9a53c14f08540e3e05ca26c532/afb14b9d89cc8981cbc20bd75b96c5a579e901a693833ad719404c6b984f96e1.mp4",
+        "reject": "safesora/42c03f37f7c99145f90c4e8499d6303165b89a9a53c14f08540e3e05ca26c532/a05d66aaa2fdab0b95c37567514d74b5f4bdaa446447b96d11a4febeeb4ef210.mp4",
+        "better": [
+            "safety",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_5955.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_5955.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_77.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_77.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_86.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_86.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_106.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_106.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_131.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_131.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_142.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_142.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_149.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_149.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_3242.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_3241.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_3273.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_3274.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_3283.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_3282.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_6005.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_6005.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_6008.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_6008.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_6025.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_6025.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_6036.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_6036.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_3235.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_3235.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_3484.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_3484.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_3493.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_3493.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_3495.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_3495.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_740.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_740.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_3519.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_3519.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_295.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_295.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_305.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_305.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_306.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_306.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_5977.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_5978.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_6009.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_6008.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_6303.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_6302.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_6311.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_6310.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_3357.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_3357.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image1_3366.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image0_3366.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_6223.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_6222.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "hpdbv2_videos/HPDv2_train_image0_6236.mp4",
+        "reject": "hpdbv2_videos/HPDv2_train_image1_6235.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/a437e635f6e89fc40caa25c5070aef8746a7060dbce2e81a8d77fbfac86479f5/e16deeabecb88b1219964c7f186b0b989bfd63a7a473335f20632fe4bb7a00a4.mp4",
+        "reject": "safesora/a437e635f6e89fc40caa25c5070aef8746a7060dbce2e81a8d77fbfac86479f5/38ca343443aa3be7da5d2581b9bb50dc2a4e9c722de2cf3cf6a78827f321914f.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/92b1424a547fd434b994c5da880ba51b17eaadf0c4ff04f780bd556e312aa837/3800046d0449d569013a8a8a433a99b123f33b4d19eb58b7be185a94d753a839.mp4",
+        "reject": "safesora/92b1424a547fd434b994c5da880ba51b17eaadf0c4ff04f780bd556e312aa837/fcbd9b5616959a66b9973434ad06e65a251dcd886330dfa3fd014756be39f7f3.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/faa928da12325b3ce58fe3e4fef15b154da5bdc511db8bf9a6895b8577ae5e73/4b0f5daea6c3d7449a80ea605ed0d0dd8e6accfd18db260bff938a4dc471464a.mp4",
+        "reject": "safesora/faa928da12325b3ce58fe3e4fef15b154da5bdc511db8bf9a6895b8577ae5e73/a91b6adc26a96e9382d0dd50069b183e8f32ba31dc39485c4696dbe17297ef97.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c588010210284b47574613721a5ea0e94ebbf8039814128d9de8a899532ffc67/d9c58eb281ef3eac69e576d10106dcd586e173b66fe2b306041f14e019ca72ea.mp4",
+        "reject": "safesora/c588010210284b47574613721a5ea0e94ebbf8039814128d9de8a899532ffc67/857054f7167d2a6c59ebe245cbd4ca70dd3ebfd8dc03edda45b726cffcfa3c50.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e17bfab3e04904129374cf81c62aeb9279508bb59f36b1896c3c8572f00a2f18/9e6be42c28e66d945df12a7d2d70f91b4a8bcee4c761859891b270a499d7857a.mp4",
+        "reject": "safesora/e17bfab3e04904129374cf81c62aeb9279508bb59f36b1896c3c8572f00a2f18/e0ead1acb6e6eb259ba40b62abb9adaeea433c1e7290d22c1f6ded9be731078a.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/70eca86101187f7a803324aa931a51c3058b6b2519f3e8b5c915d2df488264de/f120e7a3bfe5ef06a130c1bafde37c761251d7c10b2ab5cf49514a739dc75ecb.mp4",
+        "reject": "safesora/70eca86101187f7a803324aa931a51c3058b6b2519f3e8b5c915d2df488264de/866b53326a7d0f328493dd5f9746dea2ca2fd6bd1b1bdd7c8978ea31b9a205fc.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/3521ffe72df85798aa4bf389d69abbe9e9ceba13b37f3e7836ca5b2515429f80/7716aead25621e796d1087948f6a654efd46dcabb7201eb12006be2f499345a3.mp4",
+        "reject": "safesora/3521ffe72df85798aa4bf389d69abbe9e9ceba13b37f3e7836ca5b2515429f80/f8de82994f6676a5ba5003bb10c0cea8a3dcf8901dd9ef2329a4eb1fc86a8a7b.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d486e7d473e04423fa49fd1ea194a9244397fc8aeea31b3238dfef282acae748/3990a2d83f11010ddf088afa88cd61a4f2cadab70ce91d9a2853bf2ca246149a.mp4",
+        "reject": "safesora/d486e7d473e04423fa49fd1ea194a9244397fc8aeea31b3238dfef282acae748/6ccc368bc74e11876ea6d1fbb49923b92c10b035e5c6331c04c0b13c4864912f.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/0a97560953e3f01854912acdcd7240f212c765e2210eb2313a11310666f2fb80/604772a7d11c3cf17ecf922f54f24f164c59784666e5967b29308a48d6c21127.mp4",
+        "reject": "safesora/0a97560953e3f01854912acdcd7240f212c765e2210eb2313a11310666f2fb80/d88708b6c36c4fda2ebaf163e5c2177feb757f86b8bcfdf3ebd00180251e60c1.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/26fabcdab567f5b362928aafdd00ec097e39a3be6f1538f7f9a3022a3b23ee2b/62e91e67fa7d5d4c5b94f5301109bfcc6f2fea0d3e99addc902057e8c9e90926.mp4",
+        "reject": "safesora/26fabcdab567f5b362928aafdd00ec097e39a3be6f1538f7f9a3022a3b23ee2b/b271a2041f1ae73fe8ec1b7d40d6221cc354bb2df16600825fe50e23e354dbeb.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ea6dc3b689de2602eda2f423a846cf10c914006a7dbacda1f9b2af0d6de049f1/089d110f4486d27a4c7e9ce56833463a77f1eb92befe9a2f3bf365e1f083ae7b.mp4",
+        "reject": "safesora/ea6dc3b689de2602eda2f423a846cf10c914006a7dbacda1f9b2af0d6de049f1/31af2936223f85cbe81c3dd2e35b471c9c7dfa46156de1a88caa3cbef04bb1f4.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/b1e83aefcf07fc63a68148c813896c1f2ac65f972b479cf23755b7fb711f75d2/226a88f6fe997d4e07d06529ece6948bf104227182ceae0f136a784aba726cfe.mp4",
+        "reject": "safesora/b1e83aefcf07fc63a68148c813896c1f2ac65f972b479cf23755b7fb711f75d2/0dc6b4116c95d189bdee00d0c10f745cd7a35ae36407bd60e1215baa0a794ceb.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/59a42cb97ea7feaee7464807196c14eaaf06fd3eb85a723c443e6f6927054fab/0594f6e7603743f05613c3b5df0e0e340f168a67da8fff29ecff8f62deedb8c8.mp4",
+        "reject": "safesora/59a42cb97ea7feaee7464807196c14eaaf06fd3eb85a723c443e6f6927054fab/bbbcf171d78d95688ae26f506e53758236227b58ba82d71eedbbf29569ef0e50.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/7f09dd176617966cefcb173aaeab4d661eac49e473e02a79f1b62b5121125126/fdeec4ffa72ec211b70bd1c44eaf231103427c11db7baa012ec5c0c3973cfb36.mp4",
+        "reject": "safesora/7f09dd176617966cefcb173aaeab4d661eac49e473e02a79f1b62b5121125126/2f850d58eb1e5a98e285890d630433991cbe5667930d779846237626a7e924a5.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/7c8aff5b2daa7c9add6f2d28606fc55fa95eb36789759fd8e4815f4975e34b6a/e5b2e9a6ceec6b7749933b1403352d9bc90e3617a86c1239b9f94b71dc2647a5.mp4",
+        "reject": "safesora/7c8aff5b2daa7c9add6f2d28606fc55fa95eb36789759fd8e4815f4975e34b6a/9acc10ee9516926a217f5a74906a22b4160f4b3168bb59e9a469caf824782dc9.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c7713eb4ac2392c476cce552ce7d1be35f193c36f34b150631ac205be13a921a/721be26f9848fd222c01cc245ef26e6b74adaed49c498100cc1947ff99ee2fa7.mp4",
+        "reject": "safesora/c7713eb4ac2392c476cce552ce7d1be35f193c36f34b150631ac205be13a921a/116b6c8dd270c1c17b403fa0346d5c069fcc6db240359089d95567a0af93f875.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/57bab2b1e2b34f57b2f8252fbcab48976b99a4cc72d759468072844031ec50b3/adc073dd256c99509ded6f6f255e872f72d3372ced17ec93aec8681292510aa1.mp4",
+        "reject": "safesora/57bab2b1e2b34f57b2f8252fbcab48976b99a4cc72d759468072844031ec50b3/644561c800eb26ee498db26811f59c04aede41eec9e1ddbac38332282287e4ba.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e482a21f093141272c6e8600d1cfe2f8bdc9b696ca0484628ae15785a7c87318/0355610db56293b2a70f7718b9fff58e31726c086c995bdcfbc742f63a9ecc9d.mp4",
+        "reject": "safesora/e482a21f093141272c6e8600d1cfe2f8bdc9b696ca0484628ae15785a7c87318/254c87f2c99dfadebb3af5e8c6591496dbc45ae74efe03516c2ede5a521663f1.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/968246a8468934844184af91ea5194fdefad4af58498c659f1275254a93bd99b/8c3c4f123f4101aa673a89d5e61706bf06032c86df40153e008fbdd949ff27d2.mp4",
+        "reject": "safesora/968246a8468934844184af91ea5194fdefad4af58498c659f1275254a93bd99b/f9a5107b81eaae7af76bcb09454610469e63f9747c0faf6e06181c64af017fb6.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/fa1dc7a73fedc143ef5b1c74d2fafba0c1eaefe9da1b7e69ed93cedb34015e99/33ac3be2f2ee3bf4f00f2ffc7b9f57e20f05d7b2dcbe761a28d6a1ef53476c95.mp4",
+        "reject": "safesora/fa1dc7a73fedc143ef5b1c74d2fafba0c1eaefe9da1b7e69ed93cedb34015e99/d897dced19b893d3d59b52614f49bda47e56cc3530a52da0e2b064de68133c61.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/2edb620b1ab1e43a57acaef34b2f442b6fb4ec8d146b6663160d5fe37437e6e9/f83715034afc34952e8ec3e605e79d1415a2cad19b2bdf2aac61c086245e7aaf.mp4",
+        "reject": "safesora/2edb620b1ab1e43a57acaef34b2f442b6fb4ec8d146b6663160d5fe37437e6e9/1fcf358c1b3f0a7f6d9589a2d434cf7a81e1fad1f0cecda8fc39d964dccae215.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/9cd7b84be476410d37926d546f84a7a9d0ffd1ac1af9f0ecde1e2d591d1641e2/ac1292eed8fe77e01aaf4032dbbb89b05d2935b36c4ce5717f28a2017fc3cfcf.mp4",
+        "reject": "safesora/9cd7b84be476410d37926d546f84a7a9d0ffd1ac1af9f0ecde1e2d591d1641e2/9b286f56d0805202e8b892b360c797020ea47c8273ccda9c1017eece34cf2fcc.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/d35d6c2a0951c77e470edce4b1526c8a8fc9952f00ef10e258304d50770717d6/0c10c7ecd017bd9db956ef047e5aff6295f78e6ceeded9a1d865caf58ab82e97.mp4",
+        "reject": "safesora/d35d6c2a0951c77e470edce4b1526c8a8fc9952f00ef10e258304d50770717d6/07c8f3339fedb941812f16fb42a74e1ba583157377c2c837f92e1aa985931ed7.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/27785506305f90a70dc44a83700d5696ab856a95a9ddd5538ededaf4dc3be5a6/2a9788eae09f88cb27682574b7b8d0078c55e2c8fc3cf31cb360450e4e0cd3a9.mp4",
+        "reject": "safesora/27785506305f90a70dc44a83700d5696ab856a95a9ddd5538ededaf4dc3be5a6/12bc3cd8ac859e9d5f9cc98e2d5e4ca02af581a93513b995fa10852342ef8cdb.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/fe33c5222fc658eeb0775a40cba39ec264e3c1c3dc760b0a84bf8efcabde2465/568ec096bc2654a47475df8c5e3aff68fdcd7aec553dfd48b302f27659b24cca.mp4",
+        "reject": "safesora/fe33c5222fc658eeb0775a40cba39ec264e3c1c3dc760b0a84bf8efcabde2465/efc466dcb0cb4ee183cbd27001095164498deb9596a121471dea085c54f6b190.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/9f47c079e37a97a993853c5bf9d92b7b1e0f5f63ba76b20202e9b8f7e2e7652a/e4e17a5271200b41797ecb6311c2f97a912b6a58f3bb03045efbf9aa17d8be5a.mp4",
+        "reject": "safesora/9f47c079e37a97a993853c5bf9d92b7b1e0f5f63ba76b20202e9b8f7e2e7652a/fc7062fbfdb8311c01100dda84931c493a23845ad776ebde0d9640867194cd3f.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4fedd3d9939a1313f15f57da66976f40170b9bc97c38c87943022a7947db273e/971c75c18ebde68ccb4262f83e0cd21f33964dcfc5ff25efb4b4bda886f6c371.mp4",
+        "reject": "safesora/4fedd3d9939a1313f15f57da66976f40170b9bc97c38c87943022a7947db273e/d81a522436dfd581b2774b16df4dd25e1e415faa0ff8b390b246f76486d33e28.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c98f6ef0b637eff78f0ad40fef64c95f0ef1e9b58e8b9944fa210a1229255976/ea828b0576ce86d886d976a559d6f64c81cc9de677153b2605641efebd9bf23d.mp4",
+        "reject": "safesora/c98f6ef0b637eff78f0ad40fef64c95f0ef1e9b58e8b9944fa210a1229255976/519fe0aa41a5ff13248e2846c49af8f763b3b79504483529aa61c8d0bbcf5803.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/35049e3829aca2fa4e93b36dc37ba881c9acf6e21c455af19a74b4a8154ddeeb/6972b5981ec460e39136b263a28210706609f8908a75183b0dfe2a087dd0ea26.mp4",
+        "reject": "safesora/35049e3829aca2fa4e93b36dc37ba881c9acf6e21c455af19a74b4a8154ddeeb/6c7b1ed7142e125e7312269e53a44c43efda38cac9c4e8620927a87e74f31158.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ae5c58b28cb9dd3ca4704c3b360c00857ec535a583526b3334489bc92096bd1f/4fa99b12aaa9ad98083b5276bb9486e54bef185e9f672765eeeb681567a5fce0.mp4",
+        "reject": "safesora/ae5c58b28cb9dd3ca4704c3b360c00857ec535a583526b3334489bc92096bd1f/3496d0abf692385eb2ca981080ff94f57fb6d71d1940672ca182484f34380804.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/7b1afa2152b7f49d8d748f6d6cb40a2a96c51fdadb2aef3a2a26b1f30018488f/d085bfc4e26302a7f3af13ad34f7328a264f301f1438d90c5732b454a16a8062.mp4",
+        "reject": "safesora/7b1afa2152b7f49d8d748f6d6cb40a2a96c51fdadb2aef3a2a26b1f30018488f/e110fe6f5e072dd36a84c3737fa9663b467c20e1267b0242c27ebe06cd105dfe.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/fb7eb346db8067d51028ea045bd238d4b61471e7de1d1a64465f68b784dddffb/f6343584617de670085b91da0165e7cccbe77f16531ae00450c8ade9234b2cc9.mp4",
+        "reject": "safesora/fb7eb346db8067d51028ea045bd238d4b61471e7de1d1a64465f68b784dddffb/bc40ed1a2ccc10d133174c5fa1926da7d43d6e125e0851f2a5d2058a557aee56.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/53c1b2144d307caeccadd44808b519e72d6294448bf748b616762baf6e61a0b5/644f521c64f0e212123376f2847244f89d5db0c36dc015bbf6c60f8fd1a26c98.mp4",
+        "reject": "safesora/53c1b2144d307caeccadd44808b519e72d6294448bf748b616762baf6e61a0b5/a975ac7c39dce8223697216c88c6cc79e5c92cd63d7697544654f8361c4b479d.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/9343b5d859aa7e7f83ef5704d654b1540193f55eb83add62e0b9425f5b288bc9/e12e8ea636ad99f6e2a46266b25f1aaf47935a2aa349c4017e05ab56678b6473.mp4",
+        "reject": "safesora/9343b5d859aa7e7f83ef5704d654b1540193f55eb83add62e0b9425f5b288bc9/0a0e77bfb248d76b698ffdaa6710c72a375e629d8c742818e68a72a2a18117ce.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/127bee7d7b6953b487f22d4bef8841bad5265b26a8b9282341c36242b33a926e/245820f47e11ac3ae06edc976a49139f3df8fb1843d6d2c75b18e531ae9d7ed2.mp4",
+        "reject": "safesora/127bee7d7b6953b487f22d4bef8841bad5265b26a8b9282341c36242b33a926e/6826b0187a2b2b0c6493591c99948f2ec6f145d29346b7256eb20d5f52bb4dbd.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c871f48b1ede3178de870c362689099fa550bae19b881963b8e3bf354da34575/d48993122752473ddaacb7ad48bfb3cc0adb2e8a1434fe1ce4c735b6392e4b42.mp4",
+        "reject": "safesora/c871f48b1ede3178de870c362689099fa550bae19b881963b8e3bf354da34575/fd92c4376cec25d3d36771d990b8f78f7951c51278f6af1a495d0268b6c52f36.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c03235e1bc0593c72abf9f8c58163a008b62bdafc45070d916231361e22e760e/c45803f8a3aee5593dcf6eac5cddba1572c11eaf6a4c739228615bd47135b9d4.mp4",
+        "reject": "safesora/c03235e1bc0593c72abf9f8c58163a008b62bdafc45070d916231361e22e760e/9f242173bd210a2ae8890d1f8e77b82414da9679bf515db8965ef2bcb90aaa68.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/bf6232a778e10f3b1d348d8dbfcfbea0ead73e4112a0e60e529736ba18793618/e916989d7c4ecd4bc4dcbdc97c3358d5a5aacffcb042aaf8534ea8c2b4554ae6.mp4",
+        "reject": "safesora/bf6232a778e10f3b1d348d8dbfcfbea0ead73e4112a0e60e529736ba18793618/7153290dae21f5a6a09d32886978caab773b7bc8055ee97bbd768f67fc454ea5.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/fb00edb9020fda4ee4c4ba0bba93168e9a565ba52511fe8ae91039ff29e1aa57/4111bfc4cc0f5363a1c174e3e281f375607c44e899cc0345745669270021ef36.mp4",
+        "reject": "safesora/fb00edb9020fda4ee4c4ba0bba93168e9a565ba52511fe8ae91039ff29e1aa57/a2a0c256587b37652f181f57c2e624ef1ab4d1635303c4efa76aa6c02cb44c61.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4ac9117c017dfc9530de95fd929063e1c6c2b1341588de8b4bb7afe1ca54b71f/522fe672767a58a4d82871f2473dbc431059d3baeb86551b408b94ecfb045345.mp4",
+        "reject": "safesora/4ac9117c017dfc9530de95fd929063e1c6c2b1341588de8b4bb7afe1ca54b71f/272dd8d3c680426a160dfda2d2bc45438f3474f1fa296eed8477d50a2a4f8112.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e6139e0ca8ca74109bacc65f36af0e06908d48b155a6ca9f865b961e0998b42c/875ea0ad47389e35c9bd49d0a074350ec5d2ff181cf7d076f962f8078774a78f.mp4",
+        "reject": "safesora/e6139e0ca8ca74109bacc65f36af0e06908d48b155a6ca9f865b961e0998b42c/e32afc35489993684c329fe3460bd007b9468ec0888490b53e666ef253621459.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/141460d4e46f6db644003924eea1368118a23c0b352fcfa4a0169b44a34cba13/df49c4248909812dfafe1f1413be1b4ed2d2c0349c05773bacf63800c65e29e2.mp4",
+        "reject": "safesora/141460d4e46f6db644003924eea1368118a23c0b352fcfa4a0169b44a34cba13/d05aec8809452ba26de643c6c51f2b84a0be1c4002b65f7eba7f74869b447249.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e2e7df4212a499c3f3ac0be8072b3b94e1bd33e4623123f0038d90b58e157ea0/d0c7169215421b927255b25c4863c63c4d83daae1736e55f8b0085e15aed285d.mp4",
+        "reject": "safesora/e2e7df4212a499c3f3ac0be8072b3b94e1bd33e4623123f0038d90b58e157ea0/c10a4d8bcb7c665dd608459fc1aa48cde044063861ef7c2e0aa1ddc487144f9f.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/2ddb283651bb35a2ec26250e03a97d23f39dc1cbaa575ea3b179f409e36fcc97/857c32fbfa34997cb91f717fc431607662f3d604fdac77709efeadf8624b2ba5.mp4",
+        "reject": "safesora/2ddb283651bb35a2ec26250e03a97d23f39dc1cbaa575ea3b179f409e36fcc97/5977b40182380bdbd276f7bd6a002ce04dc9406f9ac35638cd2e34dca914c1cb.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f509e2a68a77144bcdcd23efc3c6dc42cda58cb4f90b5cb2e24ad1f32bcf2b0d/651be50111e3bf49f4c2028567d628f727c5f593472f53980d9645ccc5fb327d.mp4",
+        "reject": "safesora/f509e2a68a77144bcdcd23efc3c6dc42cda58cb4f90b5cb2e24ad1f32bcf2b0d/144c41a7503eedb499702dd88b11e6c65181621392fb19a538dc6bbb33b53127.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4bce1cd58d991b4dbd6e59592fae58ad1c1850958fb837b5b21e5793ea269a42/a587d41f9cf918e34faab826b5e2cab1bb5382b8f439aff90b16baa8f3577fcf.mp4",
+        "reject": "safesora/4bce1cd58d991b4dbd6e59592fae58ad1c1850958fb837b5b21e5793ea269a42/ca6ac13935138aab5d87bca677a6dcb908c890f984b86897e8cd47a419ac6580.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/3b3f4471eb5a8e0f079e426d45778f0f420d8d371dfad8a78f462359c484757d/3ac41936f674cdafda2633d153ae83a6a03c55cd0cbb25c85ad3ecf99e4dc0f4.mp4",
+        "reject": "safesora/3b3f4471eb5a8e0f079e426d45778f0f420d8d371dfad8a78f462359c484757d/5c0476bb4e529e104c16e659ac5c9460efb105514015317f9a2738dd6f814b43.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/a34644de7f8943bf3079070168f3f55e36e24b49b26dffc846813316a66a0b7c/7da86b01a0c5cbc9ef6910523a6ed50e2d0abfe9b6a2ee9bd92d456009b2e1e3.mp4",
+        "reject": "safesora/a34644de7f8943bf3079070168f3f55e36e24b49b26dffc846813316a66a0b7c/fd897bcb437a5b62b783eae18ae812783ce26a5992a8d5369e90d2c44fac6981.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ea2808a897528b9d83d57e8af1ca7d3402abccaa6e53533b4240469e080b37a2/cef323866d67e7290be84c8c8230a69f4f6d96feff6ddbd31e500260dbd807bb.mp4",
+        "reject": "safesora/ea2808a897528b9d83d57e8af1ca7d3402abccaa6e53533b4240469e080b37a2/ec9e980f9f9543bc5dbe81de7b9a864d8a704c17b34c0dc8c29aeee169043138.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/b2da3e0525853332649eea2cbab6879b27348ee8fb582ce2618d21dfaa435741/a6d4b75f489eac8f5046c9f3e8edad2c6b6b6228a190d9ef0d30b03f3c767bda.mp4",
+        "reject": "safesora/b2da3e0525853332649eea2cbab6879b27348ee8fb582ce2618d21dfaa435741/78ed02c9675af2b374fb39d60ac9ed880b63528977a77c78b81c0347e30bfadd.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/90c65f8a1dd4016df50d6e23599b754116ad7fb32eed690d514d93ee1e082561/88e1dda39cd0b330064c800d4d3ae7909fe1b9318472e5d99465ea0fe199fbdb.mp4",
+        "reject": "safesora/90c65f8a1dd4016df50d6e23599b754116ad7fb32eed690d514d93ee1e082561/2a32fcd5c556ea1421a301b095ae30361b0706705adcd4de6f3776996f1e1da6.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/482977744d3b2ca57d991554587a935325e5231a0c994ff7698c3d6dde6a7909/b57fe60480936980aa5e035356b48867caba48f5a7331903c25d9003ca44a032.mp4",
+        "reject": "safesora/482977744d3b2ca57d991554587a935325e5231a0c994ff7698c3d6dde6a7909/ce8908b552f98669885a4b9b610d90517b87dbd191d27a35beb3df7697192eae.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/96104ae57a6a092cfb5ad2a1602a18a4cacb96a0c31c40f4264ab4ffbb3ef663/bdfd13da2af185b0d79acee6bd8c3af184ae4a32eec720b5bd2e06a4e7e43d95.mp4",
+        "reject": "safesora/96104ae57a6a092cfb5ad2a1602a18a4cacb96a0c31c40f4264ab4ffbb3ef663/9af3f80558d56274a663ba2fb7175f9a3212329eab80f340c3d76f63a85eba63.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/b9fde988e5012f7b8f7b8a421118645f82cecb1c4539b3ad82e81c634c11600e/7903b0dac395bce11db4dc8513da4970d2ae812a4ee13525bc37217ca2a457f5.mp4",
+        "reject": "safesora/b9fde988e5012f7b8f7b8a421118645f82cecb1c4539b3ad82e81c634c11600e/a55ddf0d39736e953614eda937dd7f505654d33f02f54fabaf48832a7661eeac.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ae5082489d55e54d9cfe86f7dc3b0828f819b5174af65fa7d7e852ee955b98c6/7cc7f50f1fece7a0a69f7901630e148c528da604869954a0e705b1406b2a3834.mp4",
+        "reject": "safesora/ae5082489d55e54d9cfe86f7dc3b0828f819b5174af65fa7d7e852ee955b98c6/8eb97f223e664d169c163136c36039631e65a1a7e48d1007d9cce0179132f6ef.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f408b4a67a1c54700443b9e64cae34b66626c0ea3257ed9222823dc6700ee36d/5540246f0a35e4424c69d76cc2429c9592572f8f4e0e86d5c894bde7e390b47c.mp4",
+        "reject": "safesora/f408b4a67a1c54700443b9e64cae34b66626c0ea3257ed9222823dc6700ee36d/fc29ae3f100ed52186f6c074f89adaf7cfee775a0ec98f18e92f43c85596d6a7.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/db6f45d3bab2845d741f3bec4a161b16de2c27e9c36730029c8bcd3776db9f72/609bd5e9d99adc7028657caddd80a76c07408fb096e3f72921faf464b579a71e.mp4",
+        "reject": "safesora/db6f45d3bab2845d741f3bec4a161b16de2c27e9c36730029c8bcd3776db9f72/c10a2372607b6bc8808d662cffff140a49e5b9249e1f92c05ce3a436e8903181.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/8110e2733837af3c279c7e6c74e9d468b2612a576c887f3e76d5cbc7b850a367/c2e0154ec8f59e096371d609898473b4a69055cec3a99ad8afdbac9eed8d36b7.mp4",
+        "reject": "safesora/8110e2733837af3c279c7e6c74e9d468b2612a576c887f3e76d5cbc7b850a367/5e76c72deb9e475f25bcaef89501b0f91bfb52d8d3b5477bc6ae8b8bbab4109a.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/df39e8e4f5e72f9da0da374d7fe3bc8966df258948805fb0fff71eb63b5de644/7cad09af894af00ede2d8020d5fce165c6570e15e8e0f56790f85d81c28b9a96.mp4",
+        "reject": "safesora/df39e8e4f5e72f9da0da374d7fe3bc8966df258948805fb0fff71eb63b5de644/ea33d9085e792fe750575d05962dee7a1434003cf755dffc13d98652f1ed6c7a.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f2b5382e309f958b9692fb01cb041746f67d44a7984ffeae5aeb488e3d061751/cf632cae646e866c410e8b0253c47240d73e5eba3784082dceb2b15de182f3e7.mp4",
+        "reject": "safesora/f2b5382e309f958b9692fb01cb041746f67d44a7984ffeae5aeb488e3d061751/9387a8d0bf065299d988280bbcbceeff80dc770b51a7b91df13782e218837e01.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/42b80d94c5e0213cd786603d7cc9e3dba5a6b7b8cf01d46626d4c07faa63a17f/7f7f410763880930b662b0dda74a7285f7ca7e4a085ae97c005b237a89ae5712.mp4",
+        "reject": "safesora/42b80d94c5e0213cd786603d7cc9e3dba5a6b7b8cf01d46626d4c07faa63a17f/c32a935f1446f9a985523e646ae2935ea16a72f7d241674ec7085474a05b6550.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c3d5f09709c074c50a9f47f896ca9ca4c15040a6db40851070ed2c6ea224b8d0/5594cbc408d2d9df7a7f58fe2fdfae5a8d5e892ad57c8cf78e42ec61c70d6174.mp4",
+        "reject": "safesora/c3d5f09709c074c50a9f47f896ca9ca4c15040a6db40851070ed2c6ea224b8d0/94f3487cae9fe58b821e3d2993fbfc1dd7abfe66d995ccdc3b978dc3d3ec2ba9.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/98ed86c8cdaaf60477cba9d2ce4da3580e434b0bceb5ac75f59e54b42f581ab5/16e9f6f3cd8b6ac72a90b7c489db44eb81a3852a8ad8b50717f4f287b3c5635e.mp4",
+        "reject": "safesora/98ed86c8cdaaf60477cba9d2ce4da3580e434b0bceb5ac75f59e54b42f581ab5/c79dd850dbbb4295243621834c0ea407a3942df8029727290c6fbf2dddf4ddb2.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/aa4ee5540b2cd40134ec2a6adde99cbe9016fef7cd37480d8445e09efdd15b5a/c5c73eccf3feaea597bfd668cac7813f60e312259ab4a532f741f3e4282af12a.mp4",
+        "reject": "safesora/aa4ee5540b2cd40134ec2a6adde99cbe9016fef7cd37480d8445e09efdd15b5a/81d8f04444a5ec1edeb7c0eb8e9b2fb86cc1f15885aa3aa47d156f22f98daf75.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/29f3bc1cb86a28fff31650f3a38f197a54af6e5e8db6cd8856e21b2cd8141343/c2bc7301aa95427f6466990d8f1447130dcf9ec957c8c2f1d476132161b3f821.mp4",
+        "reject": "safesora/29f3bc1cb86a28fff31650f3a38f197a54af6e5e8db6cd8856e21b2cd8141343/8eb5b90b270302e5a5b08b3d19ba5bc44681c9d81c15bc5475e965d71b678992.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/9ee212a45d3c625152e05e3bdb3e41d1c4ad20ab8f32efce7afadad177066b05/940351ba381bb1838047c058f51bbcd6d13e2ad43813686377610c9a756997bc.mp4",
+        "reject": "safesora/9ee212a45d3c625152e05e3bdb3e41d1c4ad20ab8f32efce7afadad177066b05/82f39daa7e9c472b1e1845573b5edc3836c6dcd9d0168e80e50d0c07edcb50dd.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5fbbc898669888246f8dfe0650a776b92a9cdab737f4597c26f5919fa5c7b76c/838325cb15e300af8a624a795e6ca6c372710e626b5e4c6779982a5f72365d6c.mp4",
+        "reject": "safesora/5fbbc898669888246f8dfe0650a776b92a9cdab737f4597c26f5919fa5c7b76c/c46259bfecf0b63f3ab4454d76402aa585d23548134f62cdeff42589cb03daff.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5183b7b788c1db34210d875aad6a5bf84050491921c5501596abb0a60a6bf7e9/18e34cbf46b27bde30a463e110d1f2139110d481458279ec24e645e2de2bdac6.mp4",
+        "reject": "safesora/5183b7b788c1db34210d875aad6a5bf84050491921c5501596abb0a60a6bf7e9/e30dd9847a4db2f98ddef1620cd60c2a109c8e7bfd852818e648b4ea96149104.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5afae341040693f34aef7e10acdb60620c91d26468bc2980f58c853f8ed35401/14cd7f0c8dcd9e03379f72ed9ec59728c6dbc3780e5ef6afdec5ef6c96a11812.mp4",
+        "reject": "safesora/5afae341040693f34aef7e10acdb60620c91d26468bc2980f58c853f8ed35401/bb8956e8beee07b130f8492fce631569f36680b7c81d8b9ad2491f9746a60d20.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/a3f532b598a606dc9f0944d5f09056f36ba1082612e84e4c6410c4fa0f75c92d/c0a8fbd09e95097420fdf668e06b1e059c501c3825447ea709fa599a2fc99a7d.mp4",
+        "reject": "safesora/a3f532b598a606dc9f0944d5f09056f36ba1082612e84e4c6410c4fa0f75c92d/c475ba9b3db760c8d5e9e898a6e22fc4feb73d4fd42e2247f357655dbba37b43.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/bdf07ce4164df0e45b55dea486b619c5b59558c167989daa731591f8af9cd2cf/dd56ed63d33f861eb05461aeb1ebf2b41fcbcde1e102de4ddb206f1f58bf5c19.mp4",
+        "reject": "safesora/bdf07ce4164df0e45b55dea486b619c5b59558c167989daa731591f8af9cd2cf/88adb549112f0adfc83eb023f5e4652b5b9e11a7d7c7de3ff7120edc5dbec14c.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/a9802ee029d95f3b603c4ae5a804f179de6a1f024edf7e6aec5768ff5db3e75e/756e1196e288c17f8a72a210114f5a910fba72c9cc788322dbcd47bb914d4159.mp4",
+        "reject": "safesora/a9802ee029d95f3b603c4ae5a804f179de6a1f024edf7e6aec5768ff5db3e75e/adb4305521abed872819a1280c664a142c37ef63c01021353fdecba934a38f04.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/eee8baa051f13b33603a38021990ed99960e2a7c97233b1d5e7ca6df9749edbb/544b92f611ea6433f179230ebfa930e7c93fa838c9f5ebf2c3647366e007f41c.mp4",
+        "reject": "safesora/eee8baa051f13b33603a38021990ed99960e2a7c97233b1d5e7ca6df9749edbb/58840b9f7331b58ebc5031eaace0a3a83036ed7d9bd47800437f93d5bead338b.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/05d07ca88f4fa54c4b6d5b0adbcf7a898303524d375802059c693202eef0d463/3e3fcb50a130b1f069500787ac4514bd32966ad835e7c63fd71494fe1d99e25a.mp4",
+        "reject": "safesora/05d07ca88f4fa54c4b6d5b0adbcf7a898303524d375802059c693202eef0d463/e47140699ba7bc5a4b1da99340115f1fefabed6741947138993980ae83951c8f.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/686ccc9eec5a621c33a11f06198adabb318020acc8a5fa0032659b6ae5787026/fc39b64140aa91f6300878a5ed2a65bb0c8614980914b6bc6f9a693a4b27fe9d.mp4",
+        "reject": "safesora/686ccc9eec5a621c33a11f06198adabb318020acc8a5fa0032659b6ae5787026/85a98547b42f5d5038958ddb415f5d18d93957ecd79e36df0be6ccf52a2225c3.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/c555e6d054116eeed69c0e813f8093e9b471cf3b69cd0943fd480ac3f6b3196a/a36bfc7a404940b3c825d96608864d13bcf0b050ec2fd8c6834b618a0031e334.mp4",
+        "reject": "safesora/c555e6d054116eeed69c0e813f8093e9b471cf3b69cd0943fd480ac3f6b3196a/50a6f3c550d9ce2c444653bfe33bdf76ca6ca6405c41665022f5d89d6334ed7a.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/de01be17f249d48b7c035911d3c4deb8be5bfbcf7c10ef7c44f245f7044031dc/64c076883b3fe5efecc8f73a0f8bdfd74b3b9d1ae95770f049ff3af3386eb6e7.mp4",
+        "reject": "safesora/de01be17f249d48b7c035911d3c4deb8be5bfbcf7c10ef7c44f245f7044031dc/d37ef19f84c31ad0b4526fef845ea3e99b4da4f72cedb090fdaf9edc8b6c88c4.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/791e52706135dd17743b3ae6935f85fa1878832b32b15c45cec05e1bdaa74eb5/3d2f0a48a26ed605ad0dcff84aa546d787cd6bb6a36b0bf237807e328869f8e7.mp4",
+        "reject": "safesora/791e52706135dd17743b3ae6935f85fa1878832b32b15c45cec05e1bdaa74eb5/825955de42c860ac71e11a6db60d9d3c661ad92712d75fa33ac6345cdb2217c4.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/8c78ab0baecf674af0912e5bc1d1c8a1d09994fa0756c6b74b71eb03a9978b70/80c2edb5df23345a8bff158474b291ed769df571328d67962e68f8096397c961.mp4",
+        "reject": "safesora/8c78ab0baecf674af0912e5bc1d1c8a1d09994fa0756c6b74b71eb03a9978b70/6e0541102ef6a1f4c526150c0dd2ed0f04296ed763bc0b5aad82593b85fb2eb6.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4e75d8989d205f15173e70623a95d85b42384dacd2ca75a8f40a3635ff6c6421/866a65c3f4319730f512eb1b6f32c9530cf94b6160d6fa8fdb63ceaa5322caaa.mp4",
+        "reject": "safesora/4e75d8989d205f15173e70623a95d85b42384dacd2ca75a8f40a3635ff6c6421/f987701376d64e9ab29a982702c6c87348d78d86f2dc805b891c9023022c2840.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/5d4248389d898e6b3dcb58ebd97a0bc787aff73ca34b7665e284f643e954e660/b31080408ac7d10c9b124ee8e12e5d7d1d26dc7aca98b0afb00e502101e2e6c9.mp4",
+        "reject": "safesora/5d4248389d898e6b3dcb58ebd97a0bc787aff73ca34b7665e284f643e954e660/4c7bb2a34dd45333070dbe02849a7cbf31d21732122821d7102a6762362725f7.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/83e396b058097125df83cf7124debc761ae03e55ff63109596d01ec3b7b7fcd0/abe54b8ddcee80b1f7c745d9a0b6592bed356e82be519c00472b21622ada13d6.mp4",
+        "reject": "safesora/83e396b058097125df83cf7124debc761ae03e55ff63109596d01ec3b7b7fcd0/bc706bcf30f046acea722467a24bac921e6606150d69a288d4d9fbae400b49dd.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/fdba3ec7991e16f25e4afd24504fb65729c3c9a352c899eed7f36377654d7cc4/6dfab635b7310747347c8d860e243655356d069b17413e1d8b26a6dfc09e3dbf.mp4",
+        "reject": "safesora/fdba3ec7991e16f25e4afd24504fb65729c3c9a352c899eed7f36377654d7cc4/59b67ffcc9b0d8606773d891a9c826c08608bf10c3de93881dafe20bff6f1b8c.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/f380b8d6c7bfed00c5a401455402ec959a4b1c3f9578938ed3071cbe86c507e5/f7105bb2410254bdd898dba8a4d120bea9b151a7681c6f0c9bdc3c6edd769d30.mp4",
+        "reject": "safesora/f380b8d6c7bfed00c5a401455402ec959a4b1c3f9578938ed3071cbe86c507e5/2855051159d4b6aa883f9c71cbaabddfd012105054a04ae60cf134976e359af7.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/008a494b707c07c3a7fac03564d11c7cab578d60c32e7ce0c08a78726ae68ff4/43fac886184812771972b0d495b1fb89264e6c667d8eb8ffadb22e06a61f4da5.mp4",
+        "reject": "safesora/008a494b707c07c3a7fac03564d11c7cab578d60c32e7ce0c08a78726ae68ff4/c96f505ede1fe754f20ecf7ecebea94070052c2584cf3248ac43054000a67fb9.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/383ad1855b4bfd15f9063e9142e438631d5189dda16396ac4c66f20a9098df64/0c9f569042d32115b181190f9c34b05bc74a758630f60aa40b71eac77aad35bc.mp4",
+        "reject": "safesora/383ad1855b4bfd15f9063e9142e438631d5189dda16396ac4c66f20a9098df64/b699cdf1f0722ab75de1e789640a0b07d16f140604ad3318ba16421a08af42a4.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/769d612e78a07e9d49fa972c24825d5e3e3929d5080aa8c570a51f96e7f053ed/8167651f117fc632a91bffe7a40676b775f0558b3ec8b4c20bb36379daeae7f9.mp4",
+        "reject": "safesora/769d612e78a07e9d49fa972c24825d5e3e3929d5080aa8c570a51f96e7f053ed/3b323c4ddcc236715e26687a215f1df3a41c52c912c18c87f846073b3f7f407d.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/b5b2a929da147e720f0cd04eea2f9cd8ab8b904db455b130b7de188fe8af54e0/508a7fe93d0d9ed2414dec989a7eee3608d97a73bb72a7b34e036c988e64f5d0.mp4",
+        "reject": "safesora/b5b2a929da147e720f0cd04eea2f9cd8ab8b904db455b130b7de188fe8af54e0/e61647e045e53cf541daa1dc5b243392789d288d5c89b3a152e8ae822e58ee2a.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/58e6094095cf3e2788817d4c098a366c143a1d9beae73eb6b51c33bae80846ca/33bddcc8e6f764b527fda01c63546b459cff11b5ec664facfbc50a5b6ac6336a.mp4",
+        "reject": "safesora/58e6094095cf3e2788817d4c098a366c143a1d9beae73eb6b51c33bae80846ca/088a08565df41cbac1deb4df8eee83e7843e637eab65361d2c32240ec54b68ce.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e38cc25de71569a52b866db3c70eef9eef0e72ce44c9416f8b887fe036ae8956/f4b794ce474333e36665277f917d872df55565b78ea007dbec0cfbbdc3d8ed09.mp4",
+        "reject": "safesora/e38cc25de71569a52b866db3c70eef9eef0e72ce44c9416f8b887fe036ae8956/6ccbfa347eca5576c3432c4cc13f73f45745ccc088aef9ee81d1e8a3967e6b85.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/4841b3f4b32befb93c17334ef45c2bc092aa3b94ac528ee7af2890dbd0a80f2f/09eb6ac5ab4dedbbc4872fa9477ffd17d0b4e4bc06f623f0257125c368f9b8d0.mp4",
+        "reject": "safesora/4841b3f4b32befb93c17334ef45c2bc092aa3b94ac528ee7af2890dbd0a80f2f/cd1e35c1ddfbdc1a1b36a12fd0fbbff02c2d524f90f10a43dcbc41c03ea816c9.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/1a8ed422768baf34e1ef587f9b6f370b5fddb6f91ade295b97cbc067d963a5d1/673dfbd310b3f7aaf54193e50aac9521206d86339c3de4aacccacbc75c9da610.mp4",
+        "reject": "safesora/1a8ed422768baf34e1ef587f9b6f370b5fddb6f91ade295b97cbc067d963a5d1/b7fea6d35ba751e6dcea34d6fa5bc42eb0d4e22b86190f73abe0573d1437494a.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/ab0932d86ebd57f7bc73f78b73a1aa6e4d7d94de1babb200fb3e91c0f99b0b62/ad7a28a2897295f31f0da73b494572f230b0271934d2fad074b56ad735c72290.mp4",
+        "reject": "safesora/ab0932d86ebd57f7bc73f78b73a1aa6e4d7d94de1babb200fb3e91c0f99b0b62/66ea1bc5b173cd63f69b674c361748c6dc93c68ddcd64edeaca6f807890418d8.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/374cc0e6ce5a8384304d45d8ac4d495cba03467ab36fee6f63cec3c47b0c8037/cc9306e3a0b4b6549132c46d3f96ea4c59319def45bf0bb890c34029a7ba4bda.mp4",
+        "reject": "safesora/374cc0e6ce5a8384304d45d8ac4d495cba03467ab36fee6f63cec3c47b0c8037/9ef578826553397e8db476d0ea569ea4a9fee54c3edeacc495fd5fbbcb3bd85f.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/e11c3e0059c9d4f7bf150554d7b25c4b4cd1e5a8c64d77c1d9734fe0a39de837/0455df967c84bc738af5d2dec9575bb1580e2494918103b7f6b2d9dd88a7711e.mp4",
+        "reject": "safesora/e11c3e0059c9d4f7bf150554d7b25c4b4cd1e5a8c64d77c1d9734fe0a39de837/9f15305d062901edb3ae84612265950588d5bd61e32afa76cb0c43c4b4900c22.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/05f8f04d00aaddca6145c41858ac00710d16c6b1ee31ac9480ad9ad7f18bd88c/3f01f7999cbdebaeffdfb9ac3bfe28168cda056dc5bb4e23519a06d0a98407f4.mp4",
+        "reject": "safesora/05f8f04d00aaddca6145c41858ac00710d16c6b1ee31ac9480ad9ad7f18bd88c/c055e733191d4fc0406ef6d759aee09978d76f8dfb68367cdbaf6aef9ed107e7.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/6bd527fc25be54fe54c38cc5b66f7d3b4fc155bba6f3e87ef7f35fd333a64b46/c4272ef0751215416ef271602d10224472c7fb8dd54f92dd87c915cb01202187.mp4",
+        "reject": "safesora/6bd527fc25be54fe54c38cc5b66f7d3b4fc155bba6f3e87ef7f35fd333a64b46/e16a4ea5909427f0fd6e26ce9d0acc149af9f0239a64e334d7b387de2350b70b.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    },
+    {
+        "chosen": "safesora/340ae342145bf0c4cc9848dc40fcea36ad6e7c62e093dee3b0be71eae063ae85/6c3377681bbcc291f9ea8c9782ef8c43ddc66f36c6d5710f846af2534648e07a.mp4",
+        "reject": "safesora/340ae342145bf0c4cc9848dc40fcea36ad6e7c62e093dee3b0be71eae063ae85/d0e2f79edfdef0b676b1615384a1df82a1f523027e090fa2d1650a1efe97dce2.mp4",
+        "better": [
+            "cc",
+            "quality"
+        ]
+    }
+]
