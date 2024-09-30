@@ -69,10 +69,9 @@ class MJ_VIDEO:
         if len(force_keys) > 0:
             return force_keys
         experts = []
-        print(router_response)
         response_result = convert_to_json_format(router_response)
         for key in response_result.keys():
-            if response_result["key"] == "yes":
+            if response_result[key] == "yes":
                experts.append(key)
         return experts
     
