@@ -84,7 +84,7 @@ def load_multiple_videos(video_paths, num_segments=8):
     return pixel_values_list, num_patches_lists
 
 
-def generate(dtype, model, video_paths, template, prompt):
+def generate(dtype, model, video_paths, template, prompt, tokenizer):
     # 加载多个视频
     pixel_values_list, num_patches_lists = load_multiple_videos(video_paths, num_segments=8)
 
@@ -147,7 +147,7 @@ class MJ_VIDEO:
         template = self.prompt_list["router"]
         if self.config["inference_type"] == "low_cost":
             self.router = PeftModel.from_pretrained(self.base_model, config["router_path"]).eval()
-        response = generate(self.dtype, self.router, video_paths, template, prompt)
+        response = generate(self.dtype, self.router, video_paths, template, prompt, self.tokenizer)
 
 
 if __name__ == "__main__":
