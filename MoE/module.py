@@ -18,6 +18,8 @@ from swift.llm import (
     get_model_tokenizer, get_template, inference,
     get_default_template_type, inference_stream
 )
+from swift.tuners import Swift
+from swift.llm.tuners import prepare_model
 from swift.utils import seed_everything
 
 
@@ -39,21 +41,21 @@ class MJ_VIDEO:
         self.inference_type = config["inference_type"]
         if config["inference_type"] == "high_speed":
             # define router
-            self.router, _ = get_model_tokenizer(config["router_path"], self.dtype,
-                                       model_kwargs={'device_map': 'auto'})
+            self.router = Swift.from_pretrained(
+                      self.base_model, config["router_path"], "router", inference_mode=True)
             self.router.generation_config.max_new_tokens = 1024
             # define experts
             self.expert_group = {}
             for key in config["experts"].keys():
-                self.expert_group[key], _ = get_model_tokenizer(config["experts"][key], self.dtype,
-                                       model_kwargs={'device_map': 'auto'})
+                self.expert_group[key] = Swift.from_pretrained(
+                      self.base_model, config["experts"][key], key, inference_mode=True)
                 self.expert_group[key].generation_config.max_new_tokens = 1024
 
     def router_choice(self, video_paths, prompt):
         router_template = self.prompt_list["router"]
         if self.config["inference_type"] == "low_cost":
-            self.router, _ = get_model_tokenizer(config["router_path"], self.dtype,
-                                       model_kwargs={'device_map': 'auto'})
+            self.router = Swift.from_pretrained(
+                    self.base_model, config["router_path"], "router", inference_mode=True)
             self.router.generation_config.max_new_tokens = 1024
         response, _ = inference(self.router, self.template, router_template + prompt, videos=video_paths)  # chat with image
         return response
