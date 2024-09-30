@@ -2,8 +2,10 @@ import json
 import os
 import re
 import time
+from video_processor_34B import process_video
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from collections import Counter
+#os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 from swift.llm import (
     get_model_tokenizer, get_template, inference,
@@ -11,14 +13,18 @@ from swift.llm import (
 )
 from swift.utils import seed_everything
 import torch
-model_id_or_path = "../videoRM/Internvl/pretrain/InternVL2-2B"
+# model_path = '/remote_shome/snl/feilong/xiapeng/haibo/videoRM/Internvl/pretrained/InternVL2-2B'
 model_type = "internvl2-2b"
 template_type = get_default_template_type(model_type)
 print(f'template_type: {template_type}')
 
 
 model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
-                                       model_kwargs={'device_map': 'auto'}, model_id_or_path=model_id_or_path)
+                                       model_kwargs={'device_map': 'auto'})
+# for h20
+# model, tokenizer = get_model_tokenizer(model_type, torch.float32,
+#                                        model_kwargs={'device_map': 'auto'},
+#                                        use_flash_attn = False)
 
 model.generation_config.max_new_tokens = 256
 template = get_template(template_type, tokenizer)
@@ -272,8 +278,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
             print(f"Recall: {recall:.2f}")
             print(f"Precision: {precision:.2f}")
             print(f"Average Latency (s): {average_latency:.2f}")
-            if not os.path.exists('./output'):
-                os.mkdir('./output')
+            
             output_file = os.path.join('./output',output_file_name)
             with open(output_file, 'w') as outfile:
                 json.dump(all_results, outfile, indent=4)
@@ -301,18 +306,143 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     with open(output_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
-if __name__ == "__main__":
-    videos_dir = '../videos'
+
+def process_overall_file(json_file_path, videos_dir, output_file_name):
+    with open(json_file_path, 'r') as f:
+        data = json.load(f)
+
+    prompt = prompts.get(key)
+    print(prompt)
+
+    all_results = []
+    true_labels = []
+    predictions = []
+    latencies = []
+    counter = 0
+
+    for item in data:
+        caption = item['caption']
+        video0_path_relative = item['chosen']
+        video1_path_relative = item['reject']
+        video0_path = os.path.join(videos_dir, video0_path_relative)
+        video1_path = os.path.join(videos_dir, video1_path_relative)
+        better_prompts = item['better']
+        true_chosen = True
+
+        video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
+        model_chosen = (video_0_rating > video_1_rating)
+
+        result = {
+            "caption": caption,
+            "video_0_uid": video0_path,
+            "video_1_uid": video1_path,
+            "video_0_scores": {
+                "alignment": video_0_rating
+            },
+            "video_1_scores": {
+                "alignment": video_1_rating
+            },
+            "chosen": model_chosen
+        }
+        all_results.append(result)
+
+        true_labels.append(true_chosen)
+        predictions.append(model_chosen)
+        latencies.append(latency)
+        counter = counter + 1
+        if counter % 10 == 0:
+            accuracy = accuracy_score(true_labels, predictions)
+            f1 = f1_score(true_labels, predictions)
+            recall = recall_score(true_labels, predictions)
+            precision = precision_score(true_labels, predictions)
+            average_latency = sum(latencies) / len(latencies)
+            
+            with open(f"./output/Internvl_2B_{key}_score.txt", 'w') as file:
+                file.write(f"Accuracy: {accuracy:.2f}\\n")
+                file.write(f"F1 Score: {f1:.2f}\\n")
+                file.write(f"Recall: {recall:.2f}\\n")
+                file.write(f"Precision: {precision:.2f}\\n")
+                file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
+            print(f"Accuracy: {accuracy:.2f}")
+            print(f"F1 Score: {f1:.2f}")
+            print(f"Recall: {recall:.2f}")
+            print(f"Precision: {precision:.2f}")
+            print(f"Average Latency (s): {average_latency:.2f}")
+            
+            output_file = os.path.join('./output',output_file_name)
+            with open(output_file, 'w') as outfile:
+                json.dump(all_results, outfile, indent=4)
+
+    accuracy = accuracy_score(true_labels, predictions)
+    f1 = f1_score(true_labels, predictions)
+    recall = recall_score(true_labels, predictions)
+    precision = precision_score(true_labels, predictions)
+    average_latency = sum(latencies) / len(latencies)
+    
+    with open(f"./output/Internvl_2B_{key}_score.txt", 'w') as file:
+        file.write(f"Accuracy: {accuracy:.2f}\\n")
+        file.write(f"F1 Score: {f1:.2f}\\n")
+        file.write(f"Recall: {recall:.2f}\\n")
+        file.write(f"Precision: {precision:.2f}\\n")
+        file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
+    print(f"Accuracy: {accuracy:.2f}")
+    print(f"F1 Score: {f1:.2f}")
+    print(f"Recall: {recall:.2f}")
+    print(f"Precision: {precision:.2f}")
+    print(f"Average Latency (s): {average_latency:.2f}")
+
+    output_file = os.path.join('./output',output_file_name)
+    with open(output_file, 'w') as outfile:
+        json.dump(all_results, outfile, indent=4)
+
+
+if __name__ == "__main__": 
+    videos_dir = '../../videos'
     json_files = {
-        'overall':'../test/overall.json',
+        'overall': '../test/overall.json'  # 添加overall文件
         'safety': '../test/safety.json',
         'alignment': '../test/alignment.json',
         'bias': '../test/bias.json',
         'quality': '../test/quality.json',
-        'cc': '../test/cc.json'
+        'cc': '../test/cc.json',
+
     }
 
     for key, value in json_files.items():
         json_file_path = value
         output_file_name = f'Internvl_2B_{key}_results.json'
-        process_json_file(json_file_path, videos_dir, output_file_name, key)
+        
+        # 检查是否为overall文件
+        if key == 'overall':
+            process_overall_file(json_file_path, videos_dir, output_file_name)  # 使用另一个函数处理
+        else:
+            process_json_file(json_file_path, videos_dir, output_file_name, key)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
