@@ -31,12 +31,25 @@ def evaluate_videos(caption, video0_path, video1_path, prompt_template):
 
     latency = (end_time - start_time) / 2  # 每个视频的平均延迟
 
-    def extract_ratings(response):
-        # 提取 VIDEO-1 RATING, VIDEO-2 RATING 和 BETTER VIDEO
-        match1 = re.search(r'VIDEO-1 RATING:\s*(.+)', response)
-        match2 = re.search(r'VIDEO-1 RATING:\s*(.+)', response)
-        match3 = re.search(r'BETTER VIDEO:\s*(.+)', response)
-        return match1.group(1).strip() if match1 else None, match2.group(1).strip() if match2 else None, match3.group(1).strip() if match3 else None
+    def extract_ratings(response: str):
+        # 正则表达式匹配模式
+        video_1_pattern = r'VIDEO-1 RATING:\s*([^\*\n]+)'
+        video_2_pattern = r'VIDEO-2 RATING:\s*([^\*\n]+)'
+
+        # 处理HIGHER QUALITY VIDEO，可以是数字或VIDEO-1、VIDEO-2
+        higher_quality_pattern = r'BETTER VIDEO:\s*(VIDEO-\d|\d+)'
+
+        # 查找匹配的内容
+        video_1_rating = re.search(video_1_pattern, response)
+        video_2_rating = re.search(video_2_pattern, response)
+        higher_quality_video = re.search(higher_quality_pattern, response)
+
+        # 如果匹配到则返回结果，否则返回 None
+        video_1_rating = video_1_rating.group(1).strip() if video_1_rating else None
+        video_2_rating = video_2_rating.group(1).strip() if video_2_rating else None
+        higher_quality_video = higher_quality_video.group(1).strip() if higher_quality_video else None
+
+        return video_1_rating, video_2_rating, higher_quality_video
 
     video_0_rating, video_1_rating, better_video = extract_ratings(score)
 
