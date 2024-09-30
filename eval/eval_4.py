@@ -4,7 +4,9 @@ import re
 import time
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from collections import Counter
+import logging
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 from swift.llm import (
     get_model_tokenizer, get_template, inference,
     get_default_template_type, inference_stream
@@ -14,7 +16,7 @@ import torch
 model_id_or_path = "../videoRM/Internvl/pretrain/InternVL2-2B"
 model_type = "internvl2-2b"
 template_type = get_default_template_type(model_type)
-print(f'template_type: {template_type}')
+logging.info(f'template_type: {template_type}')
 
 if not os.path.exists('./output_double'):
     os.mkdir('./output_double')
@@ -33,7 +35,7 @@ def evaluate_videos(caption, video0_path, video1_path, prompt_template):
     response, _ = inference(model, template, prompt, videos=[video0_path, video1_path])
     score = response
     end_time = time.time()  # 记录结束时间
-    print(f"Score: {score}")
+    logging.info(f"Score: {score}")
 
     latency = (end_time - start_time) / 2  # 每个视频的平均延迟
 
@@ -42,7 +44,7 @@ def evaluate_videos(caption, video0_path, video1_path, prompt_template):
         match1 = re.search(r'VIDEO-1 RATING:\s*"([^"]+)"', response)
         match2 = re.search(r'VIDEO-2 RATING:\s*"([^"]+)"', response)
         match3 = re.search(r'BETTER VIDEO:\s*(\d)', response)
-        return match1.group(1) if match1 else None, match2.group(1) if match2 else None, match3.group(1) if match3 else None
+        return match1.group(1) if match1 else 114514, match2.group(1) if match2 else 114514, match3.group(1) if match3 else 114514
 
     video_0_rating, video_1_rating, better_video = extract_ratings(score)
 
@@ -63,9 +65,9 @@ def evaluate_videos(caption, video0_path, video1_path, prompt_template):
     video_0_score = rating_scale.get(video_0_rating, 0)
     video_1_score = rating_scale.get(video_1_rating, 0)
 
-    print(f"Video 0 Rating: {video_0_rating}, Score: {video_0_score}")
-    print(f"Video 1 Rating: {video_1_rating}, Score: {video_1_score}")
-    print(f"Better Video: {better_video}")
+    logging.info(f"Video 0 Rating: {video_0_rating}, Score: {video_0_score}")
+    logging.info(f"Video 1 Rating: {video_1_rating}, Score: {video_1_score}")
+    logging.info(f"Better Video: {better_video}")
 
     return video_0_score, video_1_score, better_video, latency
 
@@ -202,7 +204,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
         data = json.load(f)
 
     prompt = prompts.get(key)
-    print(prompt)
+    logging.info(prompt)
 
     all_results = []
     true_labels = []
@@ -255,11 +257,11 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 file.write(f"Precision: {precision:.2f}\\n")
                 file.write(f"Average Latency (s): {average_latency:.2f}\\n")
 
-            print(f"Accuracy: {accuracy:.2f}")
-            print(f"F1 Score: {f1:.2f}")
-            print(f"Recall: {recall:.2f}")
-            print(f"Precision: {precision:.2f}")
-            print(f"Average Latency (s): {average_latency:.2f}")
+            logging.info(f"Accuracy: {accuracy:.2f}")
+            logging.info(f"F1 Score: {f1:.2f}")
+            logging.info(f"Recall: {recall:.2f}")
+            logging.info(f"Precision: {precision:.2f}")
+            logging.info(f"Average Latency (s): {average_latency:.2f}")
             
             output_file = os.path.join('./output_double',output_file_name)
             with open(output_file, 'w') as outfile:
@@ -278,11 +280,11 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
         file.write(f"Precision: {precision:.2f}\\n")
         file.write(f"Average Latency (s): {average_latency:.2f}\\n")
 
-    print(f"Accuracy: {accuracy:.2f}")
-    print(f"F1 Score: {f1:.2f}")
-    print(f"Recall: {recall:.2f}")
-    print(f"Precision: {precision:.2f}")
-    print(f"Average Latency (s): {average_latency:.2f}")
+    logging.info(f"Accuracy: {accuracy:.2f}")
+    logging.info(f"F1 Score: {f1:.2f}")
+    logging.info(f"Recall: {recall:.2f}")
+    logging.info(f"Precision: {precision:.2f}")
+    logging.info(f"Average Latency (s): {average_latency:.2f}")
 
     output_file = os.path.join('./output_double',output_file_name)
     with open(output_file, 'w') as outfile:
@@ -292,9 +294,10 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
 def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     with open(json_file_path, 'r') as f:
         data = json.load(f)
+    logging.info(f"use {json_file_path}")
 
     prompt = prompts.get(key)
-    print(prompt)
+    logging.info(prompt)
 
     all_results = []
     true_labels = []
@@ -311,7 +314,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
         better_prompts = item['better']
         true_chosen = True
 
-        video_0_rating, video_1_rating, better_video, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
+        video_0_rating, video_1_rating, better_video, latency = evaluate_videos(caption, video0_path, video1_path, prompt)
         model_chosen = (better_video == '1')
 
         result = {
@@ -346,11 +349,11 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
                 file.write(f"Precision: {precision:.2f}\\n")
                 file.write(f"Average Latency (s): {average_latency:.2f}\\n")
 
-            print(f"Accuracy: {accuracy:.2f}")
-            print(f"F1 Score: {f1:.2f}")
-            print(f"Recall: {recall:.2f}")
-            print(f"Precision: {precision:.2f}")
-            print(f"Average Latency (s): {average_latency:.2f}")
+            logging.info(f"Accuracy: {accuracy:.2f}")
+            logging.info(f"F1 Score: {f1:.2f}")
+            logging.info(f"Recall: {recall:.2f}")
+            logging.info(f"Precision: {precision:.2f}")
+            logging.info(f"Average Latency (s): {average_latency:.2f}")
             
             output_file = os.path.join('./output_double',output_file_name)
             with open(output_file, 'w') as outfile:
@@ -369,11 +372,11 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
             file.write(f"Precision: {precision:.2f}\\n")
             file.write(f"Average Latency (s): {average_latency:.2f}\\n")
 
-        print(f"Accuracy: {accuracy:.2f}")
-        print(f"F1 Score: {f1:.2f}")
-        print(f"Recall: {recall:.2f}")
-        print(f"Precision: {precision:.2f}")
-        print(f"Average Latency (s): {average_latency:.2f}")
+        logging.info(f"Accuracy: {accuracy:.2f}")
+        logging.info(f"F1 Score: {f1:.2f}")
+        logging.info(f"Recall: {recall:.2f}")
+        logging.info(f"Precision: {precision:.2f}")
+        logging.info(f"Average Latency (s): {average_latency:.2f}")
 
         output_file = os.path.join('./output_double',output_file_name)
         with open(output_file, 'w') as outfile:
@@ -381,6 +384,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
 
 
 if __name__ == "__main__": 
+    logging.info("Code Being")
     videos_dir = '../videos'
     json_files = {
         'overall': '../test/overall.json',
@@ -392,6 +396,7 @@ if __name__ == "__main__":
     }
 
     for key, value in json_files.items():
+        logging.info(f"{key} subset begin")
         json_file_path = value
         output_file_name = f'Internvl_2B_{key}_results.json'
         
@@ -400,30 +405,4 @@ if __name__ == "__main__":
             process_overall_file(json_file_path, videos_dir, output_file_name,key)  # 使用另一个函数处理
         else:
             process_json_file(json_file_path, videos_dir, output_file_name, key)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
