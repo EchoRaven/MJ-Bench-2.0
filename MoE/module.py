@@ -111,11 +111,23 @@ class MJ_VIDEO:
                         print(f'{expert} generated an exception: {exc}')
             return result
         
-    def inference(self, video_paths, prompt, force_keys=[]):
+    def judge(self, video_paths, prompt, force_keys=[]):
         router_response = self.router_choice(video_paths, prompt)
         experts = self.activate_expert(force_keys, router_response)
         experts_response = self.experts_judge(experts, video_paths, prompt)
         return experts_response
+    
+    def inference(self, video_paths, prompt, force_keys=[]):
+        judge_result = self.judge(video_paths, prompt, force_keys)
+        response = ""
+        score_1 = 0
+        score_2 = 0
+        total_label = 0
+        for expert in judge_result.keys():
+            labels = judge_result[expert]
+            for key in labels.keys():
+                label = labels[key]
+                total_label += 1
         
 
 if __name__ == "__main__":
