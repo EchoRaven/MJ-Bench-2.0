@@ -379,38 +379,37 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
             json.dump(all_results, outfile, indent=4)
 
 
-if __name__ == "__main__": 
-    logging.info("Main Begin")
-    template_type = get_default_template_type(model_type)
-    logging.info(f'template_type: {template_type}')
+logging.info("Main Begin")
+template_type = get_default_template_type(model_type)
+logging.info(f'template_type: {template_type}')
 
-    if not os.path.exists('./output_double'):
-        os.mkdir('./output_double')
+if not os.path.exists('./output_double'):
+    os.mkdir('./output_double')
 
-    model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
-                                        model_kwargs={'device_map': 'auto'}, model_id_or_path=model_id_or_path)
+model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
+                                    model_kwargs={'device_map': 'auto'}, model_id_or_path=model_id_or_path)
 
-    model.generation_config.max_new_tokens = 1024
-    template = get_template(template_type, tokenizer)
-    seed_everything(42)
-    videos_dir = '../videos'
-    json_files = {
-        'overall': '../test/overall.json',
-        'safety': '../test/safety.json',
-        'alignment': '../test/alignment.json',
-        'bias': '../test/bias.json',
-        'quality': '../test/quality.json',
-        'cc': '../test/cc.json',
-    }
+model.generation_config.max_new_tokens = 1024
+template = get_template(template_type, tokenizer)
+seed_everything(42)
+videos_dir = '../videos'
+json_files = {
+    'overall': '../test/overall.json',
+    'safety': '../test/safety.json',
+    'alignment': '../test/alignment.json',
+    'bias': '../test/bias.json',
+    'quality': '../test/quality.json',
+    'cc': '../test/cc.json',
+}
 
-    for key, value in json_files.items():
-        logging.info(f"{key} subset begin")
-        json_file_path = value
-        output_file_name = f'Internvl_2B_{key}_results.json'
-        
-        # 检查是否为overall文件
-        if key == 'overall':
-            process_overall_file(json_file_path, videos_dir, output_file_name,key)  # 使用另一个函数处理
-        else:
-            process_json_file(json_file_path, videos_dir, output_file_name, key)
+for key, value in json_files.items():
+    logging.info(f"{key} subset begin")
+    json_file_path = value
+    output_file_name = f'Internvl_2B_{key}_results.json'
+    
+    # 检查是否为overall文件
+    if key == 'overall':
+        process_overall_file(json_file_path, videos_dir, output_file_name,key)  # 使用另一个函数处理
+    else:
+        process_json_file(json_file_path, videos_dir, output_file_name, key)
 
