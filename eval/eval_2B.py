@@ -5,7 +5,6 @@ import time
 from video_processor_34B import process_video
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from collections import Counter
-#os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 from swift.llm import (
     get_model_tokenizer, get_template, inference,
@@ -13,18 +12,14 @@ from swift.llm import (
 )
 from swift.utils import seed_everything
 import torch
-# model_path = '/remote_shome/snl/feilong/xiapeng/haibo/videoRM/Internvl/pretrained/InternVL2-2B'
+model_id_or_path = "../videoRM/Internvl/pretrain/InternVL2-2B"
 model_type = "internvl2-2b"
 template_type = get_default_template_type(model_type)
 print(f'template_type: {template_type}')
 
 
 model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
-                                       model_kwargs={'device_map': 'auto'})
-# for h20
-# model, tokenizer = get_model_tokenizer(model_type, torch.float32,
-#                                        model_kwargs={'device_map': 'auto'},
-#                                        use_flash_attn = False)
+                                       model_kwargs={'device_map': 'auto'}, model_id_or_path=model_id_or_path)
 
 model.generation_config.max_new_tokens = 256
 template = get_template(template_type, tokenizer)
@@ -278,7 +273,8 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
             print(f"Recall: {recall:.2f}")
             print(f"Precision: {precision:.2f}")
             print(f"Average Latency (s): {average_latency:.2f}")
-            
+            if not os.path.exists('./output'):
+                os.mkdir('./output')
             output_file = os.path.join('./output',output_file_name)
             with open(output_file, 'w') as outfile:
                 json.dump(all_results, outfile, indent=4)
@@ -309,42 +305,15 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
 if __name__ == "__main__":
     videos_dir = '../../videos'
     json_files = {
+        'overall':'../../test/overall.json',
         'safety': '../../test/safety.json',
         'alignment': '../../test/alignment.json',
         'bias': '../../test/bias.json',
         'quality': '../../test/quality.json',
-        'cc': '../../test/cc.json',
-        'overall':'../../test/overall.json'
+        'cc': '../../test/cc.json'
     }
 
     for key, value in json_files.items():
         json_file_path = value
         output_file_name = f'Internvl_2B_{key}_results.json'
         process_json_file(json_file_path, videos_dir, output_file_name, key)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
