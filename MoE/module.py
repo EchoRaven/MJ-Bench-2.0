@@ -124,7 +124,7 @@ class MJ_VIDEO:
         score_2 = 0
         for expert in judge_result.keys():
             labels = judge_result[expert]
-            response += f"From the perspective of {expert},"
+            response += f"From the perspective of {expert}, "
             first_better = []
             second_better = []
             for label in labels.keys():
@@ -138,7 +138,10 @@ class MJ_VIDEO:
                 for label in first_better:
                     response += f"{label}, "
             if len(second_better) > 0:
-                response += "while video 2 performs better in terms of "
+                if len(first_better) != 0:
+                    response += "while video 2 performs better in terms of "
+                else:
+                    response += "video 2 performs better in terms of "
                 for label in second_better:
                     response += f"{label}, "
                 response = response[:-2] + ". "
