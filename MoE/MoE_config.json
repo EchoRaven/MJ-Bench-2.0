@@ -1,5 +1,5 @@
 {
-  "model_type": "OpenGVLab/InternVL2-2B",
+  "model_type": "internvl2-2b",
   "prompt_list": "prompts.json",
   "model_path": "../videoRM/Internvl/pretrain/InternVL2-2B",
   "inference_type": "high_speed",
