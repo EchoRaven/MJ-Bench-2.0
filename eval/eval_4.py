@@ -8,10 +8,6 @@ import logging
 import warnings
 warnings.filterwarnings("ignore")
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-
-logging.info("Code Begin")
-
 from swift.llm import (
     get_model_tokenizer, get_template, inference,
     get_default_template_type, inference_stream
@@ -378,6 +374,8 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
         with open(output_file, 'w') as outfile:
             json.dump(all_results, outfile, indent=4)
 
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 logging.info("Main Begin")
 template_type = get_default_template_type(model_type)
