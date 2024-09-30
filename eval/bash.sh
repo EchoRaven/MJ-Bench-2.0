@@ -8,4 +8,4 @@
 #SBATCH --error=slurm_error_%j.err
 #SBATCH --exclusive
 
-python eval_2B.py
+python eval_2B_new.py
