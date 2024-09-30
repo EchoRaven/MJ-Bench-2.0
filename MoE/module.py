@@ -14,15 +14,15 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 import re
 import json
 
-def convert_to_json_format(input_str: str) -> str:
-    input_str = re.sub(r"\'([a-zA-Z0-9_]+)\'\s*:", r'"\1":', input_str)
-    input_str = re.sub(r":\s*\'([a-zA-Z0-9_ ]+)\'", r': "\1"', input_str)
-    try:
-        json_obj = json.loads(input_str)
-        json_output = json.dumps(json_obj, indent=4)
-        return json_output
-    except json.JSONDecodeError as e:
-        return f"Error parsing JSON: {e}"
+def convert_to_json_format(input_string: str) -> dict:
+    # 使用正则表达式为键添加引号
+    json_compatible_string = re.sub(r"(\w+):", r'"\1":', input_string)
+
+    # 将单引号替换为双引号
+    json_string = json_compatible_string.replace("'", '"')
+
+    # 将其转换为JSON对象并返回
+    return json.loads(json_string)
 
 class MJ_VIDEO:
     def __init__(self, config):
