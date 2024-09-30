@@ -32,8 +32,8 @@ def evaluate_videos(caption, video0_path, video1_path, prompt_template):
     prompt = prompt_template.format(caption=caption)
 
     start_time = time.time()  # 记录开始时间
-    response0, _ = inference(model, template, prompt, videos=video0_path)
-    response1, _ = inference(model, template, prompt, images=video1_path)
+    response0, _ = inference(model, template, prompt, videos=[video0_path])
+    response1, _ = inference(model, template, prompt, videos=[video1_path])
     score0 = response0
     score1 = response1  
     end_time = time.time()  # 记录结束时间
