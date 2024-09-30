@@ -5,6 +5,8 @@ import time
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from collections import Counter
 import logging
+import warnings
+warnings.filterwarnings("ignore")
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
