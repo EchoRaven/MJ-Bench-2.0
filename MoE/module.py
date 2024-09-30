@@ -6,9 +6,23 @@ from swift.llm import (
 )
 from swift.tuners import Swift
 from swift.utils import seed_everything
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+import re
+import json
+
+def convert_to_json_format(input_str: str) -> str:
+    input_str = re.sub(r"\'([a-zA-Z0-9_]+)\'\s*:", r'"\1":', input_str)
+    input_str = re.sub(r":\s*\'([a-zA-Z0-9_ ]+)\'", r': "\1"', input_str)
+    try:
+        json_obj = json.loads(input_str)
+        json_output = json.dumps(json_obj, indent=4)
+        return json_output
+    except json.JSONDecodeError as e:
+        return f"Error parsing JSON: {e}"
 
 class MJ_VIDEO:
     def __init__(self, config):
@@ -26,7 +40,6 @@ class MJ_VIDEO:
             self.prompt_list = json.load(f)
 
         # define MoE
-        self.inference_type = config["inference_type"]
         if config["inference_type"] == "high_speed":
             # define router
             logging.info("Loading router ...")
@@ -45,11 +58,65 @@ class MJ_VIDEO:
         router_template = self.prompt_list["router"]
         if self.config["inference_type"] == "low_cost":
             self.router = Swift.from_pretrained(
-                    self.base_model, config["router_path"], "router", inference_mode=True)
+                    self.base_model, self.config["router_path"], "router", inference_mode=True)
             self.router.generation_config.max_new_tokens = 1024
-        response, _ = inference(self.router, self.template, router_template + prompt, videos=video_paths)  # chat with image
+        response, _ = inference(self.router, self.template, router_template + prompt, videos=video_paths)
+        if self.config["inference_type"] == "low_cost":
+            del self.router
         return response
+    
+    def activate_expert(self, force_keys, router_response):
+        if len(force_keys) > 0:
+            return force_keys
+        experts = []
+        response_result = convert_to_json_format(router_response)
+        for key in response_result.keys():
+            if response_result["key"] == "yes":
+               experts.append(key)
+        return experts
+    
+    def process_expert(self, expert, video_paths, prompt):
 
+        if self.config["inference_type"] == "low_cost":
+            self.expert_group[expert] = Swift.from_pretrained(
+                self.base_model, self.config["experts"][expert], expert, inference_mode=True)
+            self.expert_group[expert].generation_config.max_new_tokens = 1024
+
+        expert_template = self.prompt_list[expert]
+        response, _ = inference(self.expert_group[expert], self.template, expert_template + prompt, videos=video_paths)
+
+        if self.config["inference_type"] == "low_cost":
+            del self.expert_group[expert]
+
+        response_json = convert_to_json_format(response)
+        return response_json, expert
+    
+    def experts_judge(self, experts, video_paths, prompt):
+        def process_expert_concurrently(expert):
+            return self.process_expert(expert, video_paths, prompt)
+        result = {}
+        if self.config["inference_type"] == "low_cost":
+            for expert in experts:
+                result_json, _ = process_expert_concurrently(expert, video_paths, prompt)
+                result[expert] = result_json
+        else:
+            with ThreadPoolExecutor() as executor:
+                future_to_expert = {executor.submit(process_expert_concurrently, expert): expert for expert in experts}
+                for future in as_completed(future_to_expert):
+                    expert = future_to_expert[future]
+                    try:
+                        result_json, _ = future.result()
+                        result[expert] = result_json
+                    except Exception as exc:
+                        print(f'{expert} generated an exception: {exc}')
+            return result
+        
+    def inference(self, video_paths, prompt, force_keys=[]):
+        router_response = self.router_choice(video_paths, prompt)
+        experts = self.activate_expert(force_keys, router_response)
+        experts_response = self.experts_judge(experts, video_paths, prompt)
+        return experts_response
+        
 
 if __name__ == "__main__":
     with open("MoE_config.json", "r", encoding="utf-8") as f:
@@ -57,5 +124,5 @@ if __name__ == "__main__":
     moe = MJ_VIDEO(config)
     video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4", "../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/351b13217fc3ac1689b3f8b17356769ab7b9d36981db92462186a784f3bc57b2.mp4"]
     prompt = "2000 Documentary film in color showing dark hallway in house and kid in its center gets ripped apart from outside showing bloody monster"
-    response = moe.router_choice(video_paths, prompt)
-    logging.info(f"{response}")
+    response = moe.inference(video_paths, prompt)
+    print(response)
