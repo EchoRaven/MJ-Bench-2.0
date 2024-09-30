@@ -1,25 +1,10 @@
-import json
-import os
-import re
-import time
-import argparse
 import torch
-from accelerate import PartialState
-import numpy as np
-from decord import VideoReader, cpu
-from PIL import Image
-import torch.nn as nn
-from torchvision.transforms import Compose, Lambda, Resize, ToTensor, Normalize
-from torchvision.transforms.functional import InterpolationMode
-from transformers import AutoModel, AutoTokenizer
-from peft import PeftModel, PeftConfig
-import os
+import json
 from swift.llm import (
     get_model_tokenizer, get_template, inference,
-    get_default_template_type, inference_stream
+    get_default_template_type
 )
 from swift.tuners import Swift
-from swift.llm.tuners import prepare_model
 from swift.utils import seed_everything
 
 
