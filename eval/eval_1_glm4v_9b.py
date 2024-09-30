@@ -11,7 +11,6 @@ from swift.llm import (
 )
 from swift.utils import seed_everything
 import torch
-model_id_or_path = "../videoRM/glm4/pretrain/glm4v_9b"
 model_type = ModelType.glm4v_9b_chat
 template_type = get_default_template_type(model_type)
 print(f'template_type: {template_type}')
@@ -20,7 +19,7 @@ if not os.path.exists('./output'):
     os.mkdir('./output')
 
 model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
-                                       model_kwargs={'device_map': 'auto'}, model_id_or_path=model_id_or_path)
+                                       model_kwargs={'device_map': 'auto'})
 
 model.generation_config.max_new_tokens = 1024
 template = get_template(template_type, tokenizer)
