@@ -7,6 +7,9 @@ from collections import Counter
 import logging
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+logging.info("Code Begin")
+
 from swift.llm import (
     get_model_tokenizer, get_template, inference,
     get_default_template_type, inference_stream
@@ -384,7 +387,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
 
 
 if __name__ == "__main__": 
-    logging.info("Code Being")
+    logging.info("Main Begin")
     videos_dir = '../videos'
     json_files = {
         'overall': '../test/overall.json',
