@@ -25,8 +25,6 @@ class MJ_VIDEO:
     def __init__(self, config):
         self.config = config
         self.dtype = torch.bfloat16 if config["dtype"] == "bfloat16" else torch.float32
-        self.base_model, self.tokenizer = get_model_tokenizer(config["model_type"], self.dtype,
-                                       model_kwargs={'device_map': 'auto'})
         self.model.generation_config.max_new_tokens = 1024
         template_type = get_default_template_type(config["model_type"])
         self.template = get_template(template_type, self.tokenizer)
