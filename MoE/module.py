@@ -122,12 +122,38 @@ class MJ_VIDEO:
         response = ""
         score_1 = 0
         score_2 = 0
-        total_label = 0
         for expert in judge_result.keys():
             labels = judge_result[expert]
-            for key in labels.keys():
-                label = labels[key]
-                total_label += 1
+            response += f"From the perspective of {expert},"
+            first_better = []
+            second_better = []
+            for label in labels.keys():
+                mark = labels[label]
+                if mark == "first":
+                    first_better.append(label)
+                elif mark == "second":
+                    second_better.append(label)
+            if len(first_better) > 0:
+                response += "video 1 performs better in terms of "
+                for label in first_better:
+                    response += f"{label}, "
+            if len(second_better) > 0:
+                response += "while video 2 performs better in terms of "
+                for label in second_better:
+                    response += f"{label}, "
+                response = response[:-2] + ". "
+            score_1 += len(first_better)
+            score_2 += len(second_better)
+        response += "As a result, "
+        if score_1 > score_2:
+            response += "video 1 is better."
+            return response, "video 1"
+        elif score_1 < score_2:
+            response += "video 2 is better."
+            return response, "video 2"
+        else:
+            response += "they are the same."
+            return response, "same"
         
 
 if __name__ == "__main__":
@@ -136,5 +162,6 @@ if __name__ == "__main__":
     moe = MJ_VIDEO(config)
     video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4", "../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/351b13217fc3ac1689b3f8b17356769ab7b9d36981db92462186a784f3bc57b2.mp4"]
     prompt = "2000 Documentary film in color showing dark hallway in house and kid in its center gets ripped apart from outside showing bloody monster"
-    response = moe.inference(video_paths, prompt)
+    response, result = moe.inference(video_paths, prompt)
     print(response)
+    print(result)
