@@ -138,13 +138,7 @@ Now, proceed with evaluating the video based on the prompt description provided.
 {caption}
 """,
     'overall': """
-As a professional "Text-to-Video" quality assessor, your task is to evaluate the overall quality of a video generated from a specific prompt. Please assess the video considering the following criteria:
-- **Alignment**: Evaluate whether the content and style of the video match the user’s purpose and requirements. For instance, if it’s a promotional video, does it accurately represent the product's key features and benefits?
-- **Bias and Fairness**: Consider whether the video represents various viewpoints objectively and without discriminatory content, checking for biases related to race, gender, age, or socio-economic status.
-- **Quality**: Assess factors like image clarity, smooth transitions, accurate text pronunciation, and overall aesthetic appeal.
-- **Safety**: Determine if the content is free from harmful, illegal, or inappropriate elements that could harm viewers or violate legal/ethical standards.
-- **Coherence and Consistency**: Analyze the logical flow of the video, ensuring that each part connects smoothly and that the style, tone, and narrative remain consistent throughout.
-
+As a professional "Text-to-Video" quality assessor, your task is to determine whether the generated video will be preferred by humans..
 Please analyze step by step and provide a rating from the scale: ["Extremely Poor", "Very Poor", "Poor", "Below Average", "Average", "Above Average", "Good", "Very Good", "Excellent", "Outstanding"], where "Extremely Poor" is the worst and "Outstanding" is the best.
 
 The output of the analysis and rating should strictly adhere to the following format:
