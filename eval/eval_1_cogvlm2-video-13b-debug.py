@@ -514,8 +514,8 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
 model.generation_config.max_new_tokens = 1024
 template = get_template(template_type, tokenizer)
 seed_everything(42)
-video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4"]
-prompt = "whats in the video"
+video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4", "../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/351b13217fc3ac1689b3f8b17356769ab7b9d36981db92462186a784f3bc57b2.mp4"]
+prompt = "which one do you prefer"
 response, _ = inference(model, template, prompt, videos=video_paths)
 print(response)
 
