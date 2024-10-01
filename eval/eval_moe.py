@@ -5,9 +5,7 @@ import time
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from collections import Counter
 import sys
-module_path = os.path.abspath(os.path.join('..', 'MoE'))
-if module_path not in sys.path:
-    sys.path.append(module_path)
+sys.path.append('../')
 
 from swift.llm import (
     get_model_tokenizer, get_template, inference,ModelType,
