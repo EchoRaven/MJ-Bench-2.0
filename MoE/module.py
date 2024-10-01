@@ -37,7 +37,9 @@ class MJ_VIDEO:
         self.router.generation_config.max_new_tokens = 1024
         # define experts
         self.expert_group = {}
+        self.expert_keys = []
         for key in config["experts"].keys():
+            self.expert_keys.append(key)
             logging.info(f"Loading {key} expert ...")
             self.expert_group[key], _ =  get_model_tokenizer(config["model_type"], self.dtype,
                         model_kwargs={'device_map': 'auto'}, model_id_or_path=config["model_id_or_path"])
@@ -66,6 +68,8 @@ class MJ_VIDEO:
         for key in response_result.keys():
             if response_result[key] == "yes":
                experts.append(key)
+        if len(experts) == 0:
+            experts = self.expert_keys
         return experts
     
     def process_expert(self, expert, video_paths, prompt):
