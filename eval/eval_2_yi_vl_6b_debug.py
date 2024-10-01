@@ -412,8 +412,9 @@ model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
 model.generation_config.max_new_tokens = 1024
 template = get_template(template_type, tokenizer)
 seed_everything(42)
-video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4", "../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/351b13217fc3ac1689b3f8b17356769ab7b9d36981db92462186a784f3bc57b2.mp4"]
-prompt = f"'2000 Documentary film in color showing dark hallway in house and kid in its center gets ripped apart from outside showing bloody monster' Which video do you prefer?"
-response, _ = inference(model, template, prompt, videos=video_paths)
-print(response)
+images = ['http://modelscope-open.oss-cn-hangzhou.aliyuncs.com/images/road.png']
+query = 'How far is it from each city?'
+response, history = inference(model, template, query, images=images)
+print(f'query: {query}')
+print(f'response: {response}')
 
