@@ -260,7 +260,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 precision = precision_score(true_labels, predictions)
                 average_latency = sum(latencies) / len(latencies)
                 
-                with open(f"./output_double/Internvl_2B_{key}_score.txt", 'w') as file:
+                with open(f"./output_double/Internvl_8B_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -285,7 +285,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     precision = precision_score(true_labels, predictions)
     average_latency = sum(latencies) / len(latencies)
     
-    with open(f"./output_double/Internvl_2B_{key}_score.txt", 'w') as file:
+    with open(f"./output_double/Internvl_8B_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -355,7 +355,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
                 precision = precision_score(true_labels, predictions)
                 average_latency = sum(latencies) / len(latencies)
                 
-                with open(f"./output_double/Internvl_2B_{key}_score.txt", 'w') as file:
+                with open(f"./output_double/Internvl_8B_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -378,7 +378,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
             precision = precision_score(true_labels, predictions)
             average_latency = sum(latencies) / len(latencies)
             
-            with open(f"./output_double/Internvl_2B_{key}_score.txt", 'w') as file:
+            with open(f"./output_double/Internvl_8B_{key}_score.txt", 'w') as file:
                 file.write(f"Accuracy: {accuracy:.2f}\\n")
                 file.write(f"F1 Score: {f1:.2f}\\n")
                 file.write(f"Recall: {recall:.2f}\\n")
@@ -425,7 +425,7 @@ json_files = {
 for key, value in json_files.items():
     logging.info(f"{key} subset begin")
     json_file_path = value
-    output_file_name = f'Internvl_2B_{key}_results.json'
+    output_file_name = f'Internvl_8B_{key}_results.json'
     
     # 检查是否为overall文件
     if key == 'overall':
