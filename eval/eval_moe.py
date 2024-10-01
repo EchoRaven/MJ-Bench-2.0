@@ -25,9 +25,8 @@ seed_everything(42)
 
 
 def evaluate_videos(caption, video0_path, video1_path, force_keys=[]):
-    response, chosen = model.inference([video0_path, video1_path], caption, force_keys)
-    print(response)
-    return chosen
+    response, chosen, score_1, score_2, grain_score_1, grain_score_2 = model.inference([video0_path, video1_path], caption, force_keys)
+    return response, chosen, score_1, score_2, grain_score_1, grain_score_2
 
 
 def process_json_file(json_file_path, videos_dir, output_file_name, key):
@@ -37,7 +36,6 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     all_results = []
     true_labels = []
     predictions = []
-    latencies = []
     counter = 0
 
     for item in data:
@@ -50,27 +48,29 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
 
             true_chosen = item['video0_body']['chosen']
 
-            chosen = evaluate_videos(caption, video0_path, video1_path, force_keys=[key])
-            print(chosen)
+            response, chosen, score_1, score_2, grain_score_1, grain_score_2 = evaluate_videos(caption, video0_path, video1_path, force_keys=[key])
             if chosen == "same":
-                video_0_rating = 0
-                video_1_rating = 0
-                model_chosen = 0
+                video_0_rating = score_1
+                video_1_rating = score_2
+                model_chosen = True
             elif chosen == "video 1":
-                video_0_rating = 1
-                video_1_rating = 9
-                model_chosen = 0
+                video_0_rating = score_1
+                video_1_rating = score_2
+                model_chosen = True
             elif chosen == "video 2":
-                video_0_rating = 9
-                video_1_rating = 1
-                model_chosen = 1
+                video_0_rating = score_1
+                video_1_rating = score_2
+                model_chosen = False
             else:
-                video_0_rating = 0
-                video_1_rating = 0
-                model_chosen = 0
+                video_0_rating = -1
+                video_1_rating = -1
+                model_chosen = True
 
             result = {
                 "caption": caption,
+                "response": response,
+                "grain_score_0": grain_score_1,
+                "grain_score_1": grain_score_2,
                 "video_0_uid": video0_path,
                 "video_1_uid": video1_path,
                 "video_0_scores": {
@@ -147,29 +147,30 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
             video1_path_relative = item['reject']
             video0_path = os.path.join(videos_dir, video0_path_relative)
             video1_path = os.path.join(videos_dir, video1_path_relative)
-            better_prompts = item['better']
             true_chosen = True
-            chosen = evaluate_videos(caption, video0_path, video1_path)
-            print(chosen)
+            response, chosen, score_1, score_2, grain_score_1, grain_score_2 = evaluate_videos(caption, video0_path, video1_path, force_keys=[key])
             if chosen == "same":
-                video_0_rating = 0
-                video_1_rating = 0
-                model_chosen = 0
+                video_0_rating = score_1
+                video_1_rating = score_2
+                model_chosen = True
             elif chosen == "video 1":
-                video_0_rating = 1
-                video_1_rating = 9
-                model_chosen = 0
+                video_0_rating = score_1
+                video_1_rating = score_2
+                model_chosen = True
             elif chosen == "video 2":
-                video_0_rating = 9
-                video_1_rating = 1
-                model_chosen = 1
+                video_0_rating = score_1
+                video_1_rating = score_2
+                model_chosen = False
             else:
-                video_0_rating = 0
-                video_1_rating = 0
-                model_chosen = 0
+                video_0_rating = -1
+                video_1_rating = -1
+                model_chosen = True
 
             result = {
                 "caption": caption,
+                "response": response,
+                "grain_score_0": grain_score_1,
+                "grain_score_1": grain_score_2,
                 "video_0_uid": video0_path,
                 "video_1_uid": video1_path,
                 "video_0_scores": {

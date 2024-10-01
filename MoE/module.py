@@ -112,8 +112,11 @@ class MJ_VIDEO:
             return result
         
     def judge(self, video_paths, prompt, force_keys=[]):
-        router_response = self.router_choice(video_paths, prompt)
-        experts = self.activate_expert(force_keys, router_response)
+        if len(force_keys) == 0:
+            router_response = self.router_choice(video_paths, prompt)
+            experts = self.activate_expert(force_keys, router_response)
+        else:
+            experts = force_keys
         experts_response = self.experts_judge(experts, video_paths, prompt)
         return experts_response
     
@@ -122,12 +125,16 @@ class MJ_VIDEO:
         response = ""
         score_1 = 0
         score_2 = 0
+        grain_score_1 = 0
+        grain_score_2 = 0
         for expert in judge_result.keys():
             labels = judge_result[expert]
             response += f"From the perspective of {expert}, "
             first_better = []
             second_better = []
+            count = 0
             for label in labels.keys():
+                count += 1
                 mark = labels[label]
                 if mark == "first":
                     first_better.append(label)
@@ -145,26 +152,23 @@ class MJ_VIDEO:
                 for label in second_better:
                     response += f"{label}, "
                 response = response[:-2] + ". "
-            score_1 += len(first_better)
-            score_2 += len(second_better)
+            score_1 += len(first_better) > len(second_better)
+            score_2 += len(second_better) > len(first_better)
+            grain_score_1 += len(first_better) / count
+            grain_score_2 += len(second_better) / count
         response += "As a result, "
         if score_1 > score_2:
             response += "video 1 is better."
-            return response, "video 1"
+            return response, "video 1", score_1, score_2, grain_score_1, grain_score_2
         elif score_1 < score_2:
             response += "video 2 is better."
-            return response, "video 2"
+            return response, "video 2", score_1, score_2, grain_score_1, grain_score_2
+        elif grain_score_1 > grain_score_2:
+            response += "video 1 is better."
+            return response, "video 1", score_1, score_2, grain_score_1, grain_score_2
+        elif grain_score_1 < grain_score_2:
+            response += "video 2 is better."
+            return response, "video 2", score_1, score_2, grain_score_1, grain_score_2
         else:
-            response += "they are the same."
-            return response, "same"
-        
-
-if __name__ == "__main__":
-    with open("MoE_config.json", "r", encoding="utf-8") as f:
-        config = json.load(f)
-    moe = MJ_VIDEO(config)
-    video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4", "../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/351b13217fc3ac1689b3f8b17356769ab7b9d36981db92462186a784f3bc57b2.mp4"]
-    prompt = "2000 Documentary film in color showing dark hallway in house and kid in its center gets ripped apart from outside showing bloody monster"
-    response, result = moe.inference(video_paths, prompt)
-    print(response)
-    print(result)
+            response += "is hard to judge. They are nearly the same."
+            return response, "same", score_1, score_2, grain_score_1, grain_score_2
