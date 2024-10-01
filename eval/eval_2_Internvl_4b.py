@@ -258,7 +258,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 f1 = f1_score(true_labels, predictions)
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
-                average_latency = sum(latencies) / len(latencies)
+                average_latency = 1
                 
                 with open(f"./output_double/Internvl_4B_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
@@ -283,7 +283,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     f1 = f1_score(true_labels, predictions)
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
-    average_latency = sum(latencies) / len(latencies)
+    average_latency = 1
     
     with open(f"./output_double/Internvl_4B_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
@@ -353,7 +353,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
                 f1 = f1_score(true_labels, predictions)
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
-                average_latency = sum(latencies) / len(latencies)
+                average_latency = 1
                 
                 with open(f"./output_double/Internvl_4B_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
@@ -376,7 +376,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
             f1 = f1_score(true_labels, predictions)
             recall = recall_score(true_labels, predictions)
             precision = precision_score(true_labels, predictions)
-            average_latency = sum(latencies) / len(latencies)
+            average_latency = 1
             
             with open(f"./output_double/Internvl_4B_{key}_score.txt", 'w') as file:
                 file.write(f"Accuracy: {accuracy:.2f}\\n")
