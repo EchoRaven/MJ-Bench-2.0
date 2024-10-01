@@ -270,7 +270,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
 
-    with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
+    with open(f"./output/gemini_4o_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\n")
         file.write(f"F1 Score: {f1:.2f}\n")
         file.write(f"Recall: {recall:.2f}\n")
@@ -339,7 +339,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
 
-    with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
+    with open(f"./output/gemini_4o_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\n")
         file.write(f"F1 Score: {f1:.2f}\n")
         file.write(f"Recall: {recall:.2f}\n")
@@ -360,7 +360,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     precision = precision_score(true_labels, predictions)
 
     
-    with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
+    with open(f"./output/gemini_4o_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -391,7 +391,7 @@ if __name__ == "__main__":
 
     for key, value in json_files.items():
         json_file_path = value
-        output_file_name = f'gpt_4o_{key}_results.json'
+        output_file_name = f'gemini_{key}_results.json'
         
         # 检查是否为 overall 文件
         if key == 'overall':
