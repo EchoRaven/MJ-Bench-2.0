@@ -316,31 +316,31 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 output_file = os.path.join('./output',output_file_name)
                 with open(output_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
+
+            accuracy = accuracy_score(true_labels, predictions)
+            f1 = f1_score(true_labels, predictions)
+            recall = recall_score(true_labels, predictions)
+            precision = precision_score(true_labels, predictions)
+            average_latency = sum(latencies) / len(latencies)
+            
+            with open(f"./output/Internvl_2B_{key}_score.txt", 'w') as file:
+                file.write(f"Accuracy: {accuracy:.2f}\\n")
+                file.write(f"F1 Score: {f1:.2f}\\n")
+                file.write(f"Recall: {recall:.2f}\\n")
+                file.write(f"Precision: {precision:.2f}\\n")
+                file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
+            logging.info(f"Accuracy: {accuracy:.2f}")
+            logging.info(f"F1 Score: {f1:.2f}")
+            logging.info(f"Recall: {recall:.2f}")
+            logging.info(f"Precision: {precision:.2f}")
+            logging.info(f"Average Latency (s): {average_latency:.2f}")
+
+            output_file = os.path.join('./output',output_file_name)
+            with open(output_file, 'w') as outfile:
+                json.dump(all_results, outfile, indent=4)
         except:
             continue
-
-        accuracy = accuracy_score(true_labels, predictions)
-        f1 = f1_score(true_labels, predictions)
-        recall = recall_score(true_labels, predictions)
-        precision = precision_score(true_labels, predictions)
-        average_latency = sum(latencies) / len(latencies)
-        
-        with open(f"./output/Internvl_2B_{key}_score.txt", 'w') as file:
-            file.write(f"Accuracy: {accuracy:.2f}\\n")
-            file.write(f"F1 Score: {f1:.2f}\\n")
-            file.write(f"Recall: {recall:.2f}\\n")
-            file.write(f"Precision: {precision:.2f}\\n")
-            file.write(f"Average Latency (s): {average_latency:.2f}\\n")
-
-        logging.info(f"Accuracy: {accuracy:.2f}")
-        logging.info(f"F1 Score: {f1:.2f}")
-        logging.info(f"Recall: {recall:.2f}")
-        logging.info(f"Precision: {precision:.2f}")
-        logging.info(f"Average Latency (s): {average_latency:.2f}")
-
-        output_file = os.path.join('./output',output_file_name)
-        with open(output_file, 'w') as outfile:
-            json.dump(all_results, outfile, indent=4)
 
 
 if __name__ == "__main__": 
