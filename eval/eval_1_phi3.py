@@ -19,7 +19,7 @@ if not os.path.exists('./output'):
     os.mkdir('./output')
 
 model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
-                                       model_kwargs={'device_map': 'auto'})
+                                       model_kwargs={'device_map': 'auto'}, use_flash_attn=False)
 
 model.generation_config.max_new_tokens = 1024
 template = get_template(template_type, tokenizer)
