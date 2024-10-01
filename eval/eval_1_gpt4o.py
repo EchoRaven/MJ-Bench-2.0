@@ -186,8 +186,8 @@ def evaluate_videos(caption, video0_path, video1_path, prompt_template):
     model_id = 'gpt-4o'  # 或 'gemini'
     moderator = VideoModerator(model_id, device, openai_api_key, gemini_api_key)
 
-    response0, _ = moderator.generate_response(prompt, video0_path)
-    response1, _ = moderator.generate_response(prompt, video1_path)
+    response0 = moderator.generate_response(prompt, video0_path)
+    response1 = moderator.generate_response(prompt, video1_path)
     score0 = response0
     score1 = response1
     end_time = time.time()  # 记录结束时间
