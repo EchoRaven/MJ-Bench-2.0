@@ -1,6 +1,6 @@
 {
   "model_type": "internvl2-2b",
-  "prompt_list": "prompts.json",
+  "prompt_list": "../MoE/prompts.json",
   "model_id_or_path": "../videoRM/Internvl/pretrain/InternVL2-2B",
   "inference_type": "high_speed",
   "dtype": "bfloat16",
