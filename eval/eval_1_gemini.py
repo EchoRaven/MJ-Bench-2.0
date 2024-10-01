@@ -4,18 +4,12 @@ import re
 import time
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from collections import Counter
-import transformers
-import sys
-import os
-import base64
-import cv2
 import torch
+import cv2
+import base64
 from openai import OpenAI
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
-import concurrent.futures
-if not os.path.exists('./output'):
-    os.mkdir('./output')
 class VideoModerator:
     def __init__(self, model_id, device, openai_api_key=None, gemini_api_key=None, ckpt_dir=None):
         self.model_id = model_id
@@ -47,7 +41,6 @@ class VideoModerator:
                 }
             )
 
-
     def generate_response(self, question, video_path):
         if "gpt-4o" in self.model_id:
             # 处理视频并调用 gpt-4o API
@@ -77,37 +70,31 @@ class VideoModerator:
             # 处理视频并调用 Gemini API
             def upload_to_gemini(path, mime_type=None):
                 file = self.genai.upload_file(path, mime_type=mime_type)
-                while file.state.name == "PROCESSING":
-                    time.sleep(10)
-                    file = genai.get_file(file.name)
-                if file.state.name == "FAILED":
-                    return None
                 return file
 
             files = [upload_to_gemini(video_path, mime_type="video/mp4")]
-            files = [file for file in files if file is not None]
             contents = [files[0], question]
             response = self.model.generate_content(contents)
             return response.text
+        
+
+
 
 
 def evaluate_videos(caption, video0_path, video1_path, prompt_template):
 
-
-    prompt = prompt_template.format(caption=caption)
-
-    start_time = time.time()  # 记录开始时间
-
-    openai_api_key = ""
+    openai_api_key = "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"
     gemini_api_key = "AIzaSyDrKOYl7PfGp4Moqkm10SLVGMmbsX7TKO0"  # 需要设置有效的API密钥
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model_id = 'gemini'  # 或 'gemini'
     moderator = VideoModerator(model_id, device, openai_api_key, gemini_api_key)
 
+    prompt = prompt_template.format(caption=caption)
+    start_time = time.time()  # 记录开始时间
     response0 = moderator.generate_response(prompt, video0_path)
     response1 = moderator.generate_response(prompt, video1_path)
     score0 = response0
-    score1 = response1
+    score1 = response1  
     end_time = time.time()  # 记录结束时间
     print(f"Score0: {score0}")
     print(f"Score1: {score1}")
@@ -236,58 +223,81 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     latencies = []
     counter = 0
 
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = {}
-        for item in data:
-            caption = item['caption']
-            video0_path_relative = item['video0_body']['video_path']
-            video1_path_relative = item['video1_body']['video_path']
-            video0_path = os.path.join(videos_dir, video0_path_relative)
-            video1_path = os.path.join(videos_dir, video1_path_relative)
+    for item in data:
+        caption = item['caption']
+        video0_path_relative = item['video0_body']['video_path']
+        video1_path_relative = item['video1_body']['video_path']
+        video0_path = os.path.join(videos_dir, video0_path_relative)
+        video1_path = os.path.join(videos_dir, video1_path_relative)
 
-            true_chosen = item['video0_body']['chosen']
-            futures[executor.submit(evaluate_videos, caption, video0_path, video1_path, prompt)] = true_chosen
+        true_chosen = item['video0_body']['chosen']
 
-        for future in concurrent.futures.as_completed(futures):
-            video_0_rating, video_1_rating, latency = future.result()
-            true_chosen = futures[future]
-            model_chosen = (video_0_rating > video_1_rating)
+        video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
+        model_chosen = (video_0_rating > video_1_rating)
 
-            result = {
-                "caption": caption,
-                "video_0_uid": video0_path,
-                "video_1_uid": video1_path,
-                "video_0_scores": {
-                    "alignment": video_0_rating
-                },
-                "video_1_scores": {
-                    "alignment": video_1_rating
-                },
-                "chosen": model_chosen
-            }
-            all_results.append(result)
-            true_labels.append(true_chosen)
-            predictions.append(model_chosen)
-            latencies.append(latency)
+        result = {
+            "caption": caption,
+            "video_0_uid": video0_path,
+            "video_1_uid": video1_path,
+            "video_0_scores": {
+                "alignment": video_0_rating
+            },
+            "video_1_scores": {
+                "alignment": video_1_rating
+            },
+            "chosen": model_chosen
+        }
+        all_results.append(result)
 
-    # 计算并输出结果
+        true_labels.append(true_chosen)
+        predictions.append(model_chosen)
+        latencies.append(latency)
+        counter = counter + 1
+        if counter % 10 == 0:
+            accuracy = accuracy_score(true_labels, predictions)
+            f1 = f1_score(true_labels, predictions)
+            recall = recall_score(true_labels, predictions)
+            precision = precision_score(true_labels, predictions)
+
+            
+            with open(f"./output/gemini{key}_score.txt", 'w') as file:
+                file.write(f"Accuracy: {accuracy:.2f}\\n")
+                file.write(f"F1 Score: {f1:.2f}\\n")
+                file.write(f"Recall: {recall:.2f}\\n")
+                file.write(f"Precision: {precision:.2f}\\n")
+
+
+            print(f"Accuracy: {accuracy:.2f}")
+            print(f"F1 Score: {f1:.2f}")
+            print(f"Recall: {recall:.2f}")
+            print(f"Precision: {precision:.2f}")
+
+            
+            output_file = os.path.join('./output',output_file_name)
+            with open(output_file, 'w') as outfile:
+                json.dump(all_results, outfile, indent=4)
+
+
     accuracy = accuracy_score(true_labels, predictions)
     f1 = f1_score(true_labels, predictions)
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
 
-    with open(f"./output/gemini_4o_{key}_score.txt", 'w') as file:
-        file.write(f"Accuracy: {accuracy:.2f}\n")
-        file.write(f"F1 Score: {f1:.2f}\n")
-        file.write(f"Recall: {recall:.2f}\n")
-        file.write(f"Precision: {precision:.2f}\n")
+    
+    with open(f"./output/gemini_{key}_score.txt", 'w') as file:
+        file.write(f"Accuracy: {accuracy:.2f}\\n")
+        file.write(f"F1 Score: {f1:.2f}\\n")
+        file.write(f"Recall: {recall:.2f}\\n")
+        file.write(f"Precision: {precision:.2f}\\n")
+
 
     print(f"Accuracy: {accuracy:.2f}")
     print(f"F1 Score: {f1:.2f}")
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output', output_file_name)
+
+    output_file = os.path.join('./output',output_file_name)
     with open(output_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
@@ -305,60 +315,60 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     latencies = []
     counter = 0
 
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = {}
-        for item in data:
-            caption = item['caption']
-            video0_path_relative = item['chosen']
-            video1_path_relative = item['reject']
-            video0_path = os.path.join(videos_dir, video0_path_relative)
-            video1_path = os.path.join(videos_dir, video1_path_relative)
-            better_prompts = item['better']
-            true_chosen = True
-            futures[executor.submit(evaluate_videos, caption, video0_path, video1_path, prompt)] = true_chosen
+    for item in data:
+        caption = item['caption']
+        video0_path_relative = item['chosen']
+        video1_path_relative = item['reject']
+        video0_path = os.path.join(videos_dir, video0_path_relative)
+        video1_path = os.path.join(videos_dir, video1_path_relative)
+        better_prompts = item['better']
+        true_chosen = True
 
-        for future in concurrent.futures.as_completed(futures):
-            video_0_rating, video_1_rating, latency = future.result()
-            true_chosen = futures[future]
-            model_chosen = (video_0_rating > video_1_rating)
+        video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
+        model_chosen = (video_0_rating > video_1_rating)
 
-            result = {
-                "caption": caption,
-                "video_0_uid": video0_path,
-                "video_1_uid": video1_path,
-                "video_0_scores": {
-                    "alignment": video_0_rating
-                },
-                "video_1_scores": {
-                    "alignment": video_1_rating
-                },
-                "chosen": model_chosen
-            }
-            all_results.append(result)
-            true_labels.append(true_chosen)
-            predictions.append(model_chosen)
-            latencies.append(latency)
+        result = {
+            "caption": caption,
+            "video_0_uid": video0_path,
+            "video_1_uid": video1_path,
+            "video_0_scores": {
+                "alignment": video_0_rating
+            },
+            "video_1_scores": {
+                "alignment": video_1_rating
+            },
+            "chosen": model_chosen
+        }
+        all_results.append(result)
 
-    # 计算并输出结果
-    accuracy = accuracy_score(true_labels, predictions)
-    f1 = f1_score(true_labels, predictions)
-    recall = recall_score(true_labels, predictions)
-    precision = precision_score(true_labels, predictions)
+        true_labels.append(true_chosen)
+        predictions.append(model_chosen)
+        latencies.append(latency)
+        counter = counter + 1
+        if counter % 10 == 0:
+            accuracy = accuracy_score(true_labels, predictions)
+            f1 = f1_score(true_labels, predictions)
+            recall = recall_score(true_labels, predictions)
+            precision = precision_score(true_labels, predictions)
 
-    with open(f"./output/gemini_4o_{key}_score.txt", 'w') as file:
-        file.write(f"Accuracy: {accuracy:.2f}\n")
-        file.write(f"F1 Score: {f1:.2f}\n")
-        file.write(f"Recall: {recall:.2f}\n")
-        file.write(f"Precision: {precision:.2f}\n")
+            
+            with open(f"./output/gemini_{key}_score.txt", 'w') as file:
+                file.write(f"Accuracy: {accuracy:.2f}\\n")
+                file.write(f"F1 Score: {f1:.2f}\\n")
+                file.write(f"Recall: {recall:.2f}\\n")
+                file.write(f"Precision: {precision:.2f}\\n")
 
-    print(f"Accuracy: {accuracy:.2f}")
-    print(f"F1 Score: {f1:.2f}")
-    print(f"Recall: {recall:.2f}")
-    print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output', output_file_name)
-    with open(output_file, 'w') as outfile:
-        json.dump(all_results, outfile, indent=4)
+            print(f"Accuracy: {accuracy:.2f}")
+            print(f"F1 Score: {f1:.2f}")
+            print(f"Recall: {recall:.2f}")
+            print(f"Precision: {precision:.2f}")
+
+            
+            output_file = os.path.join('./output',output_file_name)
+            with open(output_file, 'w') as outfile:
+                json.dump(all_results, outfile, indent=4)
+
 
     accuracy = accuracy_score(true_labels, predictions)
     f1 = f1_score(true_labels, predictions)
@@ -366,7 +376,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     precision = precision_score(true_labels, predictions)
 
     
-    with open(f"./output/gemini_4o_{key}_score.txt", 'w') as file:
+    with open(f"./output/gemini_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -399,11 +409,18 @@ if __name__ == "__main__":
         json_file_path = value
         output_file_name = f'gemini_{key}_results.json'
         
-        # 检查是否为 overall 文件
+        # 检查是否为overall文件
         if key == 'overall':
-            process_overall_file(json_file_path, videos_dir, output_file_name,key)
+            process_overall_file(json_file_path, videos_dir, output_file_name,key)  # 使用另一个函数处理
         else:
             process_json_file(json_file_path, videos_dir, output_file_name, key)
+
+
+
+
+
+
+
 
 
 
