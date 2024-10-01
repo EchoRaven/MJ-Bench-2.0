@@ -15,6 +15,7 @@ import re
 import json
 
 def convert_to_json_format(input_string: str) -> dict:
+    print(input_string)
     # 使用正则表达式为键添加引号
     json_compatible_string = re.sub(r"(\w+):", r'"\1":', input_string)
 
