@@ -9,6 +9,7 @@ import sys
 import os
 import base64
 import cv2
+import torch
 from openai import OpenAI
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
@@ -173,21 +174,21 @@ class VideoModerator:
         return response.text
 
 
-def evaluate_videos(caption, video0_path, video1_path, prompt_template):
+async def evaluate_videos(caption, video0_path, video1_path, prompt_template):
 
 
     prompt = prompt_template.format(caption=caption)
 
     start_time = time.time()  # 记录开始时间
 
-    openai_api_key = "your_openai_api_key"
+    openai_api_key = "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"
     gemini_api_key = "your_gemini_api_key"
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model_id = 'gpt-4o'  # 或 'gemini'
     moderator = VideoModerator(model_id, device, openai_api_key, gemini_api_key)
 
-    response0 = moderator.generate_response(prompt, video0_path)
-    response1 = moderator.generate_response(prompt, video1_path)
+    response0 = await moderator.generate_response(prompt, video0_path)
+    response1 = await moderator.generate_response(prompt, video1_path)
     score0 = response0
     score1 = response1
     end_time = time.time()  # 记录结束时间
@@ -482,7 +483,7 @@ Now, proceed with evaluating the video based on the prompt description provided.
 
 
 
-def process_json_file(json_file_path, videos_dir, output_file_name, key):
+async def process_json_file(json_file_path, videos_dir, output_file_name, key):
     with open(json_file_path, 'r') as f:
         data = json.load(f)
 
@@ -496,87 +497,84 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     counter = 0
 
     for item in data:
-        try:
-            caption = item['caption']
-            video0_path_relative = item['video0_body']['video_path']
-            video1_path_relative = item['video1_body']['video_path']
-            video0_path = os.path.join(videos_dir, video0_path_relative)
-            video1_path = os.path.join(videos_dir, video1_path_relative)
+        caption = item['caption']
+        video0_path_relative = item['video0_body']['video_path']
+        video1_path_relative = item['video1_body']['video_path']
+        video0_path = os.path.join(videos_dir, video0_path_relative)
+        video1_path = os.path.join(videos_dir, video1_path_relative)
 
-            true_chosen = item['video0_body']['chosen']
+        true_chosen = item['video0_body']['chosen']
 
-            video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
-            model_chosen = (video_0_rating > video_1_rating)
+        video_0_rating, video_1_rating, latency = await evaluate_videos(caption, video0_path, video1_path,prompt)
+        model_chosen = (video_0_rating > video_1_rating)
 
-            result = {
-                "caption": caption,
-                "video_0_uid": video0_path,
-                "video_1_uid": video1_path,
-                "video_0_scores": {
-                    "alignment": video_0_rating
-                },
-                "video_1_scores": {
-                    "alignment": video_1_rating
-                },
-                "chosen": model_chosen
-            }
-            all_results.append(result)
+        result = {
+            "caption": caption,
+            "video_0_uid": video0_path,
+            "video_1_uid": video1_path,
+            "video_0_scores": {
+                "alignment": video_0_rating
+            },
+            "video_1_scores": {
+                "alignment": video_1_rating
+            },
+            "chosen": model_chosen
+        }
+        all_results.append(result)
 
-            true_labels.append(true_chosen)
-            predictions.append(model_chosen)
-            latencies.append(latency)
-            counter = counter + 1
-            if counter % 10 == 0:
-                accuracy = accuracy_score(true_labels, predictions)
-                f1 = f1_score(true_labels, predictions)
-                recall = recall_score(true_labels, predictions)
-                precision = precision_score(true_labels, predictions)
-                average_latency = sum(latencies) / len(latencies)
-                
-                with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
-                    file.write(f"Accuracy: {accuracy:.2f}\\n")
-                    file.write(f"F1 Score: {f1:.2f}\\n")
-                    file.write(f"Recall: {recall:.2f}\\n")
-                    file.write(f"Precision: {precision:.2f}\\n")
-                    file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+        true_labels.append(true_chosen)
+        predictions.append(model_chosen)
+        latencies.append(latency)
+        counter = counter + 1
+        if counter % 10 == 0:
+            accuracy = accuracy_score(true_labels, predictions)
+            f1 = f1_score(true_labels, predictions)
+            recall = recall_score(true_labels, predictions)
+            precision = precision_score(true_labels, predictions)
 
-                print(f"Accuracy: {accuracy:.2f}")
-                print(f"F1 Score: {f1:.2f}")
-                print(f"Recall: {recall:.2f}")
-                print(f"Precision: {precision:.2f}")
-                print(f"Average Latency (s): {average_latency:.2f}")
-                
-                output_file = os.path.join('./output',output_file_name)
-                with open(output_file, 'w') as outfile:
-                    json.dump(all_results, outfile, indent=4)
-        except:
-            continue
+            
+            with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
+                file.write(f"Accuracy: {accuracy:.2f}\\n")
+                file.write(f"F1 Score: {f1:.2f}\\n")
+                file.write(f"Recall: {recall:.2f}\\n")
+                file.write(f"Precision: {precision:.2f}\\n")
+
+
+            print(f"Accuracy: {accuracy:.2f}")
+            print(f"F1 Score: {f1:.2f}")
+            print(f"Recall: {recall:.2f}")
+            print(f"Precision: {precision:.2f}")
+
+            
+            output_file = os.path.join('./output',output_file_name)
+            with open(output_file, 'w') as outfile:
+                json.dump(all_results, outfile, indent=4)
 
     accuracy = accuracy_score(true_labels, predictions)
     f1 = f1_score(true_labels, predictions)
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
-    average_latency = sum(latencies) / len(latencies)
+
     
     with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
         file.write(f"Precision: {precision:.2f}\\n")
-        file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
 
     print(f"Accuracy: {accuracy:.2f}")
     print(f"F1 Score: {f1:.2f}")
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
-    print(f"Average Latency (s): {average_latency:.2f}")
+
 
     output_file = os.path.join('./output',output_file_name)
     with open(output_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
 
-def process_overall_file(json_file_path, videos_dir, output_file_name):
+async def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     with open(json_file_path, 'r') as f:
         data = json.load(f)
 
@@ -590,80 +588,78 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     counter = 0
 
     for item in data:
-        try:
-            caption = item['caption']
-            video0_path_relative = item['chosen']
-            video1_path_relative = item['reject']
-            video0_path = os.path.join(videos_dir, video0_path_relative)
-            video1_path = os.path.join(videos_dir, video1_path_relative)
-            better_prompts = item['better']
-            true_chosen = True
+        caption = item['caption']
+        video0_path_relative = item['chosen']
+        video1_path_relative = item['reject']
+        video0_path = os.path.join(videos_dir, video0_path_relative)
+        video1_path = os.path.join(videos_dir, video1_path_relative)
+        better_prompts = item['better']
+        true_chosen = True
 
-            video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
-            model_chosen = (video_0_rating > video_1_rating)
+        video_0_rating, video_1_rating, latency = await evaluate_videos(caption, video0_path, video1_path,prompt)
+        model_chosen = (video_0_rating > video_1_rating)
 
-            result = {
-                "caption": caption,
-                "video_0_uid": video0_path,
-                "video_1_uid": video1_path,
-                "video_0_scores": {
-                    "alignment": video_0_rating
-                },
-                "video_1_scores": {
-                    "alignment": video_1_rating
-                },
-                "chosen": model_chosen
-            }
-            all_results.append(result)
+        result = {
+            "caption": caption,
+            "video_0_uid": video0_path,
+            "video_1_uid": video1_path,
+            "video_0_scores": {
+                "alignment": video_0_rating
+            },
+            "video_1_scores": {
+                "alignment": video_1_rating
+            },
+            "chosen": model_chosen
+        }
+        all_results.append(result)
 
-            true_labels.append(true_chosen)
-            predictions.append(model_chosen)
-            latencies.append(latency)
-            counter = counter + 1
-            if counter % 10 == 0:
-                accuracy = accuracy_score(true_labels, predictions)
-                f1 = f1_score(true_labels, predictions)
-                recall = recall_score(true_labels, predictions)
-                precision = precision_score(true_labels, predictions)
-                average_latency = sum(latencies) / len(latencies)
-                
-                with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
-                    file.write(f"Accuracy: {accuracy:.2f}\\n")
-                    file.write(f"F1 Score: {f1:.2f}\\n")
-                    file.write(f"Recall: {recall:.2f}\\n")
-                    file.write(f"Precision: {precision:.2f}\\n")
-                    file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+        true_labels.append(true_chosen)
+        predictions.append(model_chosen)
+        latencies.append(latency)
+        counter = counter + 1
+        if counter % 10 == 0:
+            accuracy = accuracy_score(true_labels, predictions)
+            f1 = f1_score(true_labels, predictions)
+            recall = recall_score(true_labels, predictions)
+            precision = precision_score(true_labels, predictions)
 
-                print(f"Accuracy: {accuracy:.2f}")
-                print(f"F1 Score: {f1:.2f}")
-                print(f"Recall: {recall:.2f}")
-                print(f"Precision: {precision:.2f}")
-                print(f"Average Latency (s): {average_latency:.2f}")
-                
-                output_file = os.path.join('./output',output_file_name)
-                with open(output_file, 'w') as outfile:
-                    json.dump(all_results, outfile, indent=4)
-        except:
-            continue
+            
+            with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
+                file.write(f"Accuracy: {accuracy:.2f}\\n")
+                file.write(f"F1 Score: {f1:.2f}\\n")
+                file.write(f"Recall: {recall:.2f}\\n")
+                file.write(f"Precision: {precision:.2f}\\n")
+
+
+            print(f"Accuracy: {accuracy:.2f}")
+            print(f"F1 Score: {f1:.2f}")
+            print(f"Recall: {recall:.2f}")
+            print(f"Precision: {precision:.2f}")
+
+            
+            output_file = os.path.join('./output',output_file_name)
+            with open(output_file, 'w') as outfile:
+                json.dump(all_results, outfile, indent=4)
+
 
     accuracy = accuracy_score(true_labels, predictions)
     f1 = f1_score(true_labels, predictions)
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
-    average_latency = sum(latencies) / len(latencies)
+
     
     with open(f"./output/gpt_4o_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
         file.write(f"Precision: {precision:.2f}\\n")
-        file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
 
     print(f"Accuracy: {accuracy:.2f}")
     print(f"F1 Score: {f1:.2f}")
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
-    print(f"Average Latency (s): {average_latency:.2f}")
+
 
     output_file = os.path.join('./output',output_file_name)
     with open(output_file, 'w') as outfile:
@@ -671,32 +667,31 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
 
 
 if __name__ == "__main__": 
-    videos_dir = '../videos'
-    json_files = {
-        'overall': '../test/overall.json',
-        'safety': '../test/safety.json',
-        'alignment': '../test/alignment.json',
-        'bias': '../test/bias.json',
-        'quality': '../test/quality.json',
-        'cc': '../test/cc.json',
-    }
+    # 使用 asyncio 运行主函数
+    import asyncio
 
-    for key, value in json_files.items():
-        json_file_path = value
-        output_file_name = f'gpt_4o_{key}_results.json'
-        
-        # 检查是否为overall文件
-        if key == 'overall':
-            process_overall_file(json_file_path, videos_dir, output_file_name)  # 使用另一个函数处理
-        else:
-            process_json_file(json_file_path, videos_dir, output_file_name, key)
+    async def main():
+        videos_dir = '../videos'
+        json_files = {
+            'overall': '../test/overall.json',
+            'safety': '../test/safety.json',
+            'alignment': '../test/alignment.json',
+            'bias': '../test/bias.json',
+            'quality': '../test/quality.json',
+            'cc': '../test/cc.json',
+        }
 
+        for key, value in json_files.items():
+            json_file_path = value
+            output_file_name = f'gpt_4o_{key}_results.json'
+            
+            # 检查是否为 overall 文件
+            if key == 'overall':
+                await process_overall_file(json_file_path, videos_dir, output_file_name,key)
+            else:
+                await process_json_file(json_file_path, videos_dir, output_file_name, key)
 
-
-
-
-
-
+    asyncio.run(main())
 
 
 
