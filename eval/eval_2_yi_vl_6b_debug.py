@@ -412,9 +412,8 @@ model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
 model.generation_config.max_new_tokens = 1024
 template = get_template(template_type, tokenizer)
 seed_everything(42)
-images = ['http://modelscope-open.oss-cn-hangzhou.aliyuncs.com/images/road.png']
-query = 'How far is it from each city?'
-response, history = inference(model, template, query, images=images)
-print(f'query: {query}')
-print(f'response: {response}')
+video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/"]
+prompt = "whats in the video"
+response, _ = inference(model, template, prompt, videos=video_paths)
+print(response)
 
