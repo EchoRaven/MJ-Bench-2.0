@@ -83,7 +83,7 @@ class VideoModerator:
 
 def evaluate_videos(caption, video0_path, video1_path, prompt_template):
 
-    openai_api_key = "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"
+    openai_api_key = "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"
     gemini_api_key = "AIzaSyDrKOYl7PfGp4Moqkm10SLVGMmbsX7TKO0"  # 需要设置有效的API密钥
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model_id = 'gpt-4o'  # 或 'gemini'
