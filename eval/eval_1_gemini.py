@@ -70,9 +70,15 @@ class VideoModerator:
             # 处理视频并调用 Gemini API
             def upload_to_gemini(path, mime_type=None):
                 file = self.genai.upload_file(path, mime_type=mime_type)
+                while file.state.name == "PROCESSING":
+                    time.sleep(10)
+                    file = self.genai.get_file(file.name)
+                if file.state.name == "FAILED":
+                    return None
                 return file
 
             files = [upload_to_gemini(video_path, mime_type="video/mp4")]
+            files = [file for file in files if file is not None]
             contents = [files[0], question]
             response = self.model.generate_content(contents)
             return response.text
