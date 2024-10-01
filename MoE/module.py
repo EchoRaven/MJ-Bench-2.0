@@ -29,41 +29,33 @@ class MJ_VIDEO:
     def __init__(self, config):
         self.config = config
         self.dtype = torch.bfloat16 if config["dtype"] == "bfloat16" else torch.float32
-        logging.info("Loading base model ...")
-        self.base_model, self.tokenizer = get_model_tokenizer(config["model_type"], self.dtype,
+        logging.info("Loading router ...")
+        self.router, self.tokenizer = get_model_tokenizer(config["model_type"], self.dtype,
                             model_kwargs={'device_map': 'auto'}, model_id_or_path=config["model_id_or_path"])
+        self.router = Swift.from_pretrained(
+                    self.router, config["router_path"], "router", inference_mode=True)
+        self.router.generation_config.max_new_tokens = 1024
+        # define experts
+        self.expert_group = {}
+        for key in config["experts"].keys():
+            logging.info(f"Loading {key} expert ...")
+            self.expert_group[key], _ =  get_model_tokenizer(config["model_type"], self.dtype,
+                        model_kwargs={'device_map': 'auto'}, model_id_or_path=config["model_id_or_path"])
+            self.expert_group[key] = Swift.from_pretrained(
+                    self.expert_group[key], config["experts"][key], key, inference_mode=True)
+            self.expert_group[key].generation_config.max_new_tokens = 1024
+        
         template_type = get_default_template_type(config["model_type"])
         self.template = get_template(template_type, self.tokenizer)
         seed_everything(42)
-
+        logging.info("Loading prompt list ...")
         # load prompt list
         with open(config["prompt_list"], "r", encoding="utf-8") as f:
             self.prompt_list = json.load(f)
 
-        # define MoE
-        if config["inference_type"] == "high_speed":
-            # define router
-            logging.info("Loading router ...")
-            self.router = Swift.from_pretrained(
-                      self.base_model, config["router_path"], "router", inference_mode=True)
-            self.router.generation_config.max_new_tokens = 1024
-            # define experts
-            self.expert_group = {}
-            for key in config["experts"].keys():
-                logging.info(f"Loading {key} expert ...")
-                self.expert_group[key] = Swift.from_pretrained(
-                      self.base_model, config["experts"][key], key, inference_mode=True)
-                self.expert_group[key].generation_config.max_new_tokens = 1024
-
     def router_choice(self, video_paths, prompt):
         router_template = self.prompt_list["router"]
-        if self.config["inference_type"] == "low_cost":
-            self.router = Swift.from_pretrained(
-                    self.base_model, self.config["router_path"], "router", inference_mode=True)
-            self.router.generation_config.max_new_tokens = 1024
         response, _ = inference(self.router, self.template, router_template + prompt, videos=video_paths)
-        if self.config["inference_type"] == "low_cost":
-            del self.router
         return response
     
     def activate_expert(self, force_keys, router_response):
@@ -77,18 +69,8 @@ class MJ_VIDEO:
         return experts
     
     def process_expert(self, expert, video_paths, prompt):
-
-        if self.config["inference_type"] == "low_cost":
-            self.expert_group[expert] = Swift.from_pretrained(
-                self.base_model, self.config["experts"][expert], expert, inference_mode=True)
-            self.expert_group[expert].generation_config.max_new_tokens = 1024
-
         expert_template = self.prompt_list[expert]
         response, _ = inference(self.expert_group[expert], self.template, expert_template + prompt, videos=video_paths)
-
-        if self.config["inference_type"] == "low_cost":
-            del self.expert_group[expert]
-
         response_json = convert_to_json_format(response)
         return response_json, expert
     
@@ -96,21 +78,16 @@ class MJ_VIDEO:
         def process_expert_concurrently(expert):
             return self.process_expert(expert, video_paths, prompt)
         result = {}
-        if self.config["inference_type"] == "low_cost":
-            for expert in experts:
-                result_json, _ = process_expert_concurrently(expert, video_paths, prompt)
-                result[expert] = result_json
-        else:
-            with ThreadPoolExecutor() as executor:
-                future_to_expert = {executor.submit(process_expert_concurrently, expert): expert for expert in experts}
-                for future in as_completed(future_to_expert):
-                    expert = future_to_expert[future]
-                    try:
-                        result_json, _ = future.result()
-                        result[expert] = result_json
-                    except Exception as exc:
-                        print(f'{expert} generated an exception: {exc}')
-            return result
+        with ThreadPoolExecutor() as executor:
+            future_to_expert = {executor.submit(process_expert_concurrently, expert): expert for expert in experts}
+            for future in as_completed(future_to_expert):
+                expert = future_to_expert[future]
+                try:
+                    result_json, _ = future.result()
+                    result[expert] = result_json
+                except Exception as exc:
+                    print(f'{expert} generated an exception: {exc}')
+        return result
         
     def judge(self, video_paths, prompt, force_keys=[]):
         if len(force_keys) == 0:
