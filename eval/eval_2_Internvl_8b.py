@@ -17,7 +17,7 @@ import torch
 
 
 model_id_or_path = "../videoRM/Internvl/pretrain/InternVL2-8B"
-model_type = "internvl2-2b"
+model_type = "internvl2-8b"
 
 
 def evaluate_videos(caption, video0_path, video1_path, prompt_template):
