@@ -413,7 +413,7 @@ model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
 model.generation_config.max_new_tokens = 1024
 template = get_template(template_type, tokenizer)
 seed_everything(42)
-video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/"]
+video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4"]
 prompt = "whats in the video"
 response, _ = inference(model, template, prompt, videos=video_paths)
 print(response)
