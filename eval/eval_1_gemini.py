@@ -230,58 +230,61 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     counter = 0
 
     for item in data:
-        caption = item['caption']
-        video0_path_relative = item['video0_body']['video_path']
-        video1_path_relative = item['video1_body']['video_path']
-        video0_path = os.path.join(videos_dir, video0_path_relative)
-        video1_path = os.path.join(videos_dir, video1_path_relative)
+        try:
+            caption = item['caption']
+            video0_path_relative = item['video0_body']['video_path']
+            video1_path_relative = item['video1_body']['video_path']
+            video0_path = os.path.join(videos_dir, video0_path_relative)
+            video1_path = os.path.join(videos_dir, video1_path_relative)
 
-        true_chosen = item['video0_body']['chosen']
+            true_chosen = item['video0_body']['chosen']
 
-        video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
-        model_chosen = (video_0_rating > video_1_rating)
+            video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
+            model_chosen = (video_0_rating > video_1_rating)
 
-        result = {
-            "caption": caption,
-            "video_0_uid": video0_path,
-            "video_1_uid": video1_path,
-            "video_0_scores": {
-                "alignment": video_0_rating
-            },
-            "video_1_scores": {
-                "alignment": video_1_rating
-            },
-            "chosen": model_chosen
-        }
-        all_results.append(result)
+            result = {
+                "caption": caption,
+                "video_0_uid": video0_path,
+                "video_1_uid": video1_path,
+                "video_0_scores": {
+                    "alignment": video_0_rating
+                },
+                "video_1_scores": {
+                    "alignment": video_1_rating
+                },
+                "chosen": model_chosen
+            }
+            all_results.append(result)
 
-        true_labels.append(true_chosen)
-        predictions.append(model_chosen)
-        latencies.append(latency)
-        counter = counter + 1
-        if counter % 10 == 0:
-            accuracy = accuracy_score(true_labels, predictions)
-            f1 = f1_score(true_labels, predictions)
-            recall = recall_score(true_labels, predictions)
-            precision = precision_score(true_labels, predictions)
+            true_labels.append(true_chosen)
+            predictions.append(model_chosen)
+            latencies.append(latency)
+            counter = counter + 1
+            if counter % 10 == 0:
+                accuracy = accuracy_score(true_labels, predictions)
+                f1 = f1_score(true_labels, predictions)
+                recall = recall_score(true_labels, predictions)
+                precision = precision_score(true_labels, predictions)
 
-            
-            with open(f"./output/gemini{key}_score.txt", 'w') as file:
-                file.write(f"Accuracy: {accuracy:.2f}\\n")
-                file.write(f"F1 Score: {f1:.2f}\\n")
-                file.write(f"Recall: {recall:.2f}\\n")
-                file.write(f"Precision: {precision:.2f}\\n")
+                
+                with open(f"./output/gemini{key}_score.txt", 'w') as file:
+                    file.write(f"Accuracy: {accuracy:.2f}\\n")
+                    file.write(f"F1 Score: {f1:.2f}\\n")
+                    file.write(f"Recall: {recall:.2f}\\n")
+                    file.write(f"Precision: {precision:.2f}\\n")
 
 
-            print(f"Accuracy: {accuracy:.2f}")
-            print(f"F1 Score: {f1:.2f}")
-            print(f"Recall: {recall:.2f}")
-            print(f"Precision: {precision:.2f}")
+                print(f"Accuracy: {accuracy:.2f}")
+                print(f"F1 Score: {f1:.2f}")
+                print(f"Recall: {recall:.2f}")
+                print(f"Precision: {precision:.2f}")
 
-            
-            output_file = os.path.join('./output',output_file_name)
-            with open(output_file, 'w') as outfile:
-                json.dump(all_results, outfile, indent=4)
+                
+                output_file = os.path.join('./output',output_file_name)
+                with open(output_file, 'w') as outfile:
+                    json.dump(all_results, outfile, indent=4)
+        except:
+            continue
 
 
     accuracy = accuracy_score(true_labels, predictions)
@@ -322,58 +325,61 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     counter = 0
 
     for item in data:
-        caption = item['caption']
-        video0_path_relative = item['chosen']
-        video1_path_relative = item['reject']
-        video0_path = os.path.join(videos_dir, video0_path_relative)
-        video1_path = os.path.join(videos_dir, video1_path_relative)
-        better_prompts = item['better']
-        true_chosen = True
+        try:
+            caption = item['caption']
+            video0_path_relative = item['chosen']
+            video1_path_relative = item['reject']
+            video0_path = os.path.join(videos_dir, video0_path_relative)
+            video1_path = os.path.join(videos_dir, video1_path_relative)
+            better_prompts = item['better']
+            true_chosen = True
 
-        video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
-        model_chosen = (video_0_rating > video_1_rating)
+            video_0_rating, video_1_rating, latency = evaluate_videos(caption, video0_path, video1_path,prompt)
+            model_chosen = (video_0_rating > video_1_rating)
 
-        result = {
-            "caption": caption,
-            "video_0_uid": video0_path,
-            "video_1_uid": video1_path,
-            "video_0_scores": {
-                "alignment": video_0_rating
-            },
-            "video_1_scores": {
-                "alignment": video_1_rating
-            },
-            "chosen": model_chosen
-        }
-        all_results.append(result)
+            result = {
+                "caption": caption,
+                "video_0_uid": video0_path,
+                "video_1_uid": video1_path,
+                "video_0_scores": {
+                    "alignment": video_0_rating
+                },
+                "video_1_scores": {
+                    "alignment": video_1_rating
+                },
+                "chosen": model_chosen
+            }
+            all_results.append(result)
 
-        true_labels.append(true_chosen)
-        predictions.append(model_chosen)
-        latencies.append(latency)
-        counter = counter + 1
-        if counter % 10 == 0:
-            accuracy = accuracy_score(true_labels, predictions)
-            f1 = f1_score(true_labels, predictions)
-            recall = recall_score(true_labels, predictions)
-            precision = precision_score(true_labels, predictions)
+            true_labels.append(true_chosen)
+            predictions.append(model_chosen)
+            latencies.append(latency)
+            counter = counter + 1
+            if counter % 10 == 0:
+                accuracy = accuracy_score(true_labels, predictions)
+                f1 = f1_score(true_labels, predictions)
+                recall = recall_score(true_labels, predictions)
+                precision = precision_score(true_labels, predictions)
 
-            
-            with open(f"./output/gemini_{key}_score.txt", 'w') as file:
-                file.write(f"Accuracy: {accuracy:.2f}\\n")
-                file.write(f"F1 Score: {f1:.2f}\\n")
-                file.write(f"Recall: {recall:.2f}\\n")
-                file.write(f"Precision: {precision:.2f}\\n")
+                
+                with open(f"./output/gemini_{key}_score.txt", 'w') as file:
+                    file.write(f"Accuracy: {accuracy:.2f}\\n")
+                    file.write(f"F1 Score: {f1:.2f}\\n")
+                    file.write(f"Recall: {recall:.2f}\\n")
+                    file.write(f"Precision: {precision:.2f}\\n")
 
 
-            print(f"Accuracy: {accuracy:.2f}")
-            print(f"F1 Score: {f1:.2f}")
-            print(f"Recall: {recall:.2f}")
-            print(f"Precision: {precision:.2f}")
+                print(f"Accuracy: {accuracy:.2f}")
+                print(f"F1 Score: {f1:.2f}")
+                print(f"Recall: {recall:.2f}")
+                print(f"Precision: {precision:.2f}")
 
-            
-            output_file = os.path.join('./output',output_file_name)
-            with open(output_file, 'w') as outfile:
-                json.dump(all_results, outfile, indent=4)
+                
+                output_file = os.path.join('./output',output_file_name)
+                with open(output_file, 'w') as outfile:
+                    json.dump(all_results, outfile, indent=4)
+        except:
+            continue
 
 
     accuracy = accuracy_score(true_labels, predictions)
