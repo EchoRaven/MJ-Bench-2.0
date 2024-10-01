@@ -71,6 +71,7 @@ class MJ_VIDEO:
     def process_expert(self, expert, video_paths, prompt):
         expert_template = self.prompt_list[expert]
         response, _ = inference(self.expert_group[expert], self.template, expert_template + prompt, videos=video_paths)
+        logging.info(f"{expert} : {response}")
         response_json = convert_to_json_format(response)
         return response_json, expert
     
@@ -92,6 +93,7 @@ class MJ_VIDEO:
     def judge(self, video_paths, prompt, force_keys=[]):
         if len(force_keys) == 0:
             router_response = self.router_choice(video_paths, prompt)
+            logging.info(f"Router : {router_response}")
             experts = self.activate_expert(force_keys, router_response)
         else:
             experts = force_keys
