@@ -11,6 +11,7 @@ from swift.llm import (
 )
 from swift.utils import seed_everything
 import torch
+model_id_or_path = "../videoRM/CogVLM2/pretrain/cogvlm2-video-13b"
 model_type = ModelType.cogvlm2_video_13b_chat
 template_type = get_default_template_type(model_type)
 print(f'template_type: {template_type}')
@@ -19,7 +20,7 @@ if not os.path.exists('./output'):
     os.mkdir('./output')
 
 model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
-                                       model_kwargs={'device_map': 'auto'})
+                                       model_kwargs={'device_map': 'auto'}, model_id_or_path=model_id_or_path)
 
 model.generation_config.max_new_tokens = 1024
 template = get_template(template_type, tokenizer)
@@ -376,20 +377,20 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 f1 = f1_score(true_labels, predictions)
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
-                average_latency = sum(latencies) / len(latencies)
+
                 
                 with open(f"./output/cogvlm2-video-13b_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
                     file.write(f"Precision: {precision:.2f}\\n")
-                    file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
 
                 print(f"Accuracy: {accuracy:.2f}")
                 print(f"F1 Score: {f1:.2f}")
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
-                print(f"Average Latency (s): {average_latency:.2f}")
+
                 
                 output_file = os.path.join('./output',output_file_name)
                 with open(output_file, 'w') as outfile:
@@ -401,20 +402,20 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     f1 = f1_score(true_labels, predictions)
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
-    average_latency = sum(latencies) / len(latencies)
+
     
     with open(f"./output/cogvlm2-video-13b_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
         file.write(f"Precision: {precision:.2f}\\n")
-        file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
 
     print(f"Accuracy: {accuracy:.2f}")
     print(f"F1 Score: {f1:.2f}")
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
-    print(f"Average Latency (s): {average_latency:.2f}")
+
 
     output_file = os.path.join('./output',output_file_name)
     with open(output_file, 'w') as outfile:
@@ -470,20 +471,20 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 f1 = f1_score(true_labels, predictions)
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
-                average_latency = sum(latencies) / len(latencies)
+
                 
                 with open(f"./output/cogvlm2-video-13b_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
                     file.write(f"Precision: {precision:.2f}\\n")
-                    file.write(f"Average Latency (s): {average_latency:.2f}\\n")
+
 
                 print(f"Accuracy: {accuracy:.2f}")
                 print(f"F1 Score: {f1:.2f}")
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
-                print(f"Average Latency (s): {average_latency:.2f}")
+
                 
                 output_file = os.path.join('./output',output_file_name)
                 with open(output_file, 'w') as outfile:
@@ -495,20 +496,19 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     f1 = f1_score(true_labels, predictions)
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
-    average_latency = sum(latencies) / len(latencies)
+
     
     with open(f"./output/cogvlm2-video-13b_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
         file.write(f"Precision: {precision:.2f}\\n")
-        file.write(f"Average Latency (s): {average_latency:.2f}\\n")
 
     print(f"Accuracy: {accuracy:.2f}")
     print(f"F1 Score: {f1:.2f}")
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
-    print(f"Average Latency (s): {average_latency:.2f}")
+
 
     output_file = os.path.join('./output',output_file_name)
     with open(output_file, 'w') as outfile:
