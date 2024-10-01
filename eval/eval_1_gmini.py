@@ -533,7 +533,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 precision = precision_score(true_labels, predictions)
                 average_latency = sum(latencies) / len(latencies)
                 
-                with open(f"./output/glm4v_9b_{key}_score.txt", 'w') as file:
+                with open(f"./output/gemini_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -558,7 +558,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     precision = precision_score(true_labels, predictions)
     average_latency = sum(latencies) / len(latencies)
     
-    with open(f"./output/glm4v_9b_{key}_score.txt", 'w') as file:
+    with open(f"./output/gemini_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -627,7 +627,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 precision = precision_score(true_labels, predictions)
                 average_latency = sum(latencies) / len(latencies)
                 
-                with open(f"./output/glm4v_9b_{key}_score.txt", 'w') as file:
+                with open(f"./output/gemini_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -652,7 +652,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     precision = precision_score(true_labels, predictions)
     average_latency = sum(latencies) / len(latencies)
     
-    with open(f"./output/glm4v_9b_{key}_score.txt", 'w') as file:
+    with open(f"./output/gemini_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -683,7 +683,7 @@ if __name__ == "__main__":
 
     for key, value in json_files.items():
         json_file_path = value
-        output_file_name = f'glm4v_9b_{key}_results.json'
+        output_file_name = f'gemini_{key}_results.json'
         
         # 检查是否为overall文件
         if key == 'overall':
