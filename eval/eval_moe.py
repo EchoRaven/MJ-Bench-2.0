@@ -139,7 +139,6 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     all_results = []
     true_labels = []
     predictions = []
-    latencies = []
     counter = 0
 
     for item in data:
@@ -149,7 +148,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
         video0_path = os.path.join(videos_dir, video0_path_relative)
         video1_path = os.path.join(videos_dir, video1_path_relative)
         true_chosen = True
-        response, chosen, score_1, score_2, grain_score_1, grain_score_2 = evaluate_videos(caption, video0_path, video1_path, force_keys=[key])
+        response, chosen, score_1, score_2, grain_score_1, grain_score_2 = evaluate_videos(caption, video0_path, video1_path)
         if chosen == "same":
             video_0_rating = score_1
             video_1_rating = score_2
