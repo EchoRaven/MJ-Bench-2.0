@@ -302,7 +302,6 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {}
         for item in data:
-    for item in data:
             caption = item['caption']
             video0_path_relative = item['chosen']
             video1_path_relative = item['reject']
