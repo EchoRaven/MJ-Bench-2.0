@@ -181,7 +181,7 @@ async def evaluate_videos(caption, video0_path, video1_path, prompt_template):
 
     start_time = time.time()  # 记录开始时间
 
-    openai_api_key = "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"
+    openai_api_key = "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"
     gemini_api_key = "your_gemini_api_key"
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model_id = 'gpt-4o'  # 或 'gemini'
