@@ -16,7 +16,7 @@ from swift.utils import seed_everything
 import torch
 
 
-model_id_or_path = "../videoRM/Internvl/pretrain/InternVL2-2B"
+model_id_or_path = "../videoRM/Internvl/pretrain/InternVL2-8B"
 model_type = "internvl2-2b"
 
 
