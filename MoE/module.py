@@ -175,7 +175,7 @@ class MJ_VIDEO:
             return response, "same", score_1, score_2, grain_score_1, grain_score_2
 
 if __name__ == "__main__":
-    with open("config.json", "r", encoding="utf-8") as f:
+    with open("MoE_config.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     model = MJ_VIDEO(config)
     video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4"]
