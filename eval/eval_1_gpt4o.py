@@ -261,7 +261,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 precision = precision_score(true_labels, predictions)
 
                 
-                with open(f"./output/gpt_{key}_score.txt", 'w') as file:
+                with open(f"./output_sora/gpt_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -274,7 +274,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 print(f"Precision: {precision:.2f}")
 
                 
-                output_file = os.path.join('./output',output_file_name)
+                output_file = os.path.join('./output_sora',output_file_name)
                 with open(output_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
@@ -287,7 +287,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     precision = precision_score(true_labels, predictions)
 
     
-    with open(f"./output/gpt_{key}_score.txt", 'w') as file:
+    with open(f"./output_sora/gpt_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -300,7 +300,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     print(f"Precision: {precision:.2f}")
 
 
-    output_file = os.path.join('./output',output_file_name)
+    output_file = os.path.join('./output_sora',output_file_name)
     with open(output_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
@@ -356,7 +356,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
                 precision = precision_score(true_labels, predictions)
 
                 
-                with open(f"./output/gpt_{key}_score.txt", 'w') as file:
+                with open(f"./output_sora/gpt_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -369,7 +369,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
                 print(f"Precision: {precision:.2f}")
 
                 
-                output_file = os.path.join('./output',output_file_name)
+                output_file = os.path.join('./output_sora',output_file_name)
                 with open(output_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
@@ -381,7 +381,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     precision = precision_score(true_labels, predictions)
 
     
-    with open(f"./output/gpt_{key}_score.txt", 'w') as file:
+    with open(f"./output_sora/gpt_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -394,7 +394,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
     print(f"Precision: {precision:.2f}")
 
 
-    output_file = os.path.join('./output',output_file_name)
+    output_file = os.path.join('./output_sora',output_file_name)
     with open(output_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
@@ -402,12 +402,12 @@ def process_overall_file(json_file_path, videos_dir, output_file_name,key):
 if __name__ == "__main__": 
     videos_dir = '../videos'
     json_files = {
-        'overall': '../test/overall.json',
-        'safety': '../test/safety.json',
-        'alignment': '../test/alignment.json',
-        'bias': '../test/bias.json',
-        'quality': '../test/quality.json',
-        'cc': '../test/cc.json',
+        'overall': '../safe_t/overall.json',
+        'safety': '../safe_t/safety.json',
+        'alignment': '../safe_t/alignment.json',
+        'bias': '../safe_t/bias.json',
+        'quality': '../safe_t/quality.json',
+        'cc': '../safe_t/cc.json',
     }
 
     for key, value in json_files.items():

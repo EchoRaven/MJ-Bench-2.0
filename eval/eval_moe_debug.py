@@ -14,8 +14,8 @@ from swift.llm import (
 from swift.utils import seed_everything
 import torch
 
-if not os.path.exists('./output'):
-    os.mkdir('./output')
+if not os.path.exists('./output_sora'):
+    os.mkdir('./output_sora')
 
 from MoE.module import MJ_VIDEO
 with open("../MoE/MoE_config.json", "r", encoding="utf-8") as f:
@@ -92,7 +92,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
                 
-                with open(f"./output/moe_{key}_score.txt", 'w') as file:
+                with open(f"./output_sora/moe_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -103,7 +103,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
                 
-                output_file = os.path.join('./output',output_file_name)
+                output_file = os.path.join('./output_sora',output_file_name)
                 with open(output_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
@@ -114,7 +114,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
     
-    with open(f"./output/moe_{key}_score.txt", 'w') as file:
+    with open(f"./output_sora/moe_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -125,7 +125,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output',output_file_name)
+    output_file = os.path.join('./output_sora',output_file_name)
     with open(output_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
@@ -192,7 +192,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
                 
-                with open(f"./output/moe_{key}_score.txt", 'w') as file:
+                with open(f"./output_sora/moe_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -203,7 +203,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
                 
-                output_file = os.path.join('./output',output_file_name)
+                output_file = os.path.join('./output_sora',output_file_name)
                 with open(output_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
@@ -214,7 +214,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
     
-    with open(f"./output/moe_{key}_score.txt", 'w') as file:
+    with open(f"./output_sora/moe_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -225,7 +225,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output',output_file_name)
+    output_file = os.path.join('./output_sora',output_file_name)
     with open(output_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
