@@ -9,6 +9,8 @@ import warnings
 import random
 import argparse
 warnings.filterwarnings("ignore")
+import sys
+sys.path.append('../')
 
 from swift.llm import (
     get_model_tokenizer, get_template, inference, ModelType,
@@ -65,21 +67,27 @@ logging.info(f'template_type: {template_type}')
 output_dir = './output_explanation'
 if not os.path.exists(output_dir):
     os.mkdir(output_dir)
-if model_id_or_path:
-    model, tokenizer = get_model_tokenizer(
-        model_type, 
-        torch.bfloat16, 
-        model_kwargs={'device_map': 'auto'}, 
-        model_id_or_path=model_id_or_path,
-        use_flash_attn=False
-    )
+if model_type == "MoE":
+    from MoE.module import MJ_VIDEO
+    with open("../MoE/MoE_config.json", "r", encoding="utf-8") as f:
+        config = json.load(f)
+    model = MJ_VIDEO(config)
 else:
-    model, tokenizer = get_model_tokenizer(
-        model_type, 
-        torch.bfloat16, 
-        model_kwargs={'device_map': 'auto'},
-        use_flash_attn=False
-    )
+    if model_id_or_path:
+        model, tokenizer = get_model_tokenizer(
+            model_type, 
+            torch.bfloat16, 
+            model_kwargs={'device_map': 'auto'}, 
+            model_id_or_path=model_id_or_path,
+            use_flash_attn=False
+        )
+    else:
+        model, tokenizer = get_model_tokenizer(
+            model_type, 
+            torch.bfloat16, 
+            model_kwargs={'device_map': 'auto'},
+            use_flash_attn=False
+        )
 
 model.generation_config.max_new_tokens = 2048
 template = get_template(template_type, tokenizer)
@@ -107,7 +115,10 @@ for item in data:
             why = "Why human prefer the second video over the first"
             # 打乱防止chosen bias
             prompt_full = prompt.format(caption=caption, preference=preference, why=why)
-            response, _ = inference(model, template, prompt_full, videos=[video2_path, video1_path])
+            if model_type == "MoE":
+                response = model.explain([video2_path, video1_path], caption, explain_query=prompt_full)
+            else:
+                response, _ = inference(model, template, prompt_full, videos=[video2_path, video1_path])
             response_data.append(
                 {
                     "first_video": video2_path_relative,
@@ -123,7 +134,10 @@ for item in data:
             preference = "Prefer the first video."
             why = "Why human prefer the first video over the second"
             prompt_full = prompt.format(caption=caption, preference=preference, why=why)
-            response, _ = inference(model, template, prompt_full, videos=[video1_path, video2_path])
+            if model_type == "MoE":
+                response = model.explain([video1_path, video2_path], caption, explain_query=prompt_full)
+            else:
+                response, _ = inference(model, template, prompt_full, videos=[video1_path, video2_path])
             response_data.append(
                 {
                     "first_video": video1_path_relative,

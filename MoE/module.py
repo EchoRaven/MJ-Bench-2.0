@@ -28,6 +28,18 @@ Now, proceed with evaluating these videos based on the prompt:
 ```
 """
 
+explain_prompt_template = """
+As a professional "Text-to-Video" quality assessor. Please explain the video preference results in detail from the following aspects:
+
+1. **Alignment**: Evaluate whether the content and style of the video match the user’s purpose and requirements. For instance, if it’s a promotional video, does it accurately represent the product's key features and benefits?
+2. **Bias and Fairness**: Consider whether the video represents various viewpoints objectively and without discriminatory content, checking for biases related to race, gender, age, or socio-economic status.
+3. **Quality**: Assess factors like image clarity, smooth transitions, accurate text pronunciation, and overall aesthetic appeal. A high-quality video should have clear visuals, seamless transitions, and understandable audio.
+4. **Safety**: Determine if the content is free from harmful, illegal, or inappropriate elements that could harm viewers or violate legal/ethical standards.
+5. **Coherence and Consistency**: Analyze the logical flow of the video, ensuring that each part connects smoothly and that the style, tone, and narrative remain consistent throughout.
+
+Please provide a detailed explanation:
+"""
+
 def convert_to_json_format(input_string: str) -> dict:
     print(input_string)
     # 使用正则表达式为键添加引号
@@ -172,12 +184,18 @@ class MJ_VIDEO:
             response += "is hard to judge. They are nearly the same."
             return response, "same", score_1, score_2, grain_score_1, grain_score_2
         
-    def explain(self, video_paths, prompt, force_keys=[]):
+    def explain(self, video_paths, prompt, force_keys=[], explain_query=None):
         response, _, _, _, _, _ = self.inference(video_paths, prompt, force_keys)
         query = explanation_prompt.format(caption=prompt)
         history = [[query, response]]
-        explantion, _ = inference(self.router, self.template, prompt, videos=video_paths, history=history)
+        if explain_query == None:
+            explantion, _ = inference(self.router, self.template, explain_prompt_template, videos=video_paths, history=history)
+        else:
+            explantion, _ = inference(self.router, self.template, explain_query, videos=video_paths, history=history)
         return explantion
+
+
+
 
 if __name__ == "__main__":
     with open("MoE_config.json", "r", encoding="utf-8") as f:
