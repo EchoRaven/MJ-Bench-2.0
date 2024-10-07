@@ -70,28 +70,41 @@ for item in data:
         caption = item['caption']
         video1_path_relative = item['chosen']
         video2_path_relative = item['reject']
+        
         video1_path = os.path.join(videos_dir, video1_path_relative)
         video2_path = os.path.join(videos_dir, video2_path_relative)
-        choice = 1
-        preference = "Prefer the first video."
+
         if random.random() > 0.5:
             choice = 2
-            temp = video1_path
-            video1_path = video2_path
-            video2_path = temp
             preference = "Prefer the second video."
-        # 打乱防止chosen bias
-        prompt = prompt.format(caption=caption, preference=preference)
-        response, _ = inference(model, template, prompt, videos=[video1_path, video2_path])
-        response_data.append(
-            {
-                "first_video": video1_path_relative,
-                "second_video": video2_path_relative,
-                "caption": caption,
-                "chosen": choice,
-                "explanation": response
-            }
-        )
+            # 打乱防止chosen bias
+            prompt = prompt.format(caption=caption, preference=preference)
+            response, _ = inference(model, template, prompt, videos=[video2_path, video1_path])
+            response_data.append(
+                {
+                    "first_video": video2_path_relative,
+                    "second_video": video1_path_relative,
+                    "caption": caption,
+                    "chosen": choice,
+                    "prompt": prompt,
+                    "explanation": response
+                }
+            )
+        else:
+            choice = 1
+            preference = "Prefer the first video."
+            prompt = prompt.format(caption=caption, preference=preference)
+            response, _ = inference(model, template, prompt, videos=[video1_path, video2_path])
+            response_data.append(
+                {
+                    "first_video": video1_path_relative,
+                    "second_video": video2_path_relative,
+                    "caption": caption,
+                    "chosen": choice,
+                    "prompt": prompt,
+                    "explanation": response
+                }
+            )
         with open(output_route, "w", encoding="utf-8") as f:
             json.dump(response_data, f, indent=4, ensure_ascii=False)
     except:
