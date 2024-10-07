@@ -65,8 +65,8 @@ with open(json_files, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 response_data = []
-with open(output_route, "w", encoding="utf-8") as f:
-    for item in data:
+for item in data:
+    try:
         caption = item['caption']
         video1_path_relative = item['chosen']
         video2_path_relative = item['reject']
@@ -92,4 +92,7 @@ with open(output_route, "w", encoding="utf-8") as f:
                 "explanation": response
             }
         )
-        json.dump(response_data, f, indent=4, ensure_ascii=False)
+        with open(output_route, "w", encoding="utf-8") as f:
+            json.dump(response_data, f, indent=4, ensure_ascii=False)
+    except:
+        continue
