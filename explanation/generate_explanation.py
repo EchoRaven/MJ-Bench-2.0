@@ -58,7 +58,7 @@ model.generation_config.max_new_tokens = 2048
 template = get_template(template_type, tokenizer)
 seed_everything(42)
 videos_dir = '../videos'
-json_files = './test/sample_overall.json'
+json_files = '../test/sample_overall.json'
 output_file_name = f'{model_type}_explanation.json'
 output_route = os.path.join(output_dir, output_file_name)
 with open(json_files, "r", encoding="utf-8") as f:
