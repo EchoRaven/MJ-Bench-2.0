@@ -251,7 +251,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key, model_i
 if __name__ == "__main__": 
     videos_dir = '../videos'
     json_files = {
-        'overall': '../h/overall.json',
+        'overall': '../test/overall.json',
         'safety': '../test/safety.json',
         'alignment': '../test/alignment.json',
         'bias': '../test/bias.json',
