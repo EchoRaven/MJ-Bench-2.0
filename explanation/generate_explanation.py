@@ -11,7 +11,7 @@ import argparse
 warnings.filterwarnings("ignore")
 
 from swift.llm import (
-    get_model_tokenizer, get_template, inference,
+    get_model_tokenizer, get_template, inference, ModelType,
     get_default_template_type, inference_stream
 )
 from swift.utils import seed_everything
@@ -46,6 +46,8 @@ parser.add_argument("--model_id_or_path", type=str, default=None, help="Model pa
 args = parser.parse_args()
 
 model_type = args.model_type
+if model_type == "phi3_vision_128k_instruct":
+    model_type = ModelType.phi3_vision_128k_instruct可能是这种东西
 model_id_or_path = args.model_id_or_path
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
