@@ -79,15 +79,15 @@ for item in data:
             preference = "Prefer the second video."
             why = "Why human prefer the second video over the first"
             # 打乱防止chosen bias
-            prompt = prompt.format(caption=caption, preference=preference, why=why)
-            response, _ = inference(model, template, prompt, videos=[video2_path, video1_path])
+            prompt_full = prompt.format(caption=caption, preference=preference, why=why)
+            response, _ = inference(model, template, prompt_full, videos=[video2_path, video1_path])
             response_data.append(
                 {
                     "first_video": video2_path_relative,
                     "second_video": video1_path_relative,
                     "caption": caption,
                     "chosen": choice,
-                    "prompt": prompt,
+                    "prompt": prompt_full,
                     "explanation": response
                 }
             )
@@ -95,15 +95,15 @@ for item in data:
             choice = 1
             preference = "Prefer the first video."
             why = "Why human prefer the first video over the second"
-            prompt = prompt.format(caption=caption, preference=preference, why=why)
-            response, _ = inference(model, template, prompt, videos=[video1_path, video2_path])
+            prompt_full = prompt.format(caption=caption, preference=preference, why=why)
+            response, _ = inference(model, template, prompt_full, videos=[video1_path, video2_path])
             response_data.append(
                 {
                     "first_video": video1_path_relative,
                     "second_video": video2_path_relative,
                     "caption": caption,
                     "chosen": choice,
-                    "prompt": prompt,
+                    "prompt": prompt_full,
                     "explanation": response
                 }
             )
