@@ -48,10 +48,10 @@ then give scores from 5 different dimensions:
 (4) text-to-video alignment, the alignment between the text prompt and the video content
 (5) factual consistency, the consistency of the video content with the common-sense and factual knowledge
 
-for each dimension, output a float number from 1.0 to 4.0,
+for each dimension, output_sora a float number from 1.0 to 4.0,
 the higher the number is, the better the video performs in that sub-score, 
 the lowest 1.0 means Bad, the highest 4.0 means Perfect/Real (the video is like a real video)
-Here is an output example:
+Here is an output_sora example:
 visual quality: 3.2
 temporal consistency: 2.7
 dynamic degree: 4.0
@@ -94,9 +94,9 @@ def video_score_eval(video_path, video_prompt):
     inputs = {k: v.to(model.device) for k, v in inputs.items()}
 
     with torch.no_grad():
-        outputs = model(**inputs)
+        output_soras = model(**inputs)
 
-    logits = outputs.logits
+    logits = output_soras.logits
     num_aspects = logits.shape[-1]
 
     aspect_scores = []
@@ -114,7 +114,7 @@ def evaluate_videos(caption, video0_path, video1_path):
     print(f"Score: {video_1_score}")
     return video_0_score, video_1_score
 
-def process_json_file(json_file_path, videos_dir, output_file_name, key):
+def process_json_file(json_file_path, videos_dir, output_sora_file_name, key):
     with open(json_file_path, 'r') as f:
         data = json.load(f)
     all_results = []
@@ -159,7 +159,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
                 
-                with open(f"./output/video_score_{key}_score.txt", 'w') as file:
+                with open(f"./output_sora/video_score_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -170,8 +170,8 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
                 
-                output_file = os.path.join('./output',output_file_name)
-                with open(output_file, 'w') as outfile:
+                output_sora_file = os.path.join('./output_sora',output_sora_file_name)
+                with open(output_sora_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
             continue
@@ -181,7 +181,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
     
-    with open(f"./output/video_score_{key}_score.txt", 'w') as file:
+    with open(f"./output_sora/video_score_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -192,12 +192,12 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output',output_file_name)
-    with open(output_file, 'w') as outfile:
+    output_sora_file = os.path.join('./output_sora',output_sora_file_name)
+    with open(output_sora_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
 
-def process_overall_file(json_file_path, videos_dir, output_file_name):
+def process_overall_file(json_file_path, videos_dir, output_sora_file_name):
     with open(json_file_path, 'r') as f:
         data = json.load(f)
 
@@ -242,7 +242,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
                 
-                with open(f"./output/video_score_{key}_score.txt", 'w') as file:
+                with open(f"./output_sora/video_score_{key}_score.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -253,8 +253,8 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
                 
-                output_file = os.path.join('./output',output_file_name)
-                with open(output_file, 'w') as outfile:
+                output_sora_file = os.path.join('./output_sora',output_sora_file_name)
+                with open(output_sora_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
             continue
@@ -264,7 +264,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
     
-    with open(f"./output/video_score_{key}_score.txt", 'w') as file:
+    with open(f"./output_sora/video_score_{key}_score.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -275,31 +275,31 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output',output_file_name)
-    with open(output_file, 'w') as outfile:
+    output_sora_file = os.path.join('./output_sora',output_sora_file_name)
+    with open(output_sora_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
 
 if __name__ == "__main__": 
     videos_dir = '../videos'
     json_files = {
-        'overall': '../test/overall.json',
-        'safety': '../test/safety.json',
-        'alignment': '../test/alignment.json',
-        'bias': '../test/bias.json',
-        'quality': '../test/quality.json',
-        'cc': '../test/cc.json',
+        'overall': '../safe_t/overall.json',
+        'safety': '../safe_t/safety.json',
+        'alignment': '../safe_t/alignment.json',
+        'bias': '../safe_t/bias.json',
+        'quality': '../safe_t/quality.json',
+        'cc': '../safe_t/cc.json',
     }
 
     for key, value in json_files.items():
         json_file_path = value
-        output_file_name = f'video_score_{key}_results.json'
+        output_sora_file_name = f'video_score_{key}_results.json'
         
         # 检查是否为overall文件
         if key == 'overall':
-            process_overall_file(json_file_path, videos_dir, output_file_name)  # 使用另一个函数处理
+            process_overall_file(json_file_path, videos_dir, output_sora_file_name)  # 使用另一个函数处理
         else:
-            process_json_file(json_file_path, videos_dir, output_file_name, key)
+            process_json_file(json_file_path, videos_dir, output_sora_file_name, key)
 
 
 
