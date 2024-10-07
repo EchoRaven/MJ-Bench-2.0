@@ -90,10 +90,10 @@ else:
             model_kwargs={'device_map': 'auto'},
             use_flash_attn=False
         )
-
-model.generation_config.max_new_tokens = 2048
-template = get_template(template_type, tokenizer)
-seed_everything(42)
+if model_type != "MoE":
+    model.generation_config.max_new_tokens = 2048
+    template = get_template(template_type, tokenizer)
+    seed_everything(42)
 videos_dir = '../videos'
 json_files = '../test/sample_overall.json'
 output_file_name = f'{model_type}_explanation.json'
