@@ -36,7 +36,7 @@ The video preference result is:
 {preference}
 ```
 
-Please provide a detailed explanation:
+Please provide a detailed explanation, {why}:
 """
 
 model_type = "internvl2-2b"
@@ -70,15 +70,16 @@ for item in data:
         caption = item['caption']
         video1_path_relative = item['chosen']
         video2_path_relative = item['reject']
-        
+
         video1_path = os.path.join(videos_dir, video1_path_relative)
         video2_path = os.path.join(videos_dir, video2_path_relative)
 
         if random.random() > 0.5:
             choice = 2
             preference = "Prefer the second video."
+            why = "Why human prefer the second video over the first"
             # 打乱防止chosen bias
-            prompt = prompt.format(caption=caption, preference=preference)
+            prompt = prompt.format(caption=caption, preference=preference, why=why)
             response, _ = inference(model, template, prompt, videos=[video2_path, video1_path])
             response_data.append(
                 {
@@ -93,7 +94,8 @@ for item in data:
         else:
             choice = 1
             preference = "Prefer the first video."
-            prompt = prompt.format(caption=caption, preference=preference)
+            why = "Why human prefer the first video over the second"
+            prompt = prompt.format(caption=caption, preference=preference, why=why)
             response, _ = inference(model, template, prompt, videos=[video1_path, video2_path])
             response_data.append(
                 {
