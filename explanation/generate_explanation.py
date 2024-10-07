@@ -7,6 +7,7 @@ from collections import Counter
 import logging
 import warnings
 import random
+import argparse
 warnings.filterwarnings("ignore")
 
 from swift.llm import (
@@ -39,7 +40,13 @@ The video preference result is:
 Please provide a detailed explanation, {why}:
 """
 
-model_type = "internvl2-2b"
+parser = argparse.ArgumentParser(description="Video preference explanation generation")
+parser.add_argument("--model_type", type=str, required=True, help="Model type (e.g., 'internvl2-2b')")
+parser.add_argument("--model_id_or_path", type=str, default=None, help="Model path or ID for loading. Set to None to ignore")
+args = parser.parse_args()
+
+model_type = args.model_type
+model_id_or_path = args.model_id_or_path
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -50,9 +57,19 @@ logging.info(f'template_type: {template_type}')
 output_dir = './output_explanation'
 if not os.path.exists(output_dir):
     os.mkdir(output_dir)
-model_id_or_path = "../videoRM/Internvl/pretrain/InternVL2-2B"
-model, tokenizer = get_model_tokenizer(model_type, torch.bfloat16,
-                                    model_kwargs={'device_map': 'auto'}, model_id_or_path=model_id_or_path)
+if model_id_or_path:
+    model, tokenizer = get_model_tokenizer(
+        model_type, 
+        torch.bfloat16, 
+        model_kwargs={'device_map': 'auto'}, 
+        model_id_or_path=model_id_or_path
+    )
+else:
+    model, tokenizer = get_model_tokenizer(
+        model_type, 
+        torch.bfloat16, 
+        model_kwargs={'device_map': 'auto'}
+    )
 
 model.generation_config.max_new_tokens = 2048
 template = get_template(template_type, tokenizer)
