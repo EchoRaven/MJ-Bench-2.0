@@ -48,6 +48,10 @@ args = parser.parse_args()
 model_type = args.model_type
 if model_type == "phi3_vision_128k_instruct":
     model_type = ModelType.phi3_vision_128k_instruct
+elif model_type == "qwen2_vl_2b_instruct":
+    model_type = ModelType.qwen2_vl_2b_instruct
+elif model_type == "qwen2_vl_7b_instruct":
+    model_type = ModelType.qwen2_vl_7b_instruct
 model_id_or_path = args.model_id_or_path
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
