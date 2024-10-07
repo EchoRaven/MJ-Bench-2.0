@@ -62,9 +62,6 @@ model_id_or_path = args.model_id_or_path
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-logging.info("Main Begin")
-logging.info(f'template_type: {template_type}')
-
 output_dir = './output_explanation'
 if not os.path.exists(output_dir):
     os.mkdir(output_dir)
@@ -91,6 +88,8 @@ else:
         )
 if model_type != "MoE":
     template_type = get_default_template_type(model_type)
+    logging.info("Main Begin")
+    logging.info(f'template_type: {template_type}')
     model.generation_config.max_new_tokens = 2048
     template = get_template(template_type, tokenizer)
     seed_everything(42)
