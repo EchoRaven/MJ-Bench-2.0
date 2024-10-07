@@ -56,6 +56,8 @@ elif model_type == "qwen2_vl_7b_instruct":
     model_type = ModelType.qwen2_vl_7b_instruct
 elif model_type == "cogvlm2_video_13b_chat":
     model_type = ModelType.cogvlm2_video_13b_chat
+elif model_type == "minicpm_8b":
+    model_type = ModelType.minicpm_v_v2_6_chat
 model_id_or_path = args.model_id_or_path
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
