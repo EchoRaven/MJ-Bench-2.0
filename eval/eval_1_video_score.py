@@ -20,13 +20,6 @@ import torch
 from transformers import AutoProcessor
 from mantis.models.idefics2 import Idefics2ForSequenceClassification
 
-import av
-import numpy as np
-from typing import List
-from PIL import Image
-import torch
-from transformers import AutoProcessor
-from mantis.models.idefics2 import Idefics2ForSequenceClassification
 
 def _read_video_pyav(
     container,
