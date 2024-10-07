@@ -65,7 +65,6 @@ with open(json_files, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 response_data = []
-output_route = os.path.join()
 with open(output_route, "w", encoding="utf-8") as f:
     for item in data:
         caption = item['caption']
