@@ -64,13 +64,15 @@ if model_id_or_path:
         model_type, 
         torch.bfloat16, 
         model_kwargs={'device_map': 'auto'}, 
-        model_id_or_path=model_id_or_path
+        model_id_or_path=model_id_or_path,
+        use_flash_attn=False
     )
 else:
     model, tokenizer = get_model_tokenizer(
         model_type, 
         torch.bfloat16, 
-        model_kwargs={'device_map': 'auto'}
+        model_kwargs={'device_map': 'auto'},
+        use_flash_attn=False
     )
 
 model.generation_config.max_new_tokens = 2048
