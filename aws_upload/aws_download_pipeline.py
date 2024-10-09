@@ -16,9 +16,14 @@ for root, dirs, files in os.walk(directory):
         file_path = os.path.join(root, file_name)  # 获取完整文件路径
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            for d in data:
-                downlist.append(d["video0_body"]["video_path"])
-                downlist.append(d["video1_body"]["video_path"])
+            try:
+                for d in data:
+                    downlist.append(d["video0_body"]["video_path"])
+                    downlist.append(d["video1_body"]["video_path"])
+            except:
+                for d in data:
+                    downlist.append(d["chosen"])
+                    downlist.append(d["reject"])
 
 
 def download_file(s3, bucket, file_key, download_directory):

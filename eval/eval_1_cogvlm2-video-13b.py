@@ -137,7 +137,7 @@ Now, proceed with evaluating the video based on the prompt description provided.
 {caption}
 """,
     'overall': """
-As a professional "Text-to-Video" quality assessor, your task is to determine whether the generated video will be preferred by humans..
+As a professional "Text-to-Video" quality assessor, your task is to determine whether the generated video will be preferred by humans.
 Please analyze step by step and provide a rating from the scale: ["Extremely Poor", "Very Poor", "Poor", "Below Average", "Average", "Above Average", "Good", "Very Good", "Excellent", "Outstanding"], where "Extremely Poor" is the worst and "Outstanding" is the best.
 
 The output of the analysis and rating should strictly adhere to the following format:
