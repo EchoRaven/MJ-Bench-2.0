@@ -5,10 +5,15 @@ from concurrent.futures import ThreadPoolExecutor
 from boto3.session import Session
 
 def download_file(s3, bucket, file_key, download_directory):
-    file_name = os.path.basename(file_key)  # Get just the filename from the key
-    download_path = os.path.join(download_directory, file_name)
+    # 分离文件路径和文件名
+    file_path, file_name = os.path.split(file_key)
 
-    # Download the file
+    # 创建本地目录结构
+    local_path = os.path.join(download_directory, file_path)
+    os.makedirs(local_path, exist_ok=True)  # 创建目录，如果目录已存在则不会报错
+
+    # 计算下载文件的完整路径
+    download_path = os.path.join(local_path, file_name)
     try:
         if not os.path.exists(download_path):
             s3.download_file(Bucket=bucket, Key=file_key, Filename=download_path)
