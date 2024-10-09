@@ -15,10 +15,10 @@ swift sft \
     --sft_type lora \
     --dtype bf16 \
     --model_id_or_path ../Internvl/pretrain/InternVL2-4B \
-    --custom_train_dataset_path ../dataset/swift_json_file/swift_bias_train.jsonl \
-    --custom_val_dataset_path ../dataset/swift_json_file/swift_bias_test.jsonl \
+    --custom_train_dataset_path ../dataset/swift_json_file/swift_cc_train.jsonl \
+    --custom_val_dataset_path ../dataset/swift_json_file/swift_cc_test.jsonl \
     --learning_rate 4e-5 \
-    --output_dir ../finetune_result/bias_expert_Internvl2_4B_base_model_lora \
+    --output_dir ../finetune_result/cc_expert_Internvl2_4B_base_model_lora \
     --max_length 4096 \
     --evaluation_strategy "steps" \
     --eval_steps 100 \
