@@ -99,7 +99,8 @@ class MJ_VIDEO:
                         model_kwargs={'device_map': 'auto'}, model_id_or_path=config["model_id_or_path"])
             self.expert_group[key] = Swift.from_pretrained(
                     self.expert_group[key], config["experts"][key], key, inference_mode=True)
-            logging.info(f"Loading {key} expert LoRA Weight from {config["experts"][key]}")
+            lora_route = config["experts"][key]
+            logging.info(f"Loading {key} expert LoRA Weight from {lora_route}")
             self.expert_group[key].generation_config.max_new_tokens = 1024
         
         template_type = get_default_template_type(config["model_type"])
