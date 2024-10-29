@@ -251,20 +251,18 @@ class MJ_VIDEO:
             return response 
         elif prompt_type == "single_video_analysis_score_prompt_template":
             response = ""
-            label_result, score_result = judge_result
-            for expert in label_result.keys():
-                labels = label_result[expert]
+            total_score = 0
+            for expert in judge_result.keys():
+                label_judeg, score_judge = judge_result[expert]
                 response += f"From the perspective of {expert}, this video performs"
-                for key in labels.keys():
-                    label = labels[key]
+                for key in label_judeg.keys():
+                    label = label_judeg[key]
                     response += f" {label} on {key},"
                 response = response[:-1] + ". "
-            total_score = 0
-            for expert in score_result.keys():
-                expert_score = score_result[expert]["score"]
+                expert_score = score_judge["score"]
                 total_score += expert_score
                 response += f"Score on {expert} is {expert_score}. "
-            score = total_score / len(score_result.keys())
+            score = total_score / len(judge_result.keys())
             response += f"Average score is {score}."
             return response, score
 
