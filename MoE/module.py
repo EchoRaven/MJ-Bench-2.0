@@ -383,5 +383,5 @@ if __name__ == "__main__":
     force_keys = ["alignment"]
     result = model.inference(video_paths, prompt, "video_pair_analysis_score_prompt_template", force_keys)
     print(result)
-    result = model.inference(video_paths, prompt, "video_pair_analysis_score_prompt_template", []])
+    result = model.inference(video_paths, prompt, "video_pair_analysis_score_prompt_template", [])
     print(result)
