@@ -16,8 +16,8 @@ from swift.llm import (
 from swift.utils import seed_everything
 import torch
 
-if not os.path.exists('./output'):
-    os.mkdir('./output')
+if not os.path.exists('./output_double'):
+    os.mkdir('./output_double')
 
 from MoE.module import MJ_VIDEO
 with open("../MoE/MoE_config_2B.json", "r", encoding="utf-8") as f:
@@ -34,7 +34,7 @@ def evaluate_videos(caption, video0_path, video1_path, force_keys=[]):
     return response, chosen, score_1, score_2, grain_score_1, grain_score_2
 
 
-def process_json_file(json_file_path, videos_dir, output_file_name, key):
+def process_json_file(json_file_path, videos_dir, output_double_file_name, key):
     with open(json_file_path, 'r') as f:
         data = json.load(f)
 
@@ -97,7 +97,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
                 
-                with open(f"./output/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
+                with open(f"./output_double/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -108,8 +108,8 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
                 
-                output_file = os.path.join('./output',output_file_name)
-                with open(output_file, 'w') as outfile:
+                output_double_file = os.path.join('./output_double',output_double_file_name)
+                with open(output_double_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
             continue
@@ -119,7 +119,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
     
-    with open(f"./output/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
+    with open(f"./output_double/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -130,12 +130,12 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output',output_file_name)
-    with open(output_file, 'w') as outfile:
+    output_double_file = os.path.join('./output_double',output_double_file_name)
+    with open(output_double_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
 
-def process_overall_file(json_file_path, videos_dir, output_file_name):
+def process_overall_file(json_file_path, videos_dir, output_double_file_name):
     with open(json_file_path, 'r') as f:
         data = json.load(f)
 
@@ -196,7 +196,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 recall = recall_score(true_labels, predictions)
                 precision = precision_score(true_labels, predictions)
                 
-                with open(f"./output/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
+                with open(f"./output_double/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
                     file.write(f"Accuracy: {accuracy:.2f}\\n")
                     file.write(f"F1 Score: {f1:.2f}\\n")
                     file.write(f"Recall: {recall:.2f}\\n")
@@ -207,8 +207,8 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
                 print(f"Recall: {recall:.2f}")
                 print(f"Precision: {precision:.2f}")
                 
-                output_file = os.path.join('./output',output_file_name)
-                with open(output_file, 'w') as outfile:
+                output_double_file = os.path.join('./output_double',output_double_file_name)
+                with open(output_double_file, 'w') as outfile:
                     json.dump(all_results, outfile, indent=4)
         except:
             continue
@@ -218,7 +218,7 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     recall = recall_score(true_labels, predictions)
     precision = precision_score(true_labels, predictions)
     
-    with open(f"./output/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
+    with open(f"./output_double/moe_2B_2_{key}_pair_prefer.txt", 'w') as file:
         file.write(f"Accuracy: {accuracy:.2f}\\n")
         file.write(f"F1 Score: {f1:.2f}\\n")
         file.write(f"Recall: {recall:.2f}\\n")
@@ -229,8 +229,8 @@ def process_overall_file(json_file_path, videos_dir, output_file_name):
     print(f"Recall: {recall:.2f}")
     print(f"Precision: {precision:.2f}")
 
-    output_file = os.path.join('./output',output_file_name)
-    with open(output_file, 'w') as outfile:
+    output_double_file = os.path.join('./output_double',output_double_file_name)
+    with open(output_double_file, 'w') as outfile:
         json.dump(all_results, outfile, indent=4)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -246,13 +246,13 @@ json_files = {
 
 for key, value in json_files.items():
     json_file_path = value
-    output_file_name = f'moe_2B_2_{key}_pair_prefer.json'
+    output_double_file_name = f'moe_2B_2_{key}_pair_prefer.json'
     
     # 检查是否为overall文件
     if key == 'overall':
-        process_overall_file(json_file_path, videos_dir, output_file_name)  # 使用另一个函数处理
+        process_overall_file(json_file_path, videos_dir, output_double_file_name)  # 使用另一个函数处理
     else:
-        process_json_file(json_file_path, videos_dir, output_file_name, key)
+        process_json_file(json_file_path, videos_dir, output_double_file_name, key)
 
 
 
