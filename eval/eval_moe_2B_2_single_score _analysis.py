@@ -28,8 +28,8 @@ seed_everything(42)
 
 def evaluate_videos(caption, video0_path, video1_path, force_keys=[]):
     logging.info(f"caption : {caption}")
-    response0, score0 = model.inference([video0_path], caption, force_keys, "single_video_score_prompt_template")
-    response1, score1 = model.inference([video1_path], caption, force_keys, "single_video_score_prompt_template")
+    response0, score0 = model.inference([video0_path], caption, force_keys, "single_video_analysis_score_prompt_template")
+    response1, score1 = model.inference([video1_path], caption, force_keys, "single_video_analysis_score_prompt_template")
     logging.info(f"response 0: {response0}")
     logging.info(f"response 1: {response1}")
     chosen = ""
@@ -249,7 +249,7 @@ json_files = {
 
 for key, value in json_files.items():
     json_file_path = value
-    output_file_name = f'moe_2B_{key}_single_score.json'
+    output_file_name = f'moe_2B_{key}_results.json'
     
     # 检查是否为overall文件
     if key == 'overall':
