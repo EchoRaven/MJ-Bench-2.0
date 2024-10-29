@@ -137,7 +137,7 @@ class MJ_VIDEO:
         elif prompt_type == "single_video_analysis_prompt_template":
             expert_template = self.prompt_list[expert]["single_video_analysis_prompt_template"]
         elif prompt_type == "video_pair_score_prompt_template":
-            expert_template == self.prompt_list[expert]["video_pair_score_prompt_template"]
+            expert_template = self.prompt_list[expert]["video_pair_score_prompt_template"]
         elif prompt_type == "video_pair_analysis_prompt_template":
             expert_template = self.prompt_list[expert]["video_pair_analysis_prompt_template"]
         elif prompt_type == "video_pair_analysis_score_prompt_template":
