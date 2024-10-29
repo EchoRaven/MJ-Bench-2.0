@@ -62,7 +62,7 @@ def process_json_file(json_file_path, videos_dir, output_file_name, key):
 
             true_chosen = item['video0_body']['chosen']
 
-            chosen, score_1, score_2 = evaluate_videos(caption, video0_path, video1_path)
+            chosen, score_1, score_2 = evaluate_videos(caption, video0_path, video1_path, [key])
             if chosen == "same":
                 video_0_rating = score_1
                 video_1_rating = score_2
