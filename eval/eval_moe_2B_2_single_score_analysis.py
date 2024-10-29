@@ -28,8 +28,8 @@ seed_everything(42)
 
 def evaluate_videos(caption, video0_path, video1_path, force_keys=[]):
     logging.info(f"caption : {caption}")
-    response0, score0 = model.inference([video0_path], caption, force_keys, "single_video_analysis_score_prompt_template")
-    response1, score1 = model.inference([video1_path], caption, force_keys, "single_video_analysis_score_prompt_template")
+    response0, score0 = model.inference([video0_path], caption, "single_video_analysis_score_prompt_template", force_keys)
+    response1, score1 = model.inference([video1_path], caption, "single_video_analysis_score_prompt_template", force_keys)
     logging.info(f"response 0: {response0}")
     logging.info(f"response 1: {response1}")
     chosen = ""

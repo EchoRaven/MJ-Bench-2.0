@@ -28,7 +28,7 @@ seed_everything(42)
 
 def evaluate_videos(caption, video0_path, video1_path, force_keys=[]):
     logging.info(f"caption : {caption}")
-    response, chosen, score_1, score_2, grain_score_1, grain_score_2 = model.inference([video0_path, video1_path], caption, force_keys)
+    response, chosen, score_1, score_2, grain_score_1, grain_score_2 = model.inference([video0_path, video1_path], caption, "video_pair_prefer_prompt_template", force_keys)
     logging.info(f"response : {response}")
     logging.info(f"chosen : {chosen}")
     return response, chosen, score_1, score_2, grain_score_1, grain_score_2
