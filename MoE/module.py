@@ -149,9 +149,9 @@ class MJ_VIDEO:
         response_json = convert_to_json_format(response)
         return response_json, expert
     
-    def experts_judge(self, experts, video_paths, prompt):
+    def experts_judge(self, experts, video_paths, prompt, prompt_type):
         def process_expert_concurrently(expert):
-            return self.process_expert(expert, video_paths, prompt)
+            return self.process_expert(expert, video_paths, prompt, prompt_type)
         result = {}
         with ThreadPoolExecutor() as executor:
             future_to_expert = {executor.submit(process_expert_concurrently, expert): expert for expert in experts}
@@ -164,14 +164,14 @@ class MJ_VIDEO:
                     print(f'{expert} generated an exception: {exc}')
         return result
         
-    def judge(self, video_paths, prompt, force_keys=[]):
+    def judge(self, video_paths, prompt, prompt_type, force_keys=[]):
         if len(force_keys) == 0:
-            router_response = self.router_choice(video_paths, prompt)
+            router_response = self.router_choice(video_paths, prompt, prompt_type)
             logging.info(f"Router : {router_response}")
             experts = self.activate_expert(force_keys, router_response)
         else:
             experts = force_keys
-        experts_response = self.experts_judge(experts, video_paths, prompt)
+        experts_response = self.experts_judge(experts, video_paths, prompt, prompt_type)
         return experts_response
     
     def inference(self, video_paths, prompt, force_keys=[]):
