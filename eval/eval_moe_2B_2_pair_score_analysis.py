@@ -150,7 +150,7 @@ def process_overall_file(json_file_path, videos_dir, output_double_file_name):
             video0_path = os.path.join(videos_dir, video0_path_relative)
             video1_path = os.path.join(videos_dir, video1_path_relative)
             true_chosen = True
-            response, chosen, score_1, score_2, grain_score_1, grain_score_2 = evaluate_videos(caption, video0_path, video1_path)
+            response, chosen, score_1, score_2= evaluate_videos(caption, video0_path, video1_path)
             if chosen == "same":
                 video_0_rating = score_1
                 video_1_rating = score_2
@@ -171,8 +171,6 @@ def process_overall_file(json_file_path, videos_dir, output_double_file_name):
             result = {
                 "caption": caption,
                 "response": response,
-                "grain_score_0": grain_score_1,
-                "grain_score_1": grain_score_2,
                 "video_0_uid": video0_path,
                 "video_1_uid": video1_path,
                 "video_0_scores": {
