@@ -174,138 +174,194 @@ class MJ_VIDEO:
         experts_response = self.experts_judge(experts, video_paths, prompt, prompt_type)
         return experts_response
     
-    def inference(self, video_paths, prompt, prompt_type, force_keys=[]):
-        judge_result = self.judge(video_paths, prompt, prompt_type, force_keys)
-        if prompt_type == "video_pair_prefer_prompt_template":
-            response = ""
-            score_1 = 0
-            score_2 = 0
-            grain_score_1 = 0
-            grain_score_2 = 0
-            for expert in judge_result.keys():
-                labels = judge_result[expert]
-                first_better = []
-                second_better = []
-                count = 0
-                for label in labels.keys():
-                    count += 1
-                    mark = labels[label]
-                    if mark == "first":
-                        first_better.append(label)
-                    elif mark == "second":
-                        second_better.append(label)
-                if len(first_better) > 0 or len(second_better) > 0:
-                    response += f"From the perspective of {expert}, "
-                    if len(first_better) > 0:
-                        response += "video 1 performs better in terms of "
-                        for label in first_better:
-                            response += f"{label}, "
-                    if len(second_better) > 0:
-                        if len(first_better) != 0:
-                            response += "while video 2 performs better in terms of "
-                        else:
-                            response += "video 2 performs better in terms of "
-                        for label in second_better:
-                            response += f"{label}, "
-                        response = response[:-2] + ". "
-                    score_1 += len(first_better) > len(second_better)
-                    score_2 += len(second_better) > len(first_better)
-                    grain_score_1 += len(first_better) / count
-                    grain_score_2 += len(second_better) / count
-            response += "As a result, "
-            if score_1 > score_2:
-                response += "video 1 is better."
-                return response, "video 1", score_1, score_2, grain_score_1, grain_score_2
-            elif score_1 < score_2:
-                response += "video 2 is better."
-                return response, "video 2", score_1, score_2, grain_score_1, grain_score_2
-            elif grain_score_1 > grain_score_2:
-                response += "video 1 is better."
-                return response, "video 1", score_1, score_2, grain_score_1, grain_score_2
-            elif grain_score_1 < grain_score_2:
-                response += "video 2 is better."
-                return response, "video 2", score_1, score_2, grain_score_1, grain_score_2
+def inference(self, video_paths, prompt, prompt_type, force_keys=[]):
+    judge_result = self.judge(video_paths, prompt, prompt_type, force_keys)
+    
+    if prompt_type == "video_pair_prefer_prompt_template":
+        response = ""
+        score_1 = 0
+        score_2 = 0
+        grain_score_1 = 0
+        grain_score_2 = 0
+        for expert in judge_result.keys():
+            labels = judge_result[expert]
+            first_better = []
+            second_better = []
+            count = 0
+            for label in labels.keys():
+                count += 1
+                mark = labels[label]
+                if mark == "first":
+                    first_better.append(label)
+                elif mark == "second":
+                    second_better.append(label)
+            if len(first_better) > 0 or len(second_better) > 0:
+                response += f"From the perspective of {expert}, "
+                if len(first_better) > 0:
+                    response += "video 1 performs better in terms of "
+                    for label in first_better:
+                        response += f"{label}, "
+                if len(second_better) > 0:
+                    if len(first_better) != 0:
+                        response += "while video 2 performs better in terms of "
+                    else:
+                        response += "video 2 performs better in terms of "
+                    for label in second_better:
+                        response += f"{label}, "
+                    response = response[:-2] + ". "
+                score_1 += len(first_better) > len(second_better)
+                score_2 += len(second_better) > len(first_better)
+                grain_score_1 += len(first_better) / count
+                grain_score_2 += len(second_better) / count
+        response += "As a result, "
+        if score_1 > score_2:
+            response += "video 1 is better."
+            return response, "video 1", score_1, score_2, grain_score_1, grain_score_2
+        elif score_1 < score_2:
+            response += "video 2 is better."
+            return response, "video 2", score_1, score_2, grain_score_1, grain_score_2
+        elif grain_score_1 > grain_score_2:
+            response += "video 1 is better."
+            return response, "video 1", score_1, score_2, grain_score_1, grain_score_2
+        elif grain_score_1 < grain_score_2:
+            response += "video 2 is better."
+            return response, "video 2", score_1, score_2, grain_score_1, grain_score_2
+        else:
+            response += "is hard to judge. They are nearly the same."
+            return response, "same", score_1, score_2, grain_score_1, grain_score_2
+    
+    elif prompt_type == "single_video_score_prompt_template":
+        response = ""
+        total_score = 0
+        for expert in judge_result.keys():
+            expert_score = judge_result[expert]["score"]
+            total_score += expert_score
+            response += f"Score on {expert} is {expert_score}. "
+        score = total_score / len(judge_result.keys())
+        response += f"Average score is {score}."
+        return response, score
+    
+    elif prompt_type == "single_video_analysis_prompt_template":
+        response = ""
+        for expert in judge_result.keys():
+            labels = judge_result[expert]
+            response += f"From the perspective of {expert}, this video performs"
+            for key in labels.keys():
+                label = labels[key]
+                response += f" {label} on {key},"
+            response = response[:-1] + ". "
+        response = response[:-1]
+        return response 
+    
+    elif prompt_type == "single_video_analysis_score_prompt_template":
+        response = ""
+        total_score = 0
+        for expert in judge_result.keys():
+            label_judeg, score_judge = judge_result[expert]
+            response += f"From the perspective of {expert}, this video performs"
+            for key in label_judeg.keys():
+                label = label_judeg[key]
+                response += f" {label} on {key},"
+            response = response[:-1] + ". "
+            expert_score = score_judge["score"]
+            total_score += expert_score
+            response += f"Score on {expert} is {expert_score}. "
+        score = total_score / len(judge_result.keys())
+        response += f"Average score is {score}."
+        return response, score
+    
+    elif prompt_type == "video_pair_score_prompt_template":
+        response = ""
+        total_score_1 = 0
+        total_score_2 = 0
+        video1_better = []
+        video2_better = []
+        for expert in judge_result.keys():
+            score_result = judge_result[expert]
+            expert_score1 = score_result["score1"]
+            expert_score2 = score_result["score2"]
+            total_score_1 += expert_score1
+            total_score_2 += expert_score2
+            response += f"Video1's score on {expert} is {expert_score1}. "
+            response += f"Video2's score on {expert} is {expert_score2}. "
+            if expert_score1 > expert_score2:
+                video1_better.append(expert)
+                response += f"Video1 is better than video2 on {expert}. "
+            elif expert_score1 < expert_score2:
+                video2_better.append(expert)
+                response += f"Video1 is worse than video2 on {expert}. "
             else:
-                response += "is hard to judge. They are nearly the same."
-                return response, "same", score_1, score_2, grain_score_1, grain_score_2
-        elif prompt_type == "single_video_score_prompt_template":
-            response = ""
-            total_score = 0
-            for expert in judge_result.keys():
-                expert_score = judge_result[expert]["score"]
-                total_score += expert_score
-                response += f"Score on {expert} is {expert_score}. "
-            score = total_score / len(judge_result.keys())
-            response += f"Average score is {score}."
-            return response, score
-        elif prompt_type == "single_video_analysis_prompt_template":
-            response = ""
-            for expert in judge_result.keys():
-                labels = judge_result[expert]
-                response += f"From the perspective of {expert}, this video performs"
-                for key in labels.keys():
-                    label = labels[key]
-                    response += f" {label} on {key},"
-                response = response[:-1] + ". "
-            response = response[:-1]
-            return response 
-        elif prompt_type == "single_video_analysis_score_prompt_template":
-            response = ""
-            total_score = 0
-            for expert in judge_result.keys():
-                label_judeg, score_judge = judge_result[expert]
-                response += f"From the perspective of {expert}, this video performs"
-                for key in label_judeg.keys():
-                    label = label_judeg[key]
-                    response += f" {label} on {key},"
-                response = response[:-1] + ". "
-                expert_score = score_judge["score"]
-                total_score += expert_score
-                response += f"Score on {expert} is {expert_score}. "
-            score = total_score / len(judge_result.keys())
-            response += f"Average score is {score}."
-            return response, score
-        elif prompt_type == "video_pair_score_prompt_template":
-            response = ""
-            total_score_1 = 0
-            total_score_2 = 0
-            video1_better = []
-            video2_better = []
-            for expert in judge_result.keys():
-                score_result = judge_result[expert]
-                expert_score1 = score_result["score1"]
-                expert_score2 = score_result["score2"]
-                total_score_1 += expert_score1
-                total_score_2 += expert_score2
-                response += f"Video1's score on {expert} is {expert_score1}. "
-                response += f"Video2's score on {expert} is {expert_score2}. "
-                if expert_score1 > expert_score2:
-                    video1_better.append(expert)
-                    response += f"Video1 is better than video2 on {expert}. "
-                elif expert_score1 < expert_score2:
-                    video2_better.append(expert)
-                    response += f"Video1 is worse than video2 on {expert}. "
-                else:
-                    response += f"Video1 is same as video2 on {expert}. "
-            average_score_1 = total_score_1 / len(judge_result.keys())
-            average_score_2 = total_score_2 / len(judge_result.keys())
-            response += f"Average score of video1 is {average_score_1}. "
-            response += f"Average score of video2 is {average_score_2}. "
-            if len(video1_better) > len(video2_better):
-                response += f"As a result, video1 is better than video2."
-                return response, "video 1", average_score_1, average_score_2
-            elif len(video1_better) < len(video2_better):
-                response += f"As a result, video1 is worse than video2."
-                return response, "video 2", average_score_1, average_score_2
-            elif average_score_1 > average_score_2:
-                response += f"As a result, video1 is better than video2."
-                return response, "video 1", average_score_1, average_score_2
-            elif average_score_1 < average_score_2:
-                response += f"As a result, video1 is worse than video2."
-                return response, "video 2", average_score_1, average_score_2
-            else:
-                response += f"As a result, video1 is same as video2."
-                return response, "same", average_score_1, average_score_2
+                response += f"Video1 is same as video2 on {expert}. "
+        average_score_1 = total_score_1 / len(judge_result.keys())
+        average_score_2 = total_score_2 / len(judge_result.keys())
+        response += f"Average score of video1 is {average_score_1}. "
+        response += f"Average score of video2 is {average_score_2}. "
+        if len(video1_better) > len(video2_better):
+            response += f"As a result, video1 is better than video2."
+            return response, "video 1", average_score_1, average_score_2
+        elif len(video1_better) < len(video2_better):
+            response += f"As a result, video1 is worse than video2."
+            return response, "video 2", average_score_1, average_score_2
+        elif average_score_1 > average_score_2:
+            response += f"As a result, video1 is better than video2."
+            return response, "video 1", average_score_1, average_score_2
+        elif average_score_1 < average_score_2:
+            response += f"As a result, video1 is worse than video2."
+            return response, "video 2", average_score_1, average_score_2
+        else:
+            response += f"As a result, video1 is same as video2."
+            return response, "same", average_score_1, average_score_2
+
+    elif prompt_type == "video_pair_analysis_prompt_template":
+        response = ""
+        for expert in judge_result.keys():
+            analysis_1, analysis_2 = judge_result[expert]
+            response += f"From {expert}'s perspective, video 1 performs"
+            for key in analysis_1.keys():
+                label = analysis_1[key]
+                response += f" {label} on {key},"
+            response = response[:-1] + "; video 2 performs"
+            for key in analysis_2.keys():
+                label = analysis_2[key]
+                response += f" {label} on {key},"
+            response = response[:-1] + ". "
+        response = response[:-1]
+        return response
+    
+    elif prompt_type == "video_pair_analysis_score_prompt_template":
+        response = ""
+        total_score_1 = 0
+        total_score_2 = 0
+        for expert in judge_result.keys():
+            analysis_1, analysis_2, score = judge_result[expert]
+            response += f"From {expert}'s perspective, video 1 performs"
+            for key in analysis_1.keys():
+                label = analysis_1[key]
+                response += f" {label} on {key},"
+            response = response[:-1] + "; video 2 performs"
+            for key in analysis_2.keys():
+                label = analysis_2[key]
+                response += f" {label} on {key},"
+            response = response[:-1] + ". "
+            expert_score1 = score["score1"]
+            expert_score2 = score["score2"]
+            total_score_1 += expert_score1
+            total_score_2 += expert_score2
+            response += f"Score for video 1 by {expert} is {expert_score1}. "
+            response += f"Score for video 2 by {expert} is {expert_score2}. "
+        average_score_1 = total_score_1 / len(judge_result.keys())
+        average_score_2 = total_score_2 / len(judge_result.keys())
+        response += f"Average score of video 1 is {average_score_1}. "
+        response += f"Average score of video 2 is {average_score_2}. "
+        if average_score_1 > average_score_2:
+            response += "Overall, video 1 is better."
+            return response, "video 1", average_score_1, average_score_2
+        elif average_score_1 < average_score_2:
+            response += "Overall, video 2 is better."
+            return response, "video 2", average_score_1, average_score_2
+        else:
+            response += "Overall, both videos are the same."
+            return response, "same", average_score_1, average_score_2
 
                     
     def explain(self, video_paths, prompt, force_keys=[], explain_query=None):
