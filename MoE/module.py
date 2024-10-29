@@ -40,16 +40,44 @@ As a professional "Text-to-Video" quality assessor. Please explain the video pre
 Please provide a detailed explanation:
 """
 
-def convert_to_json_format(input_string: str) -> dict:
-    print(input_string)
-    # 使用正则表达式为键添加引号
-    json_compatible_string = re.sub(r"(\w+):", r'"\1":', input_string)
+import re
+import json
+from typing import Union, List, Dict
 
-    # 将单引号替换为双引号
-    json_string = json_compatible_string.replace("'", '"')
+def convert_to_json_format(input_string: str) -> Union[dict, List[dict]]:
+    # 定义结果容器
+    results = []
 
-    # 将其转换为JSON对象并返回
-    return json.loads(json_string)
+    # 处理键未加引号的情况，如 `{object:"same", attribute:"first"}` 等
+    input_string = re.sub(r'(?<!")(\b\w+\b)(?=\s*:\s*")', r'"\1"', input_string)
+
+    # 如果存在多个 JSON 对象，以换行或其他分隔符分隔的情况
+    json_blocks = re.split(r'\n|(?<=\})\s*(?=\{)', input_string)
+
+    for block in json_blocks:
+        block = block.strip()  # 去除首尾空白
+
+        # 处理带有前缀的 JSON 片段（如 "VIDEO1 : {...}"）
+        match = re.match(r'^\w+\s*:\s*(\{.*\})$', block)
+        if match:
+            block = match.group(1)
+
+        # 尝试将单引号替换为双引号，以确保 JSON 兼容
+        block = block.replace("'", '"')
+
+        # 尝试将字符串转换为 JSON 对象
+        try:
+            json_obj = json.loads(block)
+            results.append(json_obj)
+        except json.JSONDecodeError:
+            # 忽略无法解析的块
+            continue
+
+    # 根据结果数量返回单个字典或列表
+    if len(results) == 1:
+        return results[0]
+    return results
+
 
 class MJ_VIDEO:
     def __init__(self, config):
@@ -81,8 +109,11 @@ class MJ_VIDEO:
         with open(config["prompt_list"], "r", encoding="utf-8") as f:
             self.prompt_list = json.load(f)
 
-    def router_choice(self, video_paths, prompt):
-        router_template = self.prompt_list["router"]
+    def router_choice(self, video_paths, prompt, prompt_type):
+        if "single" in prompt_type:
+            router_template = self.prompt_list["router"]["single_prompt_template"]
+        elif "pair" in prompt_type:
+            router_template = self.prompt_list["router"]["pair_prompt_template"]
         response, _ = inference(self.router, self.template, router_template + prompt, videos=video_paths)
         return response
     
@@ -98,8 +129,21 @@ class MJ_VIDEO:
             experts = self.expert_keys
         return experts
     
-    def process_expert(self, expert, video_paths, prompt):
-        expert_template = self.prompt_list[expert]
+    def process_expert(self, expert, video_paths, prompt, prompt_type):
+        if prompt_type == "single_video_score_prompt_template":
+            expert_template = self.prompt_list[expert]["single_video_score_prompt_template"]
+        elif prompt_type == "single_video_analysis_score_prompt_template":
+            expert_template = self.prompt_list[expert]["single_video_analysis_score_prompt_template"]
+        elif prompt_type == "single_video_analysis_prompt_template":
+            expert_template = self.prompt_list[expert]["single_video_analysis_prompt_template"]
+        elif prompt_type == "video_pair_score_prompt_template":
+            expert_template == self.prompt_list[expert]["video_pair_score_prompt_template"]
+        elif prompt_type == "video_pair_analysis_prompt_template":
+            expert_template = self.prompt_list[expert]["video_pair_analysis_prompt_template"]
+        elif prompt_type == "video_pair_analysis_score_prompt_template":
+            expert_template = self.prompt_list[expert]["video_pair_analysis_score_prompt_template"]
+        elif prompt_type == "video_pair_prefer_prompt_template":
+            expert_template = self.prompt_list[expert]["video_pair_prefer_prompt_template"]
         response, _ = inference(self.expert_group[expert], self.template, expert_template + prompt, videos=video_paths)
         logging.info(f"{expert} : {response}")
         response_json = convert_to_json_format(response)
@@ -198,7 +242,7 @@ class MJ_VIDEO:
 
 
 if __name__ == "__main__":
-    with open("MoE_config.json", "r", encoding="utf-8") as f:
+    with open("MoE_config_2B_2.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     model = MJ_VIDEO(config)
     video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4", "../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/351b13217fc3ac1689b3f8b17356769ab7b9d36981db92462186a784f3bc57b2.mp4"]
