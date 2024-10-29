@@ -265,6 +265,42 @@ class MJ_VIDEO:
             score = total_score / len(judge_result.keys())
             response += f"Average score is {score}."
             return response, score
+        elif prompt_type == "video_pair_score_prompt_template":
+            response = ""
+            total_score_1 = 0
+            total_score_2 = 0
+            video1_better = []
+            video2_better = []
+            for expert in judge_result.keys():
+                score_result = judge_result[expert]
+                expert_score1 = score_result["score1"]
+                expert_score2 = score_result["score2"]
+                total_score_1 += expert_score1
+                total_score_2 += expert_score2
+                response += f"Video1's score on {expert} is {expert_score1}. "
+                response += f"Video2's score on {expert} is {expert_score2}. "
+                if expert_score1 > expert_score2:
+                    video1_better.append(expert)
+                    response += f"Video1 is better than video2 on {expert}. "
+                elif expert_score1 < expert_score2:
+                    video2_better.append(expert)
+                    response += f"Video1 is worse than video2 on {expert}. "
+                else:
+                    response += f"Video1 is same as video2 on {expert}. "
+            average_score_1 = total_score_1 / len(judge_result.keys())
+            average_score_2 = total_score_2 / len(judge_result.keys())
+            response += f"Average score of video1 is {average_score_1}. "
+            response += f"Average score of video2 is {average_score_2}. "
+            if len(video1_better) > len(video2_better):
+                response += f"As a result, video1 is better than video2."
+            elif len(video1_better) < len(video2_better):
+                response += f"As a result, video1 is worse than video2."
+            elif average_score_1 > average_score_2:
+                response += f"As a result, video1 is better than video2."
+            elif average_score_1 < average_score_2:
+                response += f"As a result, video1 is worse than video2."
+            else:
+                response += f"As a result, video1 is same as video2."
 
                     
     def explain(self, video_paths, prompt, force_keys=[], explain_query=None):
@@ -287,5 +323,5 @@ if __name__ == "__main__":
     video_paths = ["../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/4a4c1990b549e1221e0d663a21f2970b2628059161c82af1deb6d309cf0c9ea6.mp4", "../videos//safesora/8cd608c47b821009baf7cc43df12b183d6da0c8c9e7125717811fa00ad4930fa/351b13217fc3ac1689b3f8b17356769ab7b9d36981db92462186a784f3bc57b2.mp4"]
     prompt = "2000 Documentary film in color showing dark hallway in house and kid in its center gets ripped apart from outside showing bloody monster"
     force_keys = []
-    result = model.inference([video_paths[0]], prompt, "single_video_analysis_score_prompt_template", force_keys)
+    result = model.inference([video_paths[0]], prompt, "video_pair_score_prompt_template", force_keys)
     print(result)
