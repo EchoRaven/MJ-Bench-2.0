@@ -249,7 +249,7 @@ json_files = {
 
 for key, value in json_files.items():
     json_file_path = value
-    output_file_name = f'moe_2B_{key}_results.json'
+    output_file_name = f'moe_2B_{key}_single_score.json'
     
     # 检查是否为overall文件
     if key == 'overall':
