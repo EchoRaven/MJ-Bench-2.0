@@ -384,5 +384,5 @@ if __name__ == "__main__":
     force_keys = ["coherence_consistency"]
     result = model.inference([video_paths[0]], prompt, "single_video_score_prompt_template", force_keys)
     print(result)
-    result = model.inference([video_paths[0]], prompt, "single_video_score_prompt_template", force_keys)
+    result = model.inference([video_paths[1]], prompt, "single_video_score_prompt_template", force_keys)
     print(result)
