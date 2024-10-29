@@ -306,7 +306,6 @@ class MJ_VIDEO:
             else:
                 response += f"As a result, video1 is same as video2."
                 return response, "same", average_score_1, average_score_2
-            return 
 
                     
     def explain(self, video_paths, prompt, force_keys=[], explain_query=None):
