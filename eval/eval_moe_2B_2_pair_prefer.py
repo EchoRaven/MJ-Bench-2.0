@@ -20,7 +20,7 @@ if not os.path.exists('./output_double'):
     os.mkdir('./output_double')
 
 from MoE.module import MJ_VIDEO
-with open("../MoE/MoE_config_2B.json", "r", encoding="utf-8") as f:
+with open("../MoE/MoE_config_2B_2.json", "r", encoding="utf-8") as f:
     config = json.load(f)
 model = MJ_VIDEO(config)
 seed_everything(42)
