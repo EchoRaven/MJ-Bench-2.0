@@ -293,14 +293,20 @@ class MJ_VIDEO:
             response += f"Average score of video2 is {average_score_2}. "
             if len(video1_better) > len(video2_better):
                 response += f"As a result, video1 is better than video2."
+                return response, "video 1", average_score_1, average_score_2
             elif len(video1_better) < len(video2_better):
                 response += f"As a result, video1 is worse than video2."
+                return response, "video 2", average_score_1, average_score_2
             elif average_score_1 > average_score_2:
                 response += f"As a result, video1 is better than video2."
+                return response, "video 1", average_score_1, average_score_2
             elif average_score_1 < average_score_2:
                 response += f"As a result, video1 is worse than video2."
+                return response, "video 2", average_score_1, average_score_2
             else:
                 response += f"As a result, video1 is same as video2."
+                return response, "same", average_score_1, average_score_2
+            return 
 
                     
     def explain(self, video_paths, prompt, force_keys=[], explain_query=None):
