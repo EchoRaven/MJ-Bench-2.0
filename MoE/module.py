@@ -238,6 +238,11 @@ class MJ_VIDEO:
             score = total_score / len(judge_result.keys())
             response += f"Average score is {score}."
             return response, score
+        elif prompt_type == "single_video_analysis_prompt_template":
+            response = ""
+            total_score = 0
+            for expert in judge_result.keys():
+                label = judge_result[expert]
 
         
     def explain(self, video_paths, prompt, force_keys=[], explain_query=None):
