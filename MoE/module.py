@@ -173,6 +173,8 @@ class MJ_VIDEO:
             experts = self.activate_expert(force_keys, router_response)
         else:
             experts = force_keys
+        print(experts)
+        print(video_paths)
         experts_response = self.experts_judge(experts, video_paths, prompt, prompt_type)
         return experts_response
     
@@ -382,7 +384,7 @@ if __name__ == "__main__":
     model = MJ_VIDEO(config)
     video_paths = ["../videos/hpdbv2_videos/HPDv2_train_image0_5935.mp4", "../videos/hpdbv2_videos/HPDv2_train_image1_5935.mp4"]
     video_paths_2 = ["videos/hpdbv2_videos/HPDv2_train_image1_5935.mp4", "../videos/hpdbv2_videos/HPDv2_train_image0_5935.mp4"]
-    prompt = "2000 Documentary film in color showing dark hallway in house and kid in its center gets ripped apart from outside showing bloody monster"
+    prompt = "Certainly! The video showcases a young girl wearing a red apron in a kitchen setting. She is carefully chopping various vegetables on a black countertop. The kitchen is well-lit with ample natural light coming through a large window dressed with blue drapes, showcasing a cozy and bright environment. The kitchen is modern, featuring sleek white cabinets and a stainless steel sink."
     force_keys = ["alignment", "safety", "bias_fairness", "quality", "coherence_consistency"]
     result = model.inference([video_paths[0]], prompt, "single_video_score_prompt_template", force_keys)
     print(result)
