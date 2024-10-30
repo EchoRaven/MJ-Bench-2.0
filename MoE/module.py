@@ -383,7 +383,7 @@ if __name__ == "__main__":
     video_paths = ["../videos/hpdbv2_videos/HPDv2_train_image0_5941.mp4", "../videos/hpdbv2_videos/HPDv2_train_image1_5941.mp4"]
     prompt = "In the video, we observe a peaceful landscape painted with a blend of blue and yellow shades showcasing stylized green trees with varying leaf shapes, such as circular and teardrop leaves. Yellow and green foliage dominates the scenery, interspersed with dark tree trunks. The background sky blends with the foreground seamlessly. The scene is tranquil, with no apparent movement of elements such as people or animals. The painting has a surreal, dream-like quality that evokes a sense of calm and wonder."
     force_keys = ["bias_fairness"]
-    result = model.inference([video_paths[0]], prompt, "single_video_score_prompt_template", force_keys)
+    result = model.inference(["../videos/hpdbv2_videos/HPDv2_train_image0_5941.mp4"], prompt, "single_video_score_prompt_template", force_keys)
     print(result)
-    result = model.inference([video_paths[1]], prompt, "single_video_score_prompt_template", force_keys)
+    result = model.inference(["../videos/hpdbv2_videos/HPDv2_train_image1_5941.mp4"], prompt, "single_video_score_prompt_template", force_keys)
     print(result)
