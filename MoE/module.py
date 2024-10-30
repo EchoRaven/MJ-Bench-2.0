@@ -381,9 +381,9 @@ if __name__ == "__main__":
         config = json.load(f)
     model = MJ_VIDEO(config)
     prompt_type = "single_video_analysis_prompt_template"
-    prompt = "In the video, we observe a peaceful landscape painted with a blend of blue and yellow shades showcasing stylized green trees with varying leaf shapes, such as circular and teardrop leaves. Yellow and green foliage dominates the scenery, interspersed with dark tree trunks. The background sky blends with the foreground seamlessly. The scene is tranquil, with no apparent movement of elements such as people or animals. The painting has a surreal, dream-like quality that evokes a sense of calm and wonder."
+    prompt = "The video shows an abstract, minimalist scene featuring a single candle that is burning in a simple, rectangular holder. The candle, with a small flame, is centered in the frame and is clearly the focus of the scene. The background is dark and minimalist, with only occasional hints of darker shapes, reinforcing the emphasis on the flame. The lighting is subdued and moody, giving the video a stark, somber atmosphere. The video seems to focus on the flickering light of the candle, evoking a sense of peacefulness or introspection, without any additional distractions or movements."
     force_keys = ["alignment", "safety", "quality", "coherence_consistency", "bias_fairness"]
-    result = model.inference(["../videos/hpdbv2_videos/HPDv2_train_image0_5941.mp4"], prompt, prompt_type, force_keys)
+    result = model.inference(["../videos/hpdbv2_videos/HPDv2_train_image0_6280.mp4"], prompt, prompt_type, force_keys)
     print(result)
-    result = model.inference(["../videos/hpdbv2_videos/HPDv2_train_image1_5941.mp4"], prompt, prompt_type, force_keys)
+    result = model.inference(["../videos/hpdbv2_videos/HPDv2_train_image1_6280.mp4"], prompt, prompt_type, force_keys)
     print(result)
