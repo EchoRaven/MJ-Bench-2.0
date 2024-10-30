@@ -19,6 +19,8 @@ expert, tokenizer =  get_model_tokenizer("internvl2-2b", torch.bfloat16,
 expert = Swift.from_pretrained(
         expert, "../videoRM/finetune_result/alignment_expert_Internvl2_2B_base_model_lora_score/internvl2-2b/v0-20241030-081412/checkpoint-741", "alignmnet", inference_mode=True)
 
+expert.generation_config.max_new_tokens = 1024
+
 template_type = get_default_template_type("internvl2-2b")
 template = get_template(template_type, tokenizer)
 video_path_0 = ["../videos/hpdbv2_videos/HPDv2_train_image0_5935.mp4"]
