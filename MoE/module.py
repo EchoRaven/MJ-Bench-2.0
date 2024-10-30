@@ -388,5 +388,3 @@ if __name__ == "__main__":
     print(result)
     result = model.inference([video_paths[1]], prompt, "single_video_score_prompt_template", force_keys)
     print(result)
-
-    "train/hpdbv2_videos/HPDv2_train_image0_5935.mp4", "train/hpdbv2_videos/HPDv2_train_image1_5935.mp4"
