@@ -377,12 +377,11 @@ class MJ_VIDEO:
 
 
 if __name__ == "__main__":
-    with open("MoE_config_2B_score.json", "r", encoding="utf-8") as f:
+    with open("MoE_config_2B_short_sample.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     model = MJ_VIDEO(config)
-    video_paths = ["../videos/hpdbv2_videos/HPDv2_train_image0_5935.mp4", "../videos/hpdbv2_videos/HPDv2_train_image1_5935.mp4"]
-    video_paths_2 = ["videos/hpdbv2_videos/HPDv2_train_image1_5935.mp4", "../videos/hpdbv2_videos/HPDv2_train_image0_5935.mp4"]
-    prompt = "Certainly! The video showcases a young girl wearing a red apron in a kitchen setting. She is carefully chopping various vegetables on a black countertop. The kitchen is well-lit with ample natural light coming through a large window dressed with blue drapes, showcasing a cozy and bright environment. The kitchen is modern, featuring sleek white cabinets and a stainless steel sink."
+    video_paths = ["../videos/hpdbv2_videos/HPDv2_train_image0_5941.mp4", "../videos/hpdbv2_videos/HPDv2_train_image1_5941.mp4"]
+    prompt = "In the video, we observe a peaceful landscape painted with a blend of blue and yellow shades showcasing stylized green trees with varying leaf shapes, such as circular and teardrop leaves. Yellow and green foliage dominates the scenery, interspersed with dark tree trunks. The background sky blends with the foreground seamlessly. The scene is tranquil, with no apparent movement of elements such as people or animals. The painting has a surreal, dream-like quality that evokes a sense of calm and wonder."
     force_keys = ["alignment", "safety", "bias_fairness", "quality", "coherence_consistency"]
     result = model.inference([video_paths[0]], prompt, "single_video_score_prompt_template", force_keys)
     print(result)
