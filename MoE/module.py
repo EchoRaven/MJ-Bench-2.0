@@ -173,8 +173,6 @@ class MJ_VIDEO:
             experts = self.activate_expert(force_keys, router_response)
         else:
             experts = force_keys
-        print(experts)
-        print(video_paths)
         experts_response = self.experts_judge(experts, video_paths, prompt, prompt_type)
         return experts_response
     
