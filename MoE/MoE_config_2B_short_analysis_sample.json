@@ -1,0 +1,14 @@
+{
+  "model_type": "internvl2-2b",
+  "prompt_list": "../MoE/prompts_short.json",
+  "model_id_or_path": "../videoRM/Internvl/pretrain/InternVL2-2B",
+  "dtype": "bfloat16",
+  "router_path": "../videoRM/finetune_result/overall_expert_Internvl2_2B_base_model_lora_2/internvl2-2b/v0-20240929-211346/checkpoint-202",
+  "experts": {
+    "alignment": "../videoRM/finetune_result/alignment_expert_Internvl2_2B_base_model_lora_short_analysis_sample/internvl2-2b/v0-20241030-190712/checkpoint-72",
+    "bias_fairness": "../videoRM/finetune_result/bias_expert_Internvl2_2B_base_model_lora_short_analysis_sample/internvl2-2b/v0-20241030-190758/checkpoint-30",
+    "quality": "../videoRM/finetune_result/quality_expert_Internvl2_2B_base_model_lora_short_analysis_sample/internvl2-2b/v0-20241030-191409/checkpoint-75",
+    "safety": "../videoRM/finetune_result/safety_expert_Internvl2_2B_base_model_lora_short_analysis_sample/internvl2-2b/v0-20241030-191236/checkpoint-60",
+    "coherence_consistency": "../videoRM/finetune_result/cc_expert_Internvl2_2B_base_model_lora_short_analysis_sample/internvl2-2b/v0-20241030-191142/checkpoint-84"
+  }
+}
