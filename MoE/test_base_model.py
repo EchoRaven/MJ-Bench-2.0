@@ -16,8 +16,8 @@ import json
 
 expert, tokenizer =  get_model_tokenizer("internvl2-2b", torch.bfloat16,
                         model_kwargs={'device_map': 'auto'}, model_id_or_path="../videoRM/Internvl/pretrain/InternVL2-2B")
-# expert = Swift.from_pretrained(
-#         expert, "../videoRM/finetune_result/alignment_expert_Internvl2_2B_base_model_lora_score/internvl2-2b/v0-20241030-081412/checkpoint-741", "alignmnet", inference_mode=True)
+expert = Swift.from_pretrained(
+        expert, "../videoRM/finetune_result/alignment_expert_Internvl2_2B_base_model_lora_score/internvl2-2b/v0-20241030-081412/checkpoint-741", "alignmnet", inference_mode=True)
 
 expert.generation_config.max_new_tokens = 1024
 
