@@ -377,7 +377,7 @@ class MJ_VIDEO:
 
 
 if __name__ == "__main__":
-    with open("MoE_config_2B_2.json", "r", encoding="utf-8") as f:
+    with open("MoE_config_2B_score.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     model = MJ_VIDEO(config)
     video_paths = ["../videos/hpdbv2_videos/HPDv2_train_image0_5935.mp4", "../videos/hpdbv2_videos/HPDv2_train_image1_5935.mp4"]
