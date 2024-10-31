@@ -377,7 +377,7 @@ class MJ_VIDEO:
 
 
 if __name__ == "__main__":
-    with open("MoE_config_2B_short_analysis_sample_more_epoch.json", "r", encoding="utf-8") as f:
+    with open("MoE_config_2B_short_analysis.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     model = MJ_VIDEO(config)
     force_keys = ["bias_fairness", "alignment", "quality"]
