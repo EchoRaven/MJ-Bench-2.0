@@ -2,7 +2,7 @@ import torch
 import json
 from swift.llm import (
     get_model_tokenizer, get_template, inference,
-    get_default_template_type
+    get_default_template_type, get_model_with_value_head
 )
 from swift.tuners import Swift
 from swift.utils import seed_everything
@@ -66,6 +66,8 @@ class MJ_VIDEO_RM:
         logging.info("Loading router ...")
         self.router, self.tokenizer = get_model_tokenizer(config["model_type"], self.dtype,
                             model_kwargs={'device_map': 'auto'}, model_id_or_path=config["model_id_or_path"])
+        model = get_model_with_value_head(model)
+        print(model)
         self.router = Swift.from_pretrained(
                     self.router, config["router_path"], "router", inference_mode=True)
         self.router.generation_config.max_new_tokens = 1024
@@ -80,7 +82,7 @@ class MJ_VIDEO_RM:
             self.expert_group[key] = Swift.from_pretrained(
                     self.expert_group[key], config["experts"][key], key, inference_mode=True)
             lora_route = config["experts"][key]
-            logging.info(f"Loading {key} expert LoRA Weight from {lora_route}")
+            logging.info(f"Loading {key} expert from {lora_route}")
             self.expert_group[key].generation_config.max_new_tokens = 1024
         
         template_type = get_default_template_type(config["model_type"])
