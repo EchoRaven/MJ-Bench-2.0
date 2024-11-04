@@ -110,19 +110,22 @@ class MJ_VIDEO_RM:
     
     def process_expert(self, expert, video_paths, prompt):
         criteria = self.prompt_list[expert]
-        if expert == "alignment":
-            instruction = Alignment_prompt.format(pt=prompt, cri=criteria)
-        elif expert == "bias_fairness":
-            instruction = Bias_prompt.format(pt=prompt, cri=criteria)
-        elif expert == "coherence_consistency":
-            instruction = CC_prompt.format(pt=prompt, cri=criteria)
-        elif expert == "safety":
-            instruction = Safety_prompt.format(pt=prompt, cri=criteria)
-        elif expert == "quality":
-            instruction = Quality_prompt.format(pt=prompt, cri=criteria)
-        response, _ = inference(self.expert_group[expert], self.template, instruction, videos=video_paths)
-        logging.info(f"{expert} : {response}")
-        return response, expert
+        score_list = {}
+        for criterion in criteria:
+            if expert == "alignment":
+                instruction = Alignment_prompt.format(pt=prompt, cri=criterion)
+            elif expert == "bias_fairness":
+                instruction = Bias_prompt.format(pt=prompt, cri=criterion)
+            elif expert == "coherence_consistency":
+                instruction = CC_prompt.format(pt=prompt, cri=criterion)
+            elif expert == "safety":
+                instruction = Safety_prompt.format(pt=prompt, cri=criterion)
+            elif expert == "quality":
+                instruction = Quality_prompt.format(pt=prompt, cri=criterion)
+            response, _ = inference(self.expert_group[expert], self.template, instruction, videos=video_paths)
+            score_list[criterion] = response
+            logging.info(f"{criterion} : {response}")
+        return score_list, expert
     
     def experts_judge(self, experts, video_paths, prompt):
         def process_expert_concurrently(expert):
@@ -153,7 +156,7 @@ class MJ_VIDEO_RM:
         pass
 
 if __name__ == "__main__":
-    with open("MoE_config_2B_short_analysis.json", "r", encoding="utf-8") as f:
+    with open("MoE_config_2B_single_reward.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     model = MJ_VIDEO_RM(config)
     force_keys = ["alignment"]
