@@ -66,8 +66,6 @@ class MJ_VIDEO_RM:
         logging.info("Loading router ...")
         self.router, self.tokenizer = get_model_tokenizer(config["model_type"], self.dtype,
                             model_kwargs={'device_map': 'auto'}, model_id_or_path=config["model_id_or_path"])
-        model = get_model_with_value_head(model)
-        print(model)
         self.router = Swift.from_pretrained(
                     self.router, config["router_path"], "router", inference_mode=True)
         self.router.generation_config.max_new_tokens = 1024
@@ -79,6 +77,7 @@ class MJ_VIDEO_RM:
             logging.info(f"Loading {key} expert ...")
             self.expert_group[key], _ =  get_model_tokenizer(config["model_type"], self.dtype,
                         model_kwargs={'device_map': 'auto'}, model_id_or_path=config["model_id_or_path"])
+            self.expert_group[key] = get_model_with_value_head(self.expert_group[key])
             self.expert_group[key] = Swift.from_pretrained(
                     self.expert_group[key], config["experts"][key], key, inference_mode=True)
             lora_route = config["experts"][key]
