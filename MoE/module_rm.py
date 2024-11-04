@@ -9,6 +9,7 @@ from swift.tuners import Swift
 from swift.utils import seed_everything
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
+from copy import deepcopy
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -71,7 +72,7 @@ class MJ_VIDEO_RM:
         self.router = Swift.from_pretrained(
                     self.router, config["router_path"], "router", inference_mode=True)
         self.router.generation_config.max_new_tokens = 1024
-        self.generation_config = getattr(self.router, 'generation_config')
+        self.generation_config = deepcopy(getattr(self.router, 'generation_config'))
         self.generation_info = {}
         # define experts
         self.expert_group = {}
@@ -126,9 +127,10 @@ class MJ_VIDEO_RM:
                 instruction = Safety_prompt.format(pt=prompt, cri=criterion)
             elif expert == "quality":
                 instruction = Quality_prompt.format(pt=prompt, cri=criterion)
-            inputs, tokenizer_kwargs, token_len, example = _prepare_inputs(self.router, self.template, instruction, videos=video_paths, history=[], generation_config=self.generation_config, generation_info=self.generation_info)
-            print(inputs)
-            print(instruction)
+            with torch.no_grad():
+                inputs, tokenizer_kwargs, token_len, example = _prepare_inputs(self.router, self.template, instruction, videos=video_paths, history=[], generation_config=self.generation_config, generation_info=self.generation_info)
+                print(inputs)
+                print(instruction)
             # response, _ = inference(self.expert_group[expert], self.template, instruction, videos=video_paths)
             # # score_list[criterion] = response
             # logging.info(f"{criterion} : {response}")
