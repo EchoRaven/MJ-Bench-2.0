@@ -1,9 +1,10 @@
 import torch
 import json
 from swift.llm import (
-    get_model_tokenizer, get_template, inference, _prepare_inputs, 
+    get_model_tokenizer, get_template, inference,
     get_default_template_type, get_model_with_value_head
 )
+from swift.llm.utils.utils import _prepare_inputs
 from swift.tuners import Swift
 from swift.utils import seed_everything
 from concurrent.futures import ThreadPoolExecutor, as_completed
