@@ -124,7 +124,7 @@ class MJ_VIDEO_RM:
                 instruction = Safety_prompt.format(pt=prompt, cri=criterion)
             elif expert == "quality":
                 instruction = Quality_prompt.format(pt=prompt, cri=criterion)
-            inputs, tokenizer_kwargs, token_len, example = _prepare_inputs(self.expert_group[expert], self.template, instruction, videos=video_paths)
+            inputs, tokenizer_kwargs, token_len, example = _prepare_inputs(self.expert_group[expert], self.template, instruction, videos=video_paths, history=[])
             print(inputs)
             print(instruction)
             # response, _ = inference(self.expert_group[expert], self.template, instruction, videos=video_paths)
