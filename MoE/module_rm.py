@@ -129,6 +129,7 @@ class MJ_VIDEO_RM:
                 instruction = Quality_prompt.format(pt=prompt, cri=criterion)
             with torch.no_grad():
                 inputs, tokenizer_kwargs, token_len, example = _prepare_inputs(self.router, self.template, instruction, videos=video_paths, history=[], generation_config=self.generation_config, generation_info=self.generation_info)
+                self.tokenizer.batch_decode(inputs['input_ids'], skip_special_tokens=True)
                 print(inputs)
                 print(instruction)
             # response, _ = inference(self.expert_group[expert], self.template, instruction, videos=video_paths)
