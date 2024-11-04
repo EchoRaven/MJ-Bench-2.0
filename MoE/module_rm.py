@@ -158,6 +158,6 @@ if __name__ == "__main__":
     model = MJ_VIDEO_RM(config)
     force_keys = ["alignment"]
     prompt = "Generate a video that depicts a solitary adventurer wearing a billowing cloak and wielding a sword, positioned in front of an old gate enveloped in a mystical orange glow. The barren scenery featuring remnants and a rock platform enhances the atmosphere of danger and excitement. Include dynamic processes such as the wind blowing the cloak, the sword swinging, and the old gate creaking as it opens. Use cinematic styles such as slow-motion for dramatic effect. End with a close-up of the adventurer's determined face as they step through the gate into the unknown."
-    result = model.process_expert("alignment", ["test/safesora/56db225a581c1e592d770d0dc2adcd0950734abdc852ce68581a2293f13f2e6f/0e3d08d5cd88366686cbc7c267ea676c941403e00eeb49d8145381bab84bdd91.mp4"], prompt)
+    result = model.process_expert("alignment", ["../videos/safesora/56db225a581c1e592d770d0dc2adcd0950734abdc852ce68581a2293f13f2e6f/0e3d08d5cd88366686cbc7c267ea676c941403e00eeb49d8145381bab84bdd91.mp4"], prompt)
     print(result)
 
