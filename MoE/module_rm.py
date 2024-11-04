@@ -82,7 +82,6 @@ class MJ_VIDEO_RM:
                     self.expert_group[key], config["experts"][key], key, inference_mode=True)
             lora_route = config["experts"][key]
             logging.info(f"Loading {key} expert from {lora_route}")
-            self.expert_group[key].generation_config.max_new_tokens = 1024
         
         template_type = get_default_template_type(config["model_type"])
         self.template = get_template(template_type, self.tokenizer)
