@@ -6,12 +6,11 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --cpus-per-gpu=28
 #SBATCH --mem-per-cpu=9200
-#SBATCH --nodelist=g42-h100-instance-020
 #SBATCH --output=slurm_output_%j.out
 #SBATCH --error=slurm_error_%j.err
 
 
-python eval_reward_model.py \
+swift rlhf \
     --rlhf_type rm \
     --model_type  internvl2-2b \
     --model_id_or_path ../Internvl/pretrain/InternVL2-2B \
@@ -22,11 +21,10 @@ python eval_reward_model.py \
     --num_train_epochs  1  \
     --lora_target_modules  ALL  \
     --gradient_checkpointing  true  \
-    --batch_size  4  \
-    --eval_steps 10000000000 \
-    --eval_batch_size 1 \
+    --batch_size  1  \
+    --eval_steps 1 \
     --learning_rate  5e-5  \
-    --gradient_accumulation_steps  4  \
+    --gradient_accumulation_steps  1  \
     --warmup_ratio  0.03  \
     --save_total_limit  2 \
     --lazy_tokenize true \
