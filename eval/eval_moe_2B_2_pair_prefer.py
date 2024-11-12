@@ -253,30 +253,3 @@ for key, value in json_files.items():
         process_overall_file(json_file_path, videos_dir, output_double_file_name)  # 使用另一个函数处理
     else:
         process_json_file(json_file_path, videos_dir, output_double_file_name, key)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

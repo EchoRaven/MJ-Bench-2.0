@@ -45,7 +45,7 @@ def load_safetensor(model_path):
 
 logger = get_logger()
 
-json_file_name = "alignment_reward_score.json"
+json_file_name = "cc_reward_score.json"
 json_data = []
 
 def trainer_train(
